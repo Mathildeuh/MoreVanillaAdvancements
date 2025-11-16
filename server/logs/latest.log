@@ -1,0 +1,660 @@
+[00:12:53] [ServerMain/INFO]: [bootstrap] Running Java 21 (OpenJDK 64-Bit Server VM 21.0.9+10-LTS; Amazon.com Inc. Corretto-21.0.9.10.1) on Windows 11 10.0 (amd64)
+[00:12:53] [ServerMain/INFO]: [bootstrap] Loading Purpur 1.21.10-2523-HEAD@d22f66f (1970-01-01T00:00:00Z) for Minecraft 1.21.10
+[00:12:54] [ServerMain/INFO]: [PluginInitializerManager] Initializing plugins...
+[00:12:55] [ServerMain/INFO]: [PluginInitializerManager] Initialized 1 plugin
+[00:12:55] [ServerMain/INFO]: [PluginInitializerManager] Bukkit plugins (1):
+ - MoreVanillaAdvancements (1.0.0)
+[00:13:00] [ServerMain/INFO]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, profilesHost=https://api.mojang.com, name=PROD]
+[00:13:02] [ServerMain/INFO]: Loaded 1461 recipes
+[00:13:02] [ServerMain/INFO]: Loaded 1574 advancements
+[00:13:02] [ServerMain/INFO]: [ca.spottedleaf.dataconverter.minecraft.datatypes.MCTypeRegistry] Initialising converters for DataConverter...
+[00:13:02] [ServerMain/INFO]: [ca.spottedleaf.dataconverter.minecraft.datatypes.MCTypeRegistry] Finished initialising converters for DataConverter in 399,3ms
+[00:13:02] [Server thread/INFO]: Starting minecraft server version 1.21.10
+[00:13:02] [Server thread/INFO]: Loading properties
+[00:13:02] [Server thread/INFO]: This server is running Purpur version 1.21.10-2523-HEAD@d22f66f (1970-01-01T00:00:00Z) (Implementing API version 1.21.10-R0.1-SNAPSHOT)
+[00:13:03] [Server thread/INFO]: [spark] This server bundles the spark profiler. For more information please visit https://docs.papermc.io/paper/profiling
+[00:13:03] [Server thread/INFO]: Server Ping Player Sample Count: 12
+[00:13:03] [Server thread/INFO]: Using 4 threads for Netty based IO
+[00:13:03] [Server thread/INFO]: [MoonriseCommon] Paper is using 8 worker threads, 1 I/O threads
+[00:13:04] [Server thread/INFO]: Default game type: SURVIVAL
+[00:13:04] [Server thread/INFO]: Generating keypair
+[00:13:04] [Server thread/INFO]: Starting Minecraft server on *:25565
+[00:13:04] [Server thread/INFO]: Using default channel type
+[00:13:04] [Server thread/INFO]: Paper: Using Java compression from Velocity.
+[00:13:04] [Server thread/INFO]: Paper: Using Java cipher from Velocity.
+[00:13:04] [Server thread/INFO]: [MoreVanillaAdvancements] Loading server plugin MoreVanillaAdvancements v1.0.0
+[00:13:04] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
+[00:13:04] [Server thread/INFO]: Preparing level "world"
+[00:13:05] [Server thread/INFO]: Loading 0 persistent chunks for world 'minecraft:overworld'...
+[00:13:05] [Server thread/INFO]: Preparing spawn area: 100%
+[00:13:05] [Server thread/INFO]: Prepared spawn area in 4 ms
+[00:13:05] [Server thread/INFO]: Loading 0 persistent chunks for world 'minecraft:the_nether'...
+[00:13:05] [Server thread/INFO]: Preparing spawn area: 100%
+[00:13:05] [Server thread/INFO]: Prepared spawn area in 1 ms
+[00:13:05] [Server thread/INFO]: Loading 0 persistent chunks for world 'minecraft:the_end'...
+[00:13:05] [Server thread/INFO]: Preparing spawn area: 100%
+[00:13:05] [Server thread/INFO]: Prepared spawn area in 1 ms
+[00:13:05] [Server thread/INFO]: Done preparing level "world" (1.043s)
+[00:13:05] [Server thread/INFO]: [MoreVanillaAdvancements] Enabling MoreVanillaAdvancements v1.0.0
+[00:13:05] [Server thread/INFO]: [spark] Starting background profiler...
+[00:13:05] [Server thread/INFO]: [spark] The async-profiler engine is not supported for your os/arch (windows11/amd64), so the built-in Java engine will be used instead.
+[00:13:05] [Server thread/INFO]: Running delayed init tasks
+[00:13:05] [Server thread/INFO]: Done (12.759s)! For help, type "help"
+[00:13:11] [User Authenticator #0/INFO]: UUID of player Mathildeuh is 3379746a-32fe-4a40-b331-d02c4c9ac770
+[00:13:13] [Server thread/INFO]: Mathildeuh joined the game
+[00:13:13] [Server thread/INFO]: Mathildeuh[/127.0.0.1:56924] logged in with entity id 85 at ([world]-53.4135647380763, 64.0, -51.91882278107131)
+[00:13:15] [Server thread/INFO]: Mathildeuh issued server command: /bukkit:reload confirm
+[00:13:15] [Server thread/INFO]: Mathildeuh: Please note that this command is not supported, may cause issues when using some plugins, and will be removed soon.
+[00:13:15] [Server thread/INFO]: Mathildeuh: If you encounter any issues please use the /stop command to restart your server.
+[00:13:15] [Server thread/INFO]: Server Ping Player Sample Count: 12
+[00:13:15] [Server thread/INFO]: Using 4 threads for Netty based IO
+[00:13:15] [Server thread/INFO]: [MoonriseCommon] Paper is using 8 worker threads, 1 I/O threads
+[00:13:15] [Server thread/INFO]: [MoreVanillaAdvancements] Disabling MoreVanillaAdvancements v1.0.0
+[00:13:16] [Server thread/INFO]: Loaded 1461 recipes
+[00:13:16] [Server thread/INFO]: Loaded 1574 advancements
+[00:13:16] [Server thread/INFO]: [PluginInitializerManager] Initializing plugins...
+[00:13:17] [Paper Plugin Remapper Thread - 1/INFO]: [PluginRemapper] Remapping plugin 'plugins\MoreVanillaAdvancements-1.0.0.jar'...
+[00:13:17] [Paper Plugin Remapper Thread - 1/INFO]: [PluginRemapper] Done remapping plugin 'plugins\MoreVanillaAdvancements-1.0.0.jar' in 115ms.
+[00:13:17] [Server thread/INFO]: [PluginInitializerManager] Initialized 1 plugin
+[00:13:17] [Server thread/INFO]: [PluginInitializerManager] Bukkit plugins (1):
+ - MoreVanillaAdvancements (1.0.0)
+[00:13:17] [Server thread/INFO]: [MoreVanillaAdvancements] Loading server plugin MoreVanillaAdvancements v1.0.0
+[00:13:17] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
+[00:13:17] [Server thread/INFO]: [MoreVanillaAdvancements] Enabling MoreVanillaAdvancements v1.0.0
+[00:13:17] [Server thread/INFO]: Mathildeuh: Reload complete.
+[00:13:19] [Server thread/INFO]: Mathildeuh issued server command: /achievements open
+[00:14:34] [Server thread/INFO]: Mathildeuh a complété l'achievement Premier coup de pioche
+[00:14:34] [Server thread/INFO]: [Not Secure] [Server] Mathildeuh a cassé son premier bloc!
+[00:15:00] [Server thread/INFO]: Mathildeuh a complété l'achievement Constructeur
+[00:18:01] [Server thread/INFO]: Mathildeuh issued server command: /bukkit:reload confirm
+[00:18:01] [Server thread/INFO]: Mathildeuh: Please note that this command is not supported, may cause issues when using some plugins, and will be removed soon.
+[00:18:01] [Server thread/INFO]: Mathildeuh: If you encounter any issues please use the /stop command to restart your server.
+[00:18:01] [Server thread/INFO]: Server Ping Player Sample Count: 12
+[00:18:01] [Server thread/INFO]: Using 4 threads for Netty based IO
+[00:18:01] [Server thread/INFO]: [MoonriseCommon] Paper is using 8 worker threads, 1 I/O threads
+[00:18:02] [Server thread/INFO]: [MoreVanillaAdvancements] Disabling MoreVanillaAdvancements v1.0.0
+[00:18:02] [Server thread/INFO]: Loaded 1461 recipes
+[00:18:02] [Server thread/INFO]: Loaded 1574 advancements
+[00:18:02] [Server thread/INFO]: [PluginInitializerManager] Initializing plugins...
+[00:18:02] [Paper Async Command Builder Thread Pool - 0/ERROR]: Caught previously unhandled exception :
+[00:18:02] [Paper Async Command Builder Thread Pool - 0/ERROR]: Paper Async Command Builder Thread Pool - 0
+java.util.ConcurrentModificationException: null
+	at java.base/java.util.LinkedHashMap$LinkedHashIterator.nextNode(LinkedHashMap.java:1023) ~[?:?]
+	at java.base/java.util.LinkedHashMap$LinkedEntryIterator.next(LinkedHashMap.java:1058) ~[?:?]
+	at java.base/java.util.LinkedHashMap$LinkedEntryIterator.next(LinkedHashMap.java:1055) ~[?:?]
+	at java.base/java.util.AbstractMap.hashCode(AbstractMap.java:527) ~[?:?]
+	at com.mojang.brigadier.tree.CommandNode.hashCode(CommandNode.java:145) ~[purpur-1.21.10.jar:1.21.10-2523-d22f66f]
+	at java.base/java.util.HashMap.hash(HashMap.java:338) ~[?:?]
+	at java.base/java.util.HashMap.getNode(HashMap.java:576) ~[?:?]
+	at java.base/java.util.HashMap.get(HashMap.java:564) ~[?:?]
+	at net.minecraft.commands.Commands.fillUsableCommands(Commands.java:564) ~[purpur-1.21.10.jar:1.21.10-2523-d22f66f]
+	at net.minecraft.commands.Commands.fillUsableCommands(Commands.java:591) ~[purpur-1.21.10.jar:1.21.10-2523-d22f66f]
+	at net.minecraft.commands.Commands.sendAsync(Commands.java:506) ~[purpur-1.21.10.jar:1.21.10-2523-d22f66f]
+	at net.minecraft.commands.Commands.lambda$sendCommands$6(Commands.java:487) ~[purpur-1.21.10.jar:1.21.10-2523-d22f66f]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[?:?]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[?:?]
+[00:18:03] [Paper Plugin Remapper Thread - 2/INFO]: [PluginRemapper] Remapping plugin 'plugins\MoreVanillaAdvancements-1.0.0.jar'...
+[00:18:03] [Paper Plugin Remapper Thread - 2/INFO]: [PluginRemapper] Done remapping plugin 'plugins\MoreVanillaAdvancements-1.0.0.jar' in 77ms.
+[00:18:03] [Server thread/INFO]: [PluginInitializerManager] Initialized 1 plugin
+[00:18:03] [Server thread/INFO]: [PluginInitializerManager] Bukkit plugins (1):
+ - MoreVanillaAdvancements (1.0.0)
+[00:18:03] [Server thread/INFO]: [MoreVanillaAdvancements] Loading server plugin MoreVanillaAdvancements v1.0.0
+[00:18:03] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
+[00:18:03] [Server thread/INFO]: [MoreVanillaAdvancements] Enabling MoreVanillaAdvancements v1.0.0
+[00:18:03] [Server thread/INFO]: Mathildeuh: Reload complete.
+[00:18:07] [Server thread/INFO]: Mathildeuh issued server command: /achievements
+[00:18:35] [Server thread/INFO]: Mathildeuh issued server command: /achievements
+[00:18:41] [Server thread/INFO]: Mathildeuh issued server command: /achievements
+[00:18:46] [Server thread/INFO]: Mathildeuh issued server command: /achievements
+[00:24:16] [Server thread/INFO]: Mathildeuh issued server command: /bukkit:reload confirm
+[00:24:16] [Server thread/INFO]: Mathildeuh: Please note that this command is not supported, may cause issues when using some plugins, and will be removed soon.
+[00:24:16] [Server thread/INFO]: Mathildeuh: If you encounter any issues please use the /stop command to restart your server.
+[00:24:16] [Server thread/INFO]: Server Ping Player Sample Count: 12
+[00:24:16] [Server thread/INFO]: Using 4 threads for Netty based IO
+[00:24:16] [Server thread/INFO]: [MoonriseCommon] Paper is using 8 worker threads, 1 I/O threads
+[00:24:17] [Server thread/INFO]: [MoreVanillaAdvancements] Disabling MoreVanillaAdvancements v1.0.0
+[00:24:18] [Server thread/INFO]: Loaded 1461 recipes
+[00:24:18] [Server thread/INFO]: Loaded 1574 advancements
+[00:24:18] [Paper Async Command Builder Thread Pool - 1/ERROR]: Caught previously unhandled exception :
+[00:24:18] [Server thread/INFO]: [PluginInitializerManager] Initializing plugins...
+[00:24:18] [Paper Async Command Builder Thread Pool - 1/ERROR]: Paper Async Command Builder Thread Pool - 1
+java.util.ConcurrentModificationException: null
+	at java.base/java.util.LinkedHashMap$LinkedHashIterator.nextNode(LinkedHashMap.java:1023) ~[?:?]
+	at java.base/java.util.LinkedHashMap$LinkedEntryIterator.next(LinkedHashMap.java:1058) ~[?:?]
+	at java.base/java.util.LinkedHashMap$LinkedEntryIterator.next(LinkedHashMap.java:1055) ~[?:?]
+	at java.base/java.util.AbstractMap.hashCode(AbstractMap.java:527) ~[?:?]
+	at com.mojang.brigadier.tree.CommandNode.hashCode(CommandNode.java:145) ~[purpur-1.21.10.jar:1.21.10-2523-d22f66f]
+	at java.base/java.util.HashMap.hash(HashMap.java:338) ~[?:?]
+	at java.base/java.util.HashMap.put(HashMap.java:618) ~[?:?]
+	at net.minecraft.commands.Commands.sendAsync(Commands.java:505) ~[purpur-1.21.10.jar:1.21.10-2523-d22f66f]
+	at net.minecraft.commands.Commands.lambda$sendCommands$6(Commands.java:487) ~[purpur-1.21.10.jar:1.21.10-2523-d22f66f]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[?:?]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[?:?]
+[00:24:18] [Paper Plugin Remapper Thread - 2/INFO]: [PluginRemapper] Remapping plugin 'plugins\MoreVanillaAdvancements-1.0.0.jar'...
+[00:24:18] [Paper Plugin Remapper Thread - 2/INFO]: [PluginRemapper] Done remapping plugin 'plugins\MoreVanillaAdvancements-1.0.0.jar' in 263ms.
+[00:24:18] [Server thread/INFO]: [PluginInitializerManager] Initialized 1 plugin
+[00:24:18] [Server thread/INFO]: [PluginInitializerManager] Bukkit plugins (1):
+ - MoreVanillaAdvancements (1.0.0)
+[00:24:18] [Server thread/INFO]: [MoreVanillaAdvancements] Loading server plugin MoreVanillaAdvancements v1.0.0
+[00:24:18] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
+[00:24:18] [Server thread/INFO]: [MoreVanillaAdvancements] Enabling MoreVanillaAdvancements v1.0.0
+[00:24:19] [Server thread/INFO]: Mathildeuh: Reload complete.
+[00:24:24] [Server thread/INFO]: Mathildeuh issued server command: /achievements
+[00:24:39] [Server thread/INFO]: Mathildeuh issued server command: /bukkit:reload confirm
+[00:24:39] [Server thread/INFO]: Mathildeuh: Please note that this command is not supported, may cause issues when using some plugins, and will be removed soon.
+[00:24:39] [Server thread/INFO]: Mathildeuh: If you encounter any issues please use the /stop command to restart your server.
+[00:24:39] [Server thread/INFO]: Server Ping Player Sample Count: 12
+[00:24:39] [Server thread/INFO]: Using 4 threads for Netty based IO
+[00:24:39] [Server thread/INFO]: [MoonriseCommon] Paper is using 8 worker threads, 1 I/O threads
+[00:24:39] [Server thread/INFO]: [MoreVanillaAdvancements] Disabling MoreVanillaAdvancements v1.0.0
+[00:24:40] [Server thread/INFO]: Loaded 1461 recipes
+[00:24:40] [Server thread/INFO]: Loaded 1574 advancements
+[00:24:40] [Paper Async Command Builder Thread Pool - 2/ERROR]: Caught previously unhandled exception :
+[00:24:40] [Server thread/INFO]: [PluginInitializerManager] Initializing plugins...
+[00:24:40] [Paper Async Command Builder Thread Pool - 2/ERROR]: Paper Async Command Builder Thread Pool - 2
+java.util.ConcurrentModificationException: null
+	at java.base/java.util.LinkedHashMap$LinkedHashIterator.nextNode(LinkedHashMap.java:1023) ~[?:?]
+	at java.base/java.util.LinkedHashMap$LinkedEntryIterator.next(LinkedHashMap.java:1058) ~[?:?]
+	at java.base/java.util.LinkedHashMap$LinkedEntryIterator.next(LinkedHashMap.java:1055) ~[?:?]
+	at java.base/java.util.AbstractMap.hashCode(AbstractMap.java:527) ~[?:?]
+	at com.mojang.brigadier.tree.CommandNode.hashCode(CommandNode.java:145) ~[purpur-1.21.10.jar:1.21.10-2523-d22f66f]
+	at java.base/java.util.HashMap.hash(HashMap.java:338) ~[?:?]
+	at java.base/java.util.HashMap.put(HashMap.java:618) ~[?:?]
+	at net.minecraft.commands.Commands.sendAsync(Commands.java:505) ~[purpur-1.21.10.jar:1.21.10-2523-d22f66f]
+	at net.minecraft.commands.Commands.lambda$sendCommands$6(Commands.java:487) ~[purpur-1.21.10.jar:1.21.10-2523-d22f66f]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[?:?]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[?:?]
+[00:24:40] [Server thread/INFO]: [PluginInitializerManager] Initialized 1 plugin
+[00:24:40] [Server thread/INFO]: [PluginInitializerManager] Bukkit plugins (1):
+ - MoreVanillaAdvancements (1.0.0)
+[00:24:40] [Server thread/INFO]: [MoreVanillaAdvancements] Loading server plugin MoreVanillaAdvancements v1.0.0
+[00:24:40] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
+[00:24:40] [Server thread/INFO]: [MoreVanillaAdvancements] Enabling MoreVanillaAdvancements v1.0.0
+[00:24:40] [Server thread/INFO]: Mathildeuh: Reload complete.
+[00:24:40] [Server thread/INFO]: Mathildeuh issued server command: /achievements
+[00:25:07] [Server thread/INFO]: Mathildeuh issued server command: /locate biome minecraft:jungle
+[00:25:08] [Server thread/INFO]: Locating element minecraft:jungle took 1028 ms
+[00:25:10] [Server thread/INFO]: Mathildeuh issued server command: /tp @s 1631 65 -1758
+[00:25:10] [Server thread/INFO]: [Mathildeuh: Teleported Mathildeuh to 1631.500000, 65.000000, -1757.500000]
+[00:25:11] [Server thread/INFO]: Mathildeuh a complété l'achievement Explorateur de jungle
+[00:25:16] [Server thread/INFO]: Mathildeuh a complété l'achievement Explorateur
+[00:25:20] [Server thread/INFO]: Mathildeuh issued server command: /tp @s 1631 65 -1758
+[00:25:20] [Server thread/INFO]: [Mathildeuh: Teleported Mathildeuh to 1631.500000, 65.000000, -1757.500000]
+[00:26:18] [Server thread/INFO]: Mathildeuh issued server command: /achievements
+[00:26:48] [Server thread/INFO]: [Mathildeuh: Set own game mode to Survival Mode]
+[00:27:16] [Server thread/INFO]: [Mathildeuh: Set own game mode to Creative Mode]
+[00:27:19] [Server thread/INFO]: [Mathildeuh: Set own game mode to Survival Mode]
+[00:27:26] [Server thread/INFO]: Mathildeuh a complété l'achievement Bourreau
+[00:28:07] [Server thread/INFO]: Mathildeuh issued server command: /bukkit:reload confirm
+[00:28:07] [Server thread/INFO]: Mathildeuh: Please note that this command is not supported, may cause issues when using some plugins, and will be removed soon.
+[00:28:07] [Server thread/INFO]: Mathildeuh: If you encounter any issues please use the /stop command to restart your server.
+[00:28:07] [Server thread/INFO]: Server Ping Player Sample Count: 12
+[00:28:07] [Server thread/INFO]: Using 4 threads for Netty based IO
+[00:28:07] [Server thread/INFO]: [MoonriseCommon] Paper is using 8 worker threads, 1 I/O threads
+[00:28:07] [Server thread/INFO]: [MoreVanillaAdvancements] Disabling MoreVanillaAdvancements v1.0.0
+[00:28:08] [Server thread/INFO]: Loaded 1461 recipes
+[00:28:08] [Server thread/INFO]: Loaded 1574 advancements
+[00:28:08] [Paper Async Command Builder Thread Pool - 3/ERROR]: Caught previously unhandled exception :
+[00:28:08] [Server thread/INFO]: [PluginInitializerManager] Initializing plugins...
+[00:28:08] [Paper Async Command Builder Thread Pool - 3/ERROR]: Paper Async Command Builder Thread Pool - 3
+java.util.ConcurrentModificationException: null
+	at java.base/java.util.LinkedHashMap$LinkedHashIterator.nextNode(LinkedHashMap.java:1023) ~[?:?]
+	at java.base/java.util.LinkedHashMap$LinkedEntryIterator.next(LinkedHashMap.java:1058) ~[?:?]
+	at java.base/java.util.LinkedHashMap$LinkedEntryIterator.next(LinkedHashMap.java:1055) ~[?:?]
+	at java.base/java.util.AbstractMap.hashCode(AbstractMap.java:527) ~[?:?]
+	at com.mojang.brigadier.tree.CommandNode.hashCode(CommandNode.java:145) ~[purpur-1.21.10.jar:1.21.10-2523-d22f66f]
+	at java.base/java.util.HashMap.hash(HashMap.java:338) ~[?:?]
+	at java.base/java.util.HashMap.put(HashMap.java:618) ~[?:?]
+	at net.minecraft.commands.Commands.sendAsync(Commands.java:505) ~[purpur-1.21.10.jar:1.21.10-2523-d22f66f]
+	at net.minecraft.commands.Commands.lambda$sendCommands$6(Commands.java:487) ~[purpur-1.21.10.jar:1.21.10-2523-d22f66f]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[?:?]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[?:?]
+[00:28:08] [Paper Plugin Remapper Thread - 2/INFO]: [PluginRemapper] Remapping plugin 'plugins\MoreVanillaAdvancements-1.0.0.jar'...
+[00:28:08] [Paper Plugin Remapper Thread - 2/INFO]: [PluginRemapper] Done remapping plugin 'plugins\MoreVanillaAdvancements-1.0.0.jar' in 196ms.
+[00:28:08] [Server thread/INFO]: [PluginInitializerManager] Initialized 1 plugin
+[00:28:08] [Server thread/INFO]: [PluginInitializerManager] Bukkit plugins (1):
+ - MoreVanillaAdvancements (1.0.0)
+[00:28:08] [Server thread/INFO]: [MoreVanillaAdvancements] Loading server plugin MoreVanillaAdvancements v1.0.0
+[00:28:08] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
+[00:28:08] [Server thread/INFO]: [MoreVanillaAdvancements] Enabling MoreVanillaAdvancements v1.0.0
+[00:28:09] [Server thread/INFO]: Mathildeuh: Reload complete.
+[00:28:16] [Server thread/INFO]: Mathildeuh issued server command: /bukkit:reload confirm
+[00:28:16] [Server thread/INFO]: Mathildeuh: Please note that this command is not supported, may cause issues when using some plugins, and will be removed soon.
+[00:28:16] [Server thread/INFO]: Mathildeuh: If you encounter any issues please use the /stop command to restart your server.
+[00:28:16] [Server thread/INFO]: Server Ping Player Sample Count: 12
+[00:28:16] [Server thread/INFO]: Using 4 threads for Netty based IO
+[00:28:16] [Server thread/INFO]: [MoonriseCommon] Paper is using 8 worker threads, 1 I/O threads
+[00:28:16] [Server thread/INFO]: [MoreVanillaAdvancements] Disabling MoreVanillaAdvancements v1.0.0
+[00:28:16] [Server thread/INFO]: Loaded 1461 recipes
+[00:28:16] [Server thread/INFO]: Loaded 1574 advancements
+[00:28:17] [Paper Async Command Builder Thread Pool - 4/ERROR]: Caught previously unhandled exception :
+[00:28:17] [Server thread/INFO]: [PluginInitializerManager] Initializing plugins...
+[00:28:17] [Paper Async Command Builder Thread Pool - 4/ERROR]: Paper Async Command Builder Thread Pool - 4
+java.util.ConcurrentModificationException: null
+	at java.base/java.util.LinkedHashMap$LinkedHashIterator.nextNode(LinkedHashMap.java:1023) ~[?:?]
+	at java.base/java.util.LinkedHashMap$LinkedEntryIterator.next(LinkedHashMap.java:1058) ~[?:?]
+	at java.base/java.util.LinkedHashMap$LinkedEntryIterator.next(LinkedHashMap.java:1055) ~[?:?]
+	at java.base/java.util.AbstractMap.hashCode(AbstractMap.java:527) ~[?:?]
+	at com.mojang.brigadier.tree.CommandNode.hashCode(CommandNode.java:145) ~[purpur-1.21.10.jar:1.21.10-2523-d22f66f]
+	at java.base/java.util.HashMap.hash(HashMap.java:338) ~[?:?]
+	at java.base/java.util.HashMap.put(HashMap.java:618) ~[?:?]
+	at net.minecraft.commands.Commands.sendAsync(Commands.java:505) ~[purpur-1.21.10.jar:1.21.10-2523-d22f66f]
+	at net.minecraft.commands.Commands.lambda$sendCommands$6(Commands.java:487) ~[purpur-1.21.10.jar:1.21.10-2523-d22f66f]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[?:?]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[?:?]
+[00:28:17] [Server thread/INFO]: [PluginInitializerManager] Initialized 1 plugin
+[00:28:17] [Server thread/INFO]: [PluginInitializerManager] Bukkit plugins (1):
+ - MoreVanillaAdvancements (1.0.0)
+[00:28:17] [Server thread/INFO]: [MoreVanillaAdvancements] Loading server plugin MoreVanillaAdvancements v1.0.0
+[00:28:17] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
+[00:28:17] [Server thread/INFO]: [MoreVanillaAdvancements] Enabling MoreVanillaAdvancements v1.0.0
+[00:28:17] [Server thread/INFO]: Mathildeuh: Reload complete.
+[00:29:12] [Server thread/INFO]: Mathildeuh issued server command: /achievements
+[00:29:42] [Server thread/INFO]: Mathildeuh issued server command: /achievements
+[00:29:50] [Server thread/INFO]: Mathildeuh issued server command: /achievements
+[00:30:08] [Server thread/INFO]: Mathildeuh issued server command: /bukkit:reload confirm
+[00:30:08] [Server thread/INFO]: Mathildeuh: Please note that this command is not supported, may cause issues when using some plugins, and will be removed soon.
+[00:30:08] [Server thread/INFO]: Mathildeuh: If you encounter any issues please use the /stop command to restart your server.
+[00:30:08] [Server thread/INFO]: Server Ping Player Sample Count: 12
+[00:30:08] [Server thread/INFO]: Using 4 threads for Netty based IO
+[00:30:08] [Server thread/INFO]: [MoonriseCommon] Paper is using 8 worker threads, 1 I/O threads
+[00:30:08] [Server thread/INFO]: [MoreVanillaAdvancements] Disabling MoreVanillaAdvancements v1.0.0
+[00:30:08] [Server thread/INFO]: Loaded 1461 recipes
+[00:30:08] [Server thread/INFO]: Loaded 1574 advancements
+[00:30:09] [Paper Async Command Builder Thread Pool - 5/ERROR]: Caught previously unhandled exception :
+[00:30:09] [Server thread/INFO]: [PluginInitializerManager] Initializing plugins...
+[00:30:09] [Paper Async Command Builder Thread Pool - 5/ERROR]: Paper Async Command Builder Thread Pool - 5
+java.util.ConcurrentModificationException: null
+	at java.base/java.util.LinkedHashMap$LinkedHashIterator.nextNode(LinkedHashMap.java:1023) ~[?:?]
+	at java.base/java.util.LinkedHashMap$LinkedEntryIterator.next(LinkedHashMap.java:1058) ~[?:?]
+	at java.base/java.util.LinkedHashMap$LinkedEntryIterator.next(LinkedHashMap.java:1055) ~[?:?]
+	at java.base/java.util.AbstractMap.hashCode(AbstractMap.java:527) ~[?:?]
+	at com.mojang.brigadier.tree.CommandNode.hashCode(CommandNode.java:145) ~[purpur-1.21.10.jar:1.21.10-2523-d22f66f]
+	at java.base/java.util.HashMap.hash(HashMap.java:338) ~[?:?]
+	at java.base/java.util.HashMap.put(HashMap.java:618) ~[?:?]
+	at net.minecraft.commands.Commands.sendAsync(Commands.java:505) ~[purpur-1.21.10.jar:1.21.10-2523-d22f66f]
+	at net.minecraft.commands.Commands.lambda$sendCommands$6(Commands.java:487) ~[purpur-1.21.10.jar:1.21.10-2523-d22f66f]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[?:?]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[?:?]
+[00:30:09] [Paper Plugin Remapper Thread - 1/INFO]: [PluginRemapper] Remapping plugin 'plugins\MoreVanillaAdvancements-1.0.0.jar'...
+[00:30:09] [Paper Plugin Remapper Thread - 1/INFO]: [PluginRemapper] Done remapping plugin 'plugins\MoreVanillaAdvancements-1.0.0.jar' in 27ms.
+[00:30:09] [Server thread/INFO]: [PluginInitializerManager] Initialized 1 plugin
+[00:30:09] [Server thread/INFO]: [PluginInitializerManager] Bukkit plugins (1):
+ - MoreVanillaAdvancements (1.0.0)
+[00:30:09] [Server thread/INFO]: [MoreVanillaAdvancements] Loading server plugin MoreVanillaAdvancements v1.0.0
+[00:30:09] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
+[00:30:09] [Server thread/INFO]: [MoreVanillaAdvancements] Enabling MoreVanillaAdvancements v1.0.0
+[00:30:09] [Server thread/INFO]: [MoreVanillaAdvancements] §aMoreVanillaAdvancements activé avec succès!
+[00:30:09] [Server thread/INFO]: Mathildeuh: Reload complete.
+[00:30:37] [Server thread/INFO]: Mathildeuh issued server command: /bukkit:reload confirm
+[00:30:37] [Server thread/INFO]: Mathildeuh: Please note that this command is not supported, may cause issues when using some plugins, and will be removed soon.
+[00:30:37] [Server thread/INFO]: Mathildeuh: If you encounter any issues please use the /stop command to restart your server.
+[00:30:37] [Server thread/INFO]: Server Ping Player Sample Count: 12
+[00:30:37] [Server thread/INFO]: Using 4 threads for Netty based IO
+[00:30:37] [Server thread/INFO]: [MoonriseCommon] Paper is using 8 worker threads, 1 I/O threads
+[00:30:37] [Server thread/INFO]: [MoreVanillaAdvancements] Disabling MoreVanillaAdvancements v1.0.0
+[00:30:38] [Server thread/INFO]: Loaded 1461 recipes
+[00:30:38] [Server thread/INFO]: Loaded 1574 advancements
+[00:30:38] [Paper Async Command Builder Thread Pool - 6/ERROR]: Caught previously unhandled exception :
+[00:30:38] [Server thread/INFO]: [PluginInitializerManager] Initializing plugins...
+[00:30:38] [Paper Async Command Builder Thread Pool - 6/ERROR]: Paper Async Command Builder Thread Pool - 6
+java.util.ConcurrentModificationException: null
+	at java.base/java.util.LinkedHashMap$LinkedHashIterator.nextNode(LinkedHashMap.java:1023) ~[?:?]
+	at java.base/java.util.LinkedHashMap$LinkedEntryIterator.next(LinkedHashMap.java:1058) ~[?:?]
+	at java.base/java.util.LinkedHashMap$LinkedEntryIterator.next(LinkedHashMap.java:1055) ~[?:?]
+	at java.base/java.util.AbstractMap.hashCode(AbstractMap.java:527) ~[?:?]
+	at com.mojang.brigadier.tree.CommandNode.hashCode(CommandNode.java:145) ~[purpur-1.21.10.jar:1.21.10-2523-d22f66f]
+	at java.base/java.util.HashMap.hash(HashMap.java:338) ~[?:?]
+	at java.base/java.util.HashMap.put(HashMap.java:618) ~[?:?]
+	at net.minecraft.commands.Commands.sendAsync(Commands.java:505) ~[purpur-1.21.10.jar:1.21.10-2523-d22f66f]
+	at net.minecraft.commands.Commands.lambda$sendCommands$6(Commands.java:487) ~[purpur-1.21.10.jar:1.21.10-2523-d22f66f]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[?:?]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[?:?]
+[00:30:38] [Paper Plugin Remapper Thread - 1/INFO]: [PluginRemapper] Remapping plugin 'plugins\MoreVanillaAdvancements-1.0.0.jar'...
+[00:30:38] [Paper Plugin Remapper Thread - 1/INFO]: [PluginRemapper] Done remapping plugin 'plugins\MoreVanillaAdvancements-1.0.0.jar' in 28ms.
+[00:30:38] [Server thread/INFO]: [PluginInitializerManager] Initialized 1 plugin
+[00:30:38] [Server thread/INFO]: [PluginInitializerManager] Bukkit plugins (1):
+ - MoreVanillaAdvancements (1.0.0)
+[00:30:38] [Server thread/INFO]: [MoreVanillaAdvancements] Loading server plugin MoreVanillaAdvancements v1.0.0
+[00:30:38] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
+[00:30:38] [Server thread/INFO]: [MoreVanillaAdvancements] Enabling MoreVanillaAdvancements v1.0.0
+[00:30:38] [Server thread/INFO]: [MoreVanillaAdvancements] MoreVanillaAdvancements activé avec succès!
+[00:30:38] [Server thread/INFO]: Mathildeuh: Reload complete.
+[00:31:09] [Server thread/INFO]: Mathildeuh issued server command: /bukkit:reload confirm
+[00:31:09] [Server thread/INFO]: Mathildeuh: Please note that this command is not supported, may cause issues when using some plugins, and will be removed soon.
+[00:31:09] [Server thread/INFO]: Mathildeuh: If you encounter any issues please use the /stop command to restart your server.
+[00:31:09] [Server thread/INFO]: Server Ping Player Sample Count: 12
+[00:31:09] [Server thread/INFO]: Using 4 threads for Netty based IO
+[00:31:09] [Server thread/INFO]: [MoonriseCommon] Paper is using 8 worker threads, 1 I/O threads
+[00:31:09] [Server thread/INFO]: [MoreVanillaAdvancements] Disabling MoreVanillaAdvancements v1.0.0
+[00:31:09] [Server thread/INFO]: Loaded 1461 recipes
+[00:31:10] [Server thread/INFO]: Loaded 1574 advancements
+[00:31:10] [Server thread/INFO]: [PluginInitializerManager] Initializing plugins...
+[00:31:10] [Server thread/INFO]: [PluginInitializerManager] Initialized 1 plugin
+[00:31:10] [Server thread/INFO]: [PluginInitializerManager] Bukkit plugins (1):
+ - MoreVanillaAdvancements (1.0.0)
+[00:31:10] [Server thread/INFO]: [MoreVanillaAdvancements] Loading server plugin MoreVanillaAdvancements v1.0.0
+[00:31:10] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
+[00:31:10] [Server thread/INFO]: [MoreVanillaAdvancements] Enabling MoreVanillaAdvancements v1.0.0
+[00:31:10] [Server thread/WARN]: [MoreVanillaAdvancements] §e========== AVERTISSEMENTS DE CONFIGURATION ==========
+[00:31:10] [Server thread/WARN]: [MoreVanillaAdvancements] ⚠ Aucun achievement défini
+[00:31:10] [Server thread/INFO]: [MoreVanillaAdvancements] MoreVanillaAdvancements activé avec succès!
+[00:31:10] [Server thread/INFO]: Mathildeuh: Reload complete.
+[00:31:18] [Server thread/INFO]: Mathildeuh issued server command: /bukkit:reload confirm
+[00:31:18] [Server thread/INFO]: Mathildeuh: Please note that this command is not supported, may cause issues when using some plugins, and will be removed soon.
+[00:31:18] [Server thread/INFO]: Mathildeuh: If you encounter any issues please use the /stop command to restart your server.
+[00:31:18] [Server thread/INFO]: Server Ping Player Sample Count: 12
+[00:31:18] [Server thread/INFO]: Using 4 threads for Netty based IO
+[00:31:18] [Server thread/INFO]: [MoonriseCommon] Paper is using 8 worker threads, 1 I/O threads
+[00:31:19] [Server thread/INFO]: [MoreVanillaAdvancements] Disabling MoreVanillaAdvancements v1.0.0
+[00:31:19] [Server thread/INFO]: Loaded 1461 recipes
+[00:31:19] [Server thread/INFO]: Loaded 1574 advancements
+[00:31:19] [Paper Async Command Builder Thread Pool - 8/ERROR]: Caught previously unhandled exception :
+[00:31:19] [Server thread/INFO]: [PluginInitializerManager] Initializing plugins...
+[00:31:19] [Paper Async Command Builder Thread Pool - 8/ERROR]: Paper Async Command Builder Thread Pool - 8
+java.util.ConcurrentModificationException: null
+	at java.base/java.util.LinkedHashMap$LinkedHashIterator.nextNode(LinkedHashMap.java:1023) ~[?:?]
+	at java.base/java.util.LinkedHashMap$LinkedEntryIterator.next(LinkedHashMap.java:1058) ~[?:?]
+	at java.base/java.util.LinkedHashMap$LinkedEntryIterator.next(LinkedHashMap.java:1055) ~[?:?]
+	at java.base/java.util.AbstractMap.hashCode(AbstractMap.java:527) ~[?:?]
+	at com.mojang.brigadier.tree.CommandNode.hashCode(CommandNode.java:145) ~[purpur-1.21.10.jar:1.21.10-2523-d22f66f]
+	at java.base/java.util.HashMap.hash(HashMap.java:338) ~[?:?]
+	at java.base/java.util.HashMap.put(HashMap.java:618) ~[?:?]
+	at net.minecraft.commands.Commands.sendAsync(Commands.java:505) ~[purpur-1.21.10.jar:1.21.10-2523-d22f66f]
+	at net.minecraft.commands.Commands.lambda$sendCommands$6(Commands.java:487) ~[purpur-1.21.10.jar:1.21.10-2523-d22f66f]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[?:?]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[?:?]
+[00:31:19] [Server thread/INFO]: [PluginInitializerManager] Initialized 1 plugin
+[00:31:19] [Server thread/INFO]: [PluginInitializerManager] Bukkit plugins (1):
+ - MoreVanillaAdvancements (1.0.0)
+[00:31:19] [Server thread/INFO]: [MoreVanillaAdvancements] Loading server plugin MoreVanillaAdvancements v1.0.0
+[00:31:19] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
+[00:31:19] [Server thread/INFO]: [MoreVanillaAdvancements] Enabling MoreVanillaAdvancements v1.0.0
+[00:31:19] [Server thread/INFO]: [MoreVanillaAdvancements] MoreVanillaAdvancements activé avec succès!
+[00:31:19] [Server thread/INFO]: Mathildeuh: Reload complete.
+[00:31:48] [Server thread/INFO]: Mathildeuh issued server command: /bukkit:reload confirm
+[00:31:48] [Server thread/INFO]: Mathildeuh: Please note that this command is not supported, may cause issues when using some plugins, and will be removed soon.
+[00:31:48] [Server thread/INFO]: Mathildeuh: If you encounter any issues please use the /stop command to restart your server.
+[00:31:48] [Server thread/INFO]: Server Ping Player Sample Count: 12
+[00:31:48] [Server thread/INFO]: Using 4 threads for Netty based IO
+[00:31:48] [Server thread/INFO]: [MoonriseCommon] Paper is using 8 worker threads, 1 I/O threads
+[00:31:48] [Server thread/INFO]: [MoreVanillaAdvancements] Disabling MoreVanillaAdvancements v1.0.0
+[00:31:48] [Server thread/INFO]: Loaded 1461 recipes
+[00:31:48] [Server thread/INFO]: Loaded 1574 advancements
+[00:31:48] [Paper Async Command Builder Thread Pool - 7/ERROR]: Caught previously unhandled exception :
+[00:31:48] [Server thread/INFO]: [PluginInitializerManager] Initializing plugins...
+[00:31:48] [Paper Async Command Builder Thread Pool - 7/ERROR]: Paper Async Command Builder Thread Pool - 7
+java.util.ConcurrentModificationException: null
+	at java.base/java.util.LinkedHashMap$LinkedHashIterator.nextNode(LinkedHashMap.java:1023) ~[?:?]
+	at java.base/java.util.LinkedHashMap$LinkedEntryIterator.next(LinkedHashMap.java:1058) ~[?:?]
+	at java.base/java.util.LinkedHashMap$LinkedEntryIterator.next(LinkedHashMap.java:1055) ~[?:?]
+	at java.base/java.util.AbstractMap.hashCode(AbstractMap.java:527) ~[?:?]
+	at com.mojang.brigadier.tree.CommandNode.hashCode(CommandNode.java:145) ~[purpur-1.21.10.jar:1.21.10-2523-d22f66f]
+	at java.base/java.util.HashMap.hash(HashMap.java:338) ~[?:?]
+	at java.base/java.util.HashMap.put(HashMap.java:618) ~[?:?]
+	at net.minecraft.commands.Commands.sendAsync(Commands.java:505) ~[purpur-1.21.10.jar:1.21.10-2523-d22f66f]
+	at net.minecraft.commands.Commands.lambda$sendCommands$6(Commands.java:487) ~[purpur-1.21.10.jar:1.21.10-2523-d22f66f]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[?:?]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[?:?]
+[00:31:49] [Paper Plugin Remapper Thread - 1/INFO]: [PluginRemapper] Remapping plugin 'plugins\MoreVanillaAdvancements-1.0.0.jar'...
+[00:31:49] [Paper Plugin Remapper Thread - 1/INFO]: [PluginRemapper] Done remapping plugin 'plugins\MoreVanillaAdvancements-1.0.0.jar' in 51ms.
+[00:31:49] [Server thread/INFO]: [PluginInitializerManager] Initialized 1 plugin
+[00:31:49] [Server thread/INFO]: [PluginInitializerManager] Bukkit plugins (1):
+ - MoreVanillaAdvancements (1.0.0)
+[00:31:49] [Server thread/INFO]: [MoreVanillaAdvancements] Loading server plugin MoreVanillaAdvancements v1.0.0
+[00:31:49] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
+[00:31:49] [Server thread/INFO]: [MoreVanillaAdvancements] Enabling MoreVanillaAdvancements v1.0.0
+[00:31:49] [Server thread/INFO]: [MoreVanillaAdvancements] MoreVanillaAdvancements activé avec succès!
+[00:31:49] [Server thread/INFO]: Mathildeuh: Reload complete.
+[00:31:50] [Server thread/INFO]: Mathildeuh issued server command: /time set day
+[00:31:50] [Server thread/INFO]: [Mathildeuh: Set the time to 1000]
+[00:31:56] [Server thread/INFO]: Mathildeuh issued server command: /mva reload
+[00:32:11] [Server thread/INFO]: [Mathildeuh: Set own game mode to Creative Mode]
+[00:35:04] [Server thread/INFO]: Mathildeuh issued server command: /bukkit:reload confirm
+[00:35:04] [Server thread/INFO]: Mathildeuh: Please note that this command is not supported, may cause issues when using some plugins, and will be removed soon.
+[00:35:04] [Server thread/INFO]: Mathildeuh: If you encounter any issues please use the /stop command to restart your server.
+[00:35:04] [Server thread/INFO]: Server Ping Player Sample Count: 12
+[00:35:04] [Server thread/INFO]: Using 4 threads for Netty based IO
+[00:35:04] [Server thread/INFO]: [MoonriseCommon] Paper is using 8 worker threads, 1 I/O threads
+[00:35:04] [Server thread/INFO]: [MoreVanillaAdvancements] Disabling MoreVanillaAdvancements v1.0.0
+[00:35:04] [Server thread/INFO]: Loaded 1461 recipes
+[00:35:04] [Server thread/INFO]: Loaded 1574 advancements
+[00:35:04] [Paper Async Command Builder Thread Pool - 9/ERROR]: Caught previously unhandled exception :
+[00:35:04] [Server thread/INFO]: [PluginInitializerManager] Initializing plugins...
+[00:35:04] [Paper Async Command Builder Thread Pool - 9/ERROR]: Paper Async Command Builder Thread Pool - 9
+java.util.ConcurrentModificationException: null
+	at java.base/java.util.LinkedHashMap$LinkedHashIterator.nextNode(LinkedHashMap.java:1023) ~[?:?]
+	at java.base/java.util.LinkedHashMap$LinkedEntryIterator.next(LinkedHashMap.java:1058) ~[?:?]
+	at java.base/java.util.LinkedHashMap$LinkedEntryIterator.next(LinkedHashMap.java:1055) ~[?:?]
+	at java.base/java.util.AbstractMap.hashCode(AbstractMap.java:527) ~[?:?]
+	at com.mojang.brigadier.tree.CommandNode.hashCode(CommandNode.java:145) ~[purpur-1.21.10.jar:1.21.10-2523-d22f66f]
+	at java.base/java.util.HashMap.hash(HashMap.java:338) ~[?:?]
+	at java.base/java.util.HashMap.put(HashMap.java:618) ~[?:?]
+	at net.minecraft.commands.Commands.sendAsync(Commands.java:505) ~[purpur-1.21.10.jar:1.21.10-2523-d22f66f]
+	at net.minecraft.commands.Commands.lambda$sendCommands$6(Commands.java:487) ~[purpur-1.21.10.jar:1.21.10-2523-d22f66f]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[?:?]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[?:?]
+[00:35:05] [Paper Plugin Remapper Thread - 1/INFO]: [PluginRemapper] Remapping plugin 'plugins\MoreVanillaAdvancements-1.0.0.jar'...
+[00:35:05] [Paper Plugin Remapper Thread - 1/INFO]: [PluginRemapper] Done remapping plugin 'plugins\MoreVanillaAdvancements-1.0.0.jar' in 30ms.
+[00:35:05] [Server thread/INFO]: [PluginInitializerManager] Initialized 1 plugin
+[00:35:05] [Server thread/INFO]: [PluginInitializerManager] Bukkit plugins (1):
+ - MoreVanillaAdvancements (1.0.0)
+[00:35:05] [Server thread/INFO]: [MoreVanillaAdvancements] Loading server plugin MoreVanillaAdvancements v1.0.0
+[00:35:05] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
+[00:35:05] [Server thread/INFO]: [MoreVanillaAdvancements] Enabling MoreVanillaAdvancements v1.0.0
+[00:35:05] [Server thread/INFO]: [MoreVanillaAdvancements] MoreVanillaAdvancements activé avec succès!
+[00:35:05] [Server thread/INFO]: Mathildeuh: Reload complete.
+[00:35:16] [Server thread/INFO]: Mathildeuh issued server command: /mva
+[00:35:28] [Server thread/INFO]: Mathildeuh issued server command: /bukkit:reload confirm
+[00:35:28] [Server thread/INFO]: Mathildeuh: Please note that this command is not supported, may cause issues when using some plugins, and will be removed soon.
+[00:35:28] [Server thread/INFO]: Mathildeuh: If you encounter any issues please use the /stop command to restart your server.
+[00:35:28] [Server thread/INFO]: Server Ping Player Sample Count: 12
+[00:35:28] [Server thread/INFO]: Using 4 threads for Netty based IO
+[00:35:28] [Server thread/INFO]: [MoonriseCommon] Paper is using 8 worker threads, 1 I/O threads
+[00:35:29] [Server thread/INFO]: [MoreVanillaAdvancements] Disabling MoreVanillaAdvancements v1.0.0
+[00:35:29] [Server thread/INFO]: Loaded 1461 recipes
+[00:35:29] [Server thread/INFO]: Loaded 1574 advancements
+[00:35:29] [Paper Async Command Builder Thread Pool - 10/ERROR]: Caught previously unhandled exception :
+[00:35:29] [Server thread/INFO]: [PluginInitializerManager] Initializing plugins...
+[00:35:29] [Paper Async Command Builder Thread Pool - 10/ERROR]: Paper Async Command Builder Thread Pool - 10
+java.util.ConcurrentModificationException: null
+	at java.base/java.util.LinkedHashMap$LinkedHashIterator.nextNode(LinkedHashMap.java:1023) ~[?:?]
+	at java.base/java.util.LinkedHashMap$LinkedEntryIterator.next(LinkedHashMap.java:1058) ~[?:?]
+	at java.base/java.util.LinkedHashMap$LinkedEntryIterator.next(LinkedHashMap.java:1055) ~[?:?]
+	at java.base/java.util.AbstractMap.hashCode(AbstractMap.java:527) ~[?:?]
+	at com.mojang.brigadier.tree.CommandNode.hashCode(CommandNode.java:145) ~[purpur-1.21.10.jar:1.21.10-2523-d22f66f]
+	at java.base/java.util.HashMap.hash(HashMap.java:338) ~[?:?]
+	at java.base/java.util.HashMap.put(HashMap.java:618) ~[?:?]
+	at net.minecraft.commands.Commands.sendAsync(Commands.java:505) ~[purpur-1.21.10.jar:1.21.10-2523-d22f66f]
+	at net.minecraft.commands.Commands.lambda$sendCommands$6(Commands.java:487) ~[purpur-1.21.10.jar:1.21.10-2523-d22f66f]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[?:?]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[?:?]
+[00:35:29] [Server thread/INFO]: [PluginInitializerManager] Initialized 1 plugin
+[00:35:29] [Server thread/INFO]: [PluginInitializerManager] Bukkit plugins (1):
+ - MoreVanillaAdvancements (1.0.0)
+[00:35:29] [Server thread/INFO]: [MoreVanillaAdvancements] Loading server plugin MoreVanillaAdvancements v1.0.0
+[00:35:29] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
+[00:35:29] [Server thread/INFO]: [MoreVanillaAdvancements] Enabling MoreVanillaAdvancements v1.0.0
+[00:35:29] [Server thread/INFO]: [MoreVanillaAdvancements] MoreVanillaAdvancements activé avec succès!
+[00:35:29] [Server thread/INFO]: Mathildeuh: Reload complete.
+[00:35:30] [Server thread/INFO]: Mathildeuh issued server command: /mva
+[00:36:18] [Server thread/INFO]: Mathildeuh issued server command: /mva reload
+[00:36:19] [Server thread/INFO]: Mathildeuh issued server command: /mva
+[00:36:23] [Server thread/INFO]: Mathildeuh issued server command: /mva
+[00:36:25] [Server thread/INFO]: Mathildeuh issued server command: /bukkit:reload confirm
+[00:36:25] [Server thread/INFO]: Mathildeuh: Please note that this command is not supported, may cause issues when using some plugins, and will be removed soon.
+[00:36:25] [Server thread/INFO]: Mathildeuh: If you encounter any issues please use the /stop command to restart your server.
+[00:36:25] [Server thread/INFO]: Server Ping Player Sample Count: 12
+[00:36:25] [Server thread/INFO]: Using 4 threads for Netty based IO
+[00:36:25] [Server thread/INFO]: [MoonriseCommon] Paper is using 8 worker threads, 1 I/O threads
+[00:36:25] [Server thread/INFO]: [MoreVanillaAdvancements] Disabling MoreVanillaAdvancements v1.0.0
+[00:36:25] [Server thread/INFO]: Loaded 1461 recipes
+[00:36:25] [Server thread/INFO]: Loaded 1574 advancements
+[00:36:25] [Paper Async Command Builder Thread Pool - 11/ERROR]: Caught previously unhandled exception :
+[00:36:25] [Server thread/INFO]: [PluginInitializerManager] Initializing plugins...
+[00:36:25] [Paper Async Command Builder Thread Pool - 11/ERROR]: Paper Async Command Builder Thread Pool - 11
+java.util.ConcurrentModificationException: null
+	at java.base/java.util.LinkedHashMap$LinkedHashIterator.nextNode(LinkedHashMap.java:1023) ~[?:?]
+	at java.base/java.util.LinkedHashMap$LinkedEntryIterator.next(LinkedHashMap.java:1058) ~[?:?]
+	at java.base/java.util.LinkedHashMap$LinkedEntryIterator.next(LinkedHashMap.java:1055) ~[?:?]
+	at java.base/java.util.AbstractMap.hashCode(AbstractMap.java:527) ~[?:?]
+	at com.mojang.brigadier.tree.CommandNode.hashCode(CommandNode.java:145) ~[purpur-1.21.10.jar:1.21.10-2523-d22f66f]
+	at java.base/java.util.HashMap.hash(HashMap.java:338) ~[?:?]
+	at java.base/java.util.HashMap.put(HashMap.java:618) ~[?:?]
+	at net.minecraft.commands.Commands.sendAsync(Commands.java:505) ~[purpur-1.21.10.jar:1.21.10-2523-d22f66f]
+	at net.minecraft.commands.Commands.lambda$sendCommands$6(Commands.java:487) ~[purpur-1.21.10.jar:1.21.10-2523-d22f66f]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[?:?]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[?:?]
+[00:36:25] [Server thread/INFO]: [PluginInitializerManager] Initialized 1 plugin
+[00:36:25] [Server thread/INFO]: [PluginInitializerManager] Bukkit plugins (1):
+ - MoreVanillaAdvancements (1.0.0)
+[00:36:25] [Server thread/INFO]: [MoreVanillaAdvancements] Loading server plugin MoreVanillaAdvancements v1.0.0
+[00:36:25] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
+[00:36:25] [Server thread/INFO]: [MoreVanillaAdvancements] Enabling MoreVanillaAdvancements v1.0.0
+[00:36:25] [Server thread/INFO]: [MoreVanillaAdvancements] MoreVanillaAdvancements activé avec succès!
+[00:36:25] [Server thread/INFO]: Mathildeuh: Reload complete.
+[00:36:26] [Server thread/INFO]: Mathildeuh issued server command: /mva
+[00:36:38] [Server thread/INFO]: Mathildeuh issued server command: /mva reload
+[00:36:39] [Server thread/INFO]: Mathildeuh issued server command: /mva
+[00:37:35] [Server thread/INFO]: Mathildeuh issued server command: /bukkit:reload confirm
+[00:37:35] [Server thread/INFO]: Mathildeuh: Please note that this command is not supported, may cause issues when using some plugins, and will be removed soon.
+[00:37:35] [Server thread/INFO]: Mathildeuh: If you encounter any issues please use the /stop command to restart your server.
+[00:37:35] [Server thread/INFO]: Server Ping Player Sample Count: 12
+[00:37:35] [Server thread/INFO]: Using 4 threads for Netty based IO
+[00:37:36] [Server thread/INFO]: [MoonriseCommon] Paper is using 8 worker threads, 1 I/O threads
+[00:37:36] [Server thread/INFO]: [MoreVanillaAdvancements] Disabling MoreVanillaAdvancements v1.0.0
+[00:37:36] [Server thread/INFO]: Loaded 1461 recipes
+[00:37:36] [Server thread/INFO]: Loaded 1574 advancements
+[00:37:36] [Paper Async Command Builder Thread Pool - 12/ERROR]: Caught previously unhandled exception :
+[00:37:36] [Server thread/INFO]: [PluginInitializerManager] Initializing plugins...
+[00:37:36] [Paper Async Command Builder Thread Pool - 12/ERROR]: Paper Async Command Builder Thread Pool - 12
+java.util.ConcurrentModificationException: null
+	at java.base/java.util.LinkedHashMap$LinkedHashIterator.nextNode(LinkedHashMap.java:1023) ~[?:?]
+	at java.base/java.util.LinkedHashMap$LinkedEntryIterator.next(LinkedHashMap.java:1058) ~[?:?]
+	at java.base/java.util.LinkedHashMap$LinkedEntryIterator.next(LinkedHashMap.java:1055) ~[?:?]
+	at java.base/java.util.AbstractMap.hashCode(AbstractMap.java:527) ~[?:?]
+	at com.mojang.brigadier.tree.CommandNode.hashCode(CommandNode.java:145) ~[purpur-1.21.10.jar:1.21.10-2523-d22f66f]
+	at java.base/java.util.HashMap.hash(HashMap.java:338) ~[?:?]
+	at java.base/java.util.HashMap.put(HashMap.java:618) ~[?:?]
+	at net.minecraft.commands.Commands.sendAsync(Commands.java:505) ~[purpur-1.21.10.jar:1.21.10-2523-d22f66f]
+	at net.minecraft.commands.Commands.lambda$sendCommands$6(Commands.java:487) ~[purpur-1.21.10.jar:1.21.10-2523-d22f66f]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[?:?]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[?:?]
+[00:37:36] [Paper Plugin Remapper Thread - 1/INFO]: [PluginRemapper] Remapping plugin 'plugins\MoreVanillaAdvancements-1.0.0.jar'...
+[00:37:36] [Paper Plugin Remapper Thread - 1/INFO]: [PluginRemapper] Done remapping plugin 'plugins\MoreVanillaAdvancements-1.0.0.jar' in 42ms.
+[00:37:37] [Server thread/INFO]: [PluginInitializerManager] Initialized 1 plugin
+[00:37:37] [Server thread/INFO]: [PluginInitializerManager] Bukkit plugins (1):
+ - MoreVanillaAdvancements (1.0.0)
+[00:37:37] [Server thread/INFO]: [MoreVanillaAdvancements] Loading server plugin MoreVanillaAdvancements v1.0.0
+[00:37:37] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
+[00:37:37] [Server thread/INFO]: [MoreVanillaAdvancements] Enabling MoreVanillaAdvancements v1.0.0
+[00:37:37] [Server thread/WARN]: [MoreVanillaAdvancements] §e========== AVERTISSEMENTS DE CONFIGURATION ==========
+[00:37:37] [Server thread/WARN]: [MoreVanillaAdvancements] ⚠ Catégorie 'Collecte' utilisée mais non définie dans la section 'categories'
+[00:37:37] [Server thread/INFO]: [MoreVanillaAdvancements] MoreVanillaAdvancements activé avec succès!
+[00:37:37] [Server thread/INFO]: Mathildeuh: Reload complete.
+[00:37:55] [Server thread/INFO]: Mathildeuh issued server command: /mva
+[00:37:57] [Server thread/INFO]: Mathildeuh issued server command: /mva reload
+[00:38:12] [Server thread/INFO]: Mathildeuh issued server command: /mva reload
+[00:38:27] [Server thread/INFO]: Mathildeuh issued server command: /mva reload
+[00:38:34] [Server thread/INFO]: Mathildeuh issued server command: /mva
+[00:39:03] [Server thread/INFO]: Mathildeuh issued server command: /bukkit:reload confirm
+[00:39:03] [Server thread/INFO]: Mathildeuh: Please note that this command is not supported, may cause issues when using some plugins, and will be removed soon.
+[00:39:03] [Server thread/INFO]: Mathildeuh: If you encounter any issues please use the /stop command to restart your server.
+[00:39:03] [Server thread/INFO]: Server Ping Player Sample Count: 12
+[00:39:03] [Server thread/INFO]: Using 4 threads for Netty based IO
+[00:39:03] [Server thread/INFO]: [MoonriseCommon] Paper is using 8 worker threads, 1 I/O threads
+[00:39:03] [Server thread/INFO]: [MoreVanillaAdvancements] Disabling MoreVanillaAdvancements v1.0.0
+[00:39:04] [Server thread/INFO]: Loaded 1461 recipes
+[00:39:04] [Server thread/INFO]: Loaded 1574 advancements
+[00:39:04] [Server thread/INFO]: [PluginInitializerManager] Initializing plugins...
+[00:39:04] [Paper Async Command Builder Thread Pool - 13/ERROR]: Caught previously unhandled exception :
+[00:39:04] [Paper Async Command Builder Thread Pool - 13/ERROR]: Paper Async Command Builder Thread Pool - 13
+java.util.ConcurrentModificationException: null
+	at java.base/java.util.LinkedHashMap$LinkedHashIterator.nextNode(LinkedHashMap.java:1023) ~[?:?]
+	at java.base/java.util.LinkedHashMap$LinkedEntryIterator.next(LinkedHashMap.java:1058) ~[?:?]
+	at java.base/java.util.LinkedHashMap$LinkedEntryIterator.next(LinkedHashMap.java:1055) ~[?:?]
+	at java.base/java.util.AbstractMap.hashCode(AbstractMap.java:527) ~[?:?]
+	at com.mojang.brigadier.tree.CommandNode.hashCode(CommandNode.java:145) ~[purpur-1.21.10.jar:1.21.10-2523-d22f66f]
+	at java.base/java.util.HashMap.hash(HashMap.java:338) ~[?:?]
+	at java.base/java.util.HashMap.getNode(HashMap.java:576) ~[?:?]
+	at java.base/java.util.HashMap.get(HashMap.java:564) ~[?:?]
+	at net.minecraft.commands.Commands.fillUsableCommands(Commands.java:564) ~[purpur-1.21.10.jar:1.21.10-2523-d22f66f]
+	at net.minecraft.commands.Commands.fillUsableCommands(Commands.java:591) ~[purpur-1.21.10.jar:1.21.10-2523-d22f66f]
+	at net.minecraft.commands.Commands.sendAsync(Commands.java:506) ~[purpur-1.21.10.jar:1.21.10-2523-d22f66f]
+	at net.minecraft.commands.Commands.lambda$sendCommands$6(Commands.java:487) ~[purpur-1.21.10.jar:1.21.10-2523-d22f66f]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[?:?]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[?:?]
+[00:39:04] [Paper Plugin Remapper Thread - 1/INFO]: [PluginRemapper] Remapping plugin 'plugins\MoreVanillaAdvancements-1.0.0.jar'...
+[00:39:04] [Paper Plugin Remapper Thread - 1/INFO]: [PluginRemapper] Done remapping plugin 'plugins\MoreVanillaAdvancements-1.0.0.jar' in 31ms.
+[00:39:04] [Server thread/INFO]: [PluginInitializerManager] Initialized 1 plugin
+[00:39:04] [Server thread/INFO]: [PluginInitializerManager] Bukkit plugins (1):
+ - MoreVanillaAdvancements (1.0.0)
+[00:39:04] [Server thread/INFO]: [MoreVanillaAdvancements] Loading server plugin MoreVanillaAdvancements v1.0.0
+[00:39:04] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
+[00:39:04] [Server thread/INFO]: [MoreVanillaAdvancements] Enabling MoreVanillaAdvancements v1.0.0
+[00:39:04] [Server thread/WARN]: [MoreVanillaAdvancements] §e========== AVERTISSEMENTS DE CONFIGURATION ==========
+[00:39:04] [Server thread/WARN]: [MoreVanillaAdvancements] ⚠ Catégorie 'Collecte' utilisée mais non définie dans la section 'categories'
+[00:39:04] [Server thread/INFO]: [MoreVanillaAdvancements] ========================================
+[00:39:04] [Server thread/INFO]: [MoreVanillaAdvancements] Chargement de 32 achievements
+[00:39:04] [Server thread/INFO]: [MoreVanillaAdvancements] Chargement de 14 catégories
+[00:39:04] [Server thread/INFO]: [MoreVanillaAdvancements] ========================================
+[00:39:04] [Server thread/INFO]: [MoreVanillaAdvancements] §a✓ MoreVanillaAdvancements activé avec succès!
+[00:39:04] [Server thread/INFO]: [MoreVanillaAdvancements] Types d'achievements supportés: 30
+[00:39:04] [Server thread/INFO]: Mathildeuh: Reload complete.
+[00:39:25] [Server thread/INFO]: Mathildeuh issued server command: /bukkit:reload confirm
+[00:39:25] [Server thread/INFO]: Mathildeuh: Please note that this command is not supported, may cause issues when using some plugins, and will be removed soon.
+[00:39:25] [Server thread/INFO]: Mathildeuh: If you encounter any issues please use the /stop command to restart your server.
+[00:39:25] [Server thread/INFO]: Server Ping Player Sample Count: 12
+[00:39:25] [Server thread/INFO]: Using 4 threads for Netty based IO
+[00:39:25] [Server thread/INFO]: [MoonriseCommon] Paper is using 8 worker threads, 1 I/O threads
+[00:39:25] [Server thread/INFO]: [MoreVanillaAdvancements] Disabling MoreVanillaAdvancements v1.0.0
+[00:39:25] [Server thread/INFO]: Loaded 1461 recipes
+[00:39:25] [Server thread/INFO]: Loaded 1574 advancements
+[00:39:25] [Server thread/INFO]: [PluginInitializerManager] Initializing plugins...
+[00:39:25] [Paper Async Command Builder Thread Pool - 14/ERROR]: Caught previously unhandled exception :
+[00:39:25] [Paper Async Command Builder Thread Pool - 14/ERROR]: Paper Async Command Builder Thread Pool - 14
+java.util.ConcurrentModificationException: null
+	at java.base/java.util.LinkedHashMap$LinkedHashIterator.nextNode(LinkedHashMap.java:1023) ~[?:?]
+	at java.base/java.util.LinkedHashMap$LinkedEntryIterator.next(LinkedHashMap.java:1058) ~[?:?]
+	at java.base/java.util.LinkedHashMap$LinkedEntryIterator.next(LinkedHashMap.java:1055) ~[?:?]
+	at java.base/java.util.AbstractMap.hashCode(AbstractMap.java:527) ~[?:?]
+	at com.mojang.brigadier.tree.CommandNode.hashCode(CommandNode.java:145) ~[purpur-1.21.10.jar:1.21.10-2523-d22f66f]
+	at java.base/java.util.HashMap.hash(HashMap.java:338) ~[?:?]
+	at java.base/java.util.HashMap.put(HashMap.java:618) ~[?:?]
+	at net.minecraft.commands.Commands.sendAsync(Commands.java:505) ~[purpur-1.21.10.jar:1.21.10-2523-d22f66f]
+	at net.minecraft.commands.Commands.lambda$sendCommands$6(Commands.java:487) ~[purpur-1.21.10.jar:1.21.10-2523-d22f66f]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[?:?]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[?:?]
+[00:39:25] [Paper Plugin Remapper Thread - 1/INFO]: [PluginRemapper] Remapping plugin 'plugins\MoreVanillaAdvancements-1.0.0.jar'...
+[00:39:25] [Paper Plugin Remapper Thread - 1/INFO]: [PluginRemapper] Done remapping plugin 'plugins\MoreVanillaAdvancements-1.0.0.jar' in 28ms.
+[00:39:26] [Server thread/INFO]: [PluginInitializerManager] Initialized 1 plugin
+[00:39:26] [Server thread/INFO]: [PluginInitializerManager] Bukkit plugins (1):
+ - MoreVanillaAdvancements (1.0.0)
+[00:39:26] [Server thread/INFO]: [MoreVanillaAdvancements] Loading server plugin MoreVanillaAdvancements v1.0.0
+[00:39:26] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
+[00:39:26] [Server thread/INFO]: [MoreVanillaAdvancements] Enabling MoreVanillaAdvancements v1.0.0
+[00:39:26] [Server thread/WARN]: [MoreVanillaAdvancements] §e========== AVERTISSEMENTS DE CONFIGURATION ==========
+[00:39:26] [Server thread/WARN]: [MoreVanillaAdvancements] ⚠ Catégorie 'Collecte' utilisée mais non définie dans la section 'categories'
+[00:39:26] [Server thread/INFO]: [MoreVanillaAdvancements] ========================================
+[00:39:26] [Server thread/INFO]: [MoreVanillaAdvancements] Chargement de 32 achievements
+[00:39:26] [Server thread/INFO]: [MoreVanillaAdvancements] Chargement de 14 catégories
+[00:39:26] [Server thread/INFO]: [MoreVanillaAdvancements] ========================================
+[00:39:26] [Server thread/INFO]: [MoreVanillaAdvancements] ✓ MoreVanillaAdvancements activé avec succès!
+[00:39:26] [Server thread/INFO]: [MoreVanillaAdvancements] Types d'achievements supportés: 30
+[00:39:26] [Server thread/INFO]: Mathildeuh: Reload complete.
+[00:39:41] [Server thread/INFO]: Mathildeuh issued server command: /mva reload

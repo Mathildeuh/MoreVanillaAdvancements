@@ -1,0 +1,24 @@
+name: MoreVanillaAdvancements
+version: '1.0.0'
+main: fr.mathilde.moreVanillaAdvancements.MoreVanillaAdvancements
+api-version: '1.21'
+authors:
+  - Mathilde
+
+commands:
+  mva:
+    description: Commandes principales pour MoreVanillaAdvancements
+    usage: /mva [reload|open|list|reset|settings]
+    aliases: [achievements, succes]
+    permission: mva.use
+
+permissions:
+  mva.use:
+    default: true
+  mva.reload:
+    default: op
+  mva.reset:
+    default: op
+
+softdepend:
+  - PlaceholderAPI

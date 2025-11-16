@@ -1,0 +1,359 @@
+# Config des achievements (100% configurable)
+settings:
+  broadcastChat: true
+  showTitle: true
+  chatFormat: "&b{player} &7a complété l'achievement &a{name}"
+
+categories:
+  "Extraction":
+    icon: STONE_PICKAXE
+    show: true
+  "Construction":
+    icon: OAK_PLANKS
+    show: true
+  "Combat":
+    icon: IRON_SWORD
+    show: true
+  "Mouvement":
+    icon: LEATHER_BOOTS
+    show: true
+  "Craft":
+    icon: CRAFTING_TABLE
+    show: true
+  "Pêche":
+    icon: FISHING_ROD
+    show: true
+  "Survie":
+    icon: TOTEM_OF_UNDYING
+    show: true
+  "Interactions":
+    icon: OAK_BUTTON
+    show: true
+  "Exploration":
+    icon: COMPASS
+    show: true
+  "Ressources":
+    icon: IRON_ORE
+    show: true
+  "Agriculture":
+    icon: WHEAT
+    show: true
+  "Élevage":
+    icon: COW_SPAWN_EGG
+    show: true
+  "Économie":
+    icon: ENCHANTED_GOLDEN_APPLE
+    show: true
+  "Défis":
+    icon: WITHER_SKELETON_SKULL
+    show: true
+
+achievements:
+  # === EXTRACTION ===
+  first_break:
+    name: Premier coup de pioche
+    description: Casser votre premier bloc
+    icon: STONE_PICKAXE
+    type: BLOCK_BREAK
+    target: "*"
+    amount: 1
+    category: "Extraction"
+    reward:
+      xp: 25
+      item: BREAD
+      amount: 2
+
+  # === CONSTRUCTION ===
+  place_100:
+    name: Constructeur
+    description: Placer 100 blocs
+    icon: OAK_PLANKS
+    type: BLOCK_PLACE
+    target: "*"
+    amount: 100
+    category: "Construction"
+
+  # === COMBAT ===
+  kill_zombie_10:
+    name: Tueur de zombies
+    description: Tuer 10 zombies
+    icon: ZOMBIE_HEAD
+    type: ENTITY_KILL
+    target: ZOMBIE
+    amount: 10
+    category: "Combat"
+
+  first_blood:
+    name: Premier sang
+    description: Infliger 100 points de dégâts
+    icon: IRON_SWORD
+    type: DAMAGE_DEALT
+    target: "*"
+    amount: 1000  # En demi-cœurs (1000 = 50 cœurs)
+    category: "Combat"
+
+  tank:
+    name: Tank
+    description: Encaisser 500 points de dégâts
+    icon: IRON_CHESTPLATE
+    type: DAMAGE_TAKEN
+    target: "*"
+    amount: 5000  # En demi-cœurs
+    category: "Combat"
+
+  # === MOUVEMENT ===
+  marathon:
+    name: Marathon
+    description: Marcher 10 km
+    icon: LEATHER_BOOTS
+    type: WALK
+    target: "*"
+    amount: 1000000  # En centimètres (10 km)
+    category: "Mouvement"
+
+  sprinter:
+    name: Sprinter
+    description: Sprinter 5 km
+    icon: GOLDEN_BOOTS
+    type: SPRINT
+    target: "*"
+    amount: 500000  # En centimètres (5 km)
+    category: "Mouvement"
+
+  ninja:
+    name: Ninja
+    description: Parcourir 1 km en sneak
+    icon: BLACK_DYE
+    type: CROUCH
+    target: "*"
+    amount: 100000  # En centimètres (1 km)
+    category: "Mouvement"
+
+  nageur:
+    name: Nageur olympique
+    description: Nager 2 km
+    icon: TURTLE_HELMET
+    type: SWIM
+    target: "*"
+    amount: 200000  # En centimètres (2 km)
+    category: "Mouvement"
+
+  aviateur:
+    name: Aviateur
+    description: Voler 5 km
+    icon: ELYTRA
+    type: FLY
+    target: "*"
+    amount: 500000  # En centimètres (5 km)
+    category: "Mouvement"
+
+  sauteur:
+    name: Sauteur
+    description: Sauter 1000 fois
+    icon: SLIME_BALL
+    type: JUMP
+    target: "*"
+    amount: 1000
+    category: "Mouvement"
+
+  # === CRAFT & COLLECTE ===
+  craftsman:
+    name: Artisan
+    description: Crafter 100 items
+    icon: CRAFTING_TABLE
+    type: ITEM_CRAFT
+    target: "*"
+    amount: 100
+    category: "Craft"
+
+  sword_master:
+    name: Forgeron
+    description: Crafter une épée en diamant
+    icon: DIAMOND_SWORD
+    type: ITEM_CRAFT
+    target: DIAMOND_SWORD
+    amount: 1
+    category: "Craft"
+
+  collector:
+    name: Collectionneur
+    description: Ramasser 1000 items
+    icon: HOPPER
+    type: ITEM_PICKUP
+    target: "*"
+    amount: 1000
+    category: "Collecte"
+
+  # === PÊCHE ===
+  fisherman:
+    name: Pêcheur
+    description: Pêcher 50 poissons
+    icon: FISHING_ROD
+    type: FISH_CAUGHT
+    target: "*"
+    amount: 50
+    category: "Pêche"
+
+  # === SURVIE ===
+  survivor:
+    name: Survivant
+    description: Mourir une première fois
+    icon: TOTEM_OF_UNDYING
+    type: DEATH
+    target: "*"
+    amount: 1
+    category: "Survie"
+
+  # === INTERACTIONS ===
+  clicker:
+    name: Cliqueur
+    description: Interagir avec 100 blocs
+    icon: OAK_BUTTON
+    type: BLOCK_INTERACT
+    target: "*"
+    amount: 100
+    category: "Interactions"
+
+  trader:
+    name: Commerçant
+    description: Interagir avec un villageois
+    icon: EMERALD
+    type: ENTITY_INTERACT
+    target: VILLAGER
+    amount: 1
+    category: "Interactions"
+
+  gourmet:
+    name: Gourmet
+    description: Manger 500 aliments
+    icon: GOLDEN_APPLE
+    type: ITEM_CONSUME
+    target: "*"
+    amount: 500
+    category: "Interactions"
+
+  enchanter:
+    name: Enchanteur
+    description: Utiliser une table d'enchantement 50 fois
+    icon: ENCHANTING_TABLE
+    type: BLOCK_INTERACT
+    target: ENCHANTING_TABLE
+    amount: 50
+    category: "Interactions"
+
+  # === EXPLORATION ===
+  explorer:
+    name: Explorateur
+    description: Visiter 5 biomes différents
+    icon: COMPASS
+    type: BIOME_VISIT
+    target: "*"
+    amount: 5
+    category: "Exploration"
+
+  dimension_walker:
+    name: Voyageur interdimensionnel
+    description: Voyager dans 2 dimensions différentes
+    icon: NETHER_STAR
+    type: DIMENSION_TRAVEL
+    target: "*"
+    amount: 2
+    category: "Exploration"
+
+  jungle_explorer:
+    name: Explorateur de jungle
+    description: Visiter une jungle
+    icon: JUNGLE_SAPLING
+    type: BIOME_VISIT
+    target: JUNGLE
+    amount: 1
+    category: "Exploration"
+
+  # === RESSOURCES ===
+  diamond_miner:
+    name: Mineur de diamant
+    description: Miner un diamant
+    icon: DIAMOND_ORE
+    type: ORE_MINE
+    target: DIAMOND_ORE
+    amount: 1
+    category: "Ressources"
+
+  ore_collector:
+    name: Collecteur de minerai
+    description: Miner 100 minerais
+    icon: IRON_ORE
+    type: ORE_MINE
+    target: "*"
+    amount: 100
+    category: "Ressources"
+
+  # === ÉLEVAGE & AGRICULTURE ===
+  farmer:
+    name: Fermier
+    description: Récolter 200 cultures
+    icon: WHEAT
+    type: CROP_HARVEST
+    target: "*"
+    amount: 200
+    category: "Agriculture"
+
+  breeder:
+    name: Éleveur
+    description: Reproduire 10 animaux
+    icon: COW_SPAWN_EGG
+    type: ANIMAL_BREED
+    target: "*"
+    amount: 10
+    category: "Élevage"
+
+  dog_master:
+    name: Maître de chiens
+    description: Apprivoiser 5 loups
+    icon: WOLF_SPAWN_EGG
+    type: ANIMAL_TAME
+    target: WOLF
+    amount: 5
+    category: "Élevage"
+
+  horse_tamer:
+    name: Dresseur de chevaux
+    description: Apprivoiser un cheval
+    icon: HORSE_SPAWN_EGG
+    type: ANIMAL_TAME
+    target: HORSE
+    amount: 1
+    category: "Élevage"
+
+  # === ÉCONOMIE ===
+  enchanting_master:
+    name: Maître enchanteur
+    description: Enchanter 50 items
+    icon: ENCHANTED_GOLDEN_APPLE
+    type: ENCHANT_ITEM
+    target: "*"
+    amount: 50
+    category: "Économie"
+    reward:
+      xp: 100
+
+  # === DÉFIS SPÉCIAUX ===
+  executioner:
+    name: Bourreau
+    description: 5 kills consécutifs
+    icon: WITHER_SKELETON_SKULL
+    type: KILL_STREAK
+    target: "*"
+    amount: 5
+    category: "Défis"
+
+  beast:
+    name: Bête
+    description: 20 kills consécutifs
+    icon: DRAGON_HEAD
+    type: KILL_STREAK
+    target: "*"
+    amount: 20
+    category: "Défis"
+    reward:
+      xp: 500
