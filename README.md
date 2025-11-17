@@ -22,9 +22,10 @@ Plugin Spigot/Paper 1.21.x pour des achievements (succès) 100% configurables et
   - `reload` – recharge et valide la configuration
   - `open [joueur]` – ouvre le GUI (pour soi par défaut, ou pour un joueur en ligne)
   - `view <joueur>` – ouvre le GUI de la progression d'un autre joueur (en ligne ou hors-ligne)
-  - `list` – liste les IDs d'achievements disponibles
+  - `list [page]` – liste les achievements avec pagination (10 par page) et navigation cliquable
   - `reset <joueur> [achievementId|all]` – remet à zéro la progression du joueur
   - `settings` – ouvre le GUI d'administration des réglages
+  - `lang <langue>` – change la langue du plugin (fr, en, es)
 
 ## 🔐 Permissions
 - `mva.use` (par défaut: true)
@@ -259,16 +260,26 @@ Récompenses:
 Affiche tous les achievements organisés par catégorie avec leurs récompenses :
 ```
 ===== Achievements disponibles (110) =====
+Page 1/11
 
 ▸ Extraction (6)
-  • Premier coup de pioche (first_break) → 25 XP, 2x BREAD
+  • Premier coup de pioche (first_break) → 25 XP, BREAD:2
   • Diamant trouvé (diamond_found) → 100 XP, DIAMOND:8
   • Maître mineur (ore_master) → 200 XP
 
-▸ Construction (7)
+▸ Construction (4)
   • Constructeur ultime (ultimate_builder) → 1000 XP, DIAMOND:16,EMERALD:8,GOLD_INGOT:32, Commande
   ...
+
+« Précédent | Suivant »
+Utilisez /mva open pour voir votre progression
 ```
+
+**Navigation :**
+- Boutons cliquables "« Précédent" et "Suivant »" dans le chat
+- Hover pour voir le numéro de page
+- 10 achievements par page pour éviter le spam
+- Pour la console : `/mva list <page>` (ex: `/mva list 2`)
 
 ## 🔧 Build & Installation
 
@@ -283,6 +294,74 @@ Le jar sera automatiquement copié dans `server/plugins/`
 2. Placer dans le dossier `plugins/` de votre serveur
 3. Redémarrer le serveur
 4. Configurer `plugins/MoreVanillaAdvancements/config.yml`
+
+## 🌍 Système multi-langue
+
+Le plugin supporte plusieurs langues pré-configurées :
+- 🇬🇧 **Anglais** (`en`) - **Langue par défaut**
+- 🇫🇷 **Français** (`fr`)
+- 🇪🇸 **Espagnol** (`es`)
+
+### Configuration de la langue
+
+**Dans config.yml** :
+```yaml
+settings:
+  language: "en"  # Available languages: fr, en, es (generated on first use)
+```
+
+La langue configurée sera chargée automatiquement au démarrage du serveur.
+
+**Important** : Les fichiers de langue sont générés **automatiquement lors du premier changement de langue** via la commande `/mva lang <langue>`. Seul le fichier anglais (`lang_en.yml`) est créé par défaut au premier démarrage.
+
+### Changer de langue
+
+**Commande** : `/mva lang <langue>`
+
+**Exemples** :
+```
+/mva lang en  → Switch to English (default)
+/mva lang fr  → Passe en français
+/mva lang es  → Cambiar a español
+```
+
+Lors du premier changement vers une langue (fr ou es), le fichier correspondant sera automatiquement créé dans le dossier du plugin.
+
+**Important** : Le changement de langue via la commande est **sauvegardé automatiquement** dans config.yml et persistera après un redémarrage du serveur.
+
+**Tab-completion** : La commande propose automatiquement les langues disponibles.
+
+### Langues disponibles
+
+**Commande** : `/mva lang` (sans argument)
+Affiche la liste des langues disponibles.
+
+### Fichiers de langue
+
+Les fichiers de langue se trouvent dans `plugins/MoreVanillaAdvancements/` :
+- `lang_en.yml` - English (créé automatiquement au premier démarrage)
+- `lang_fr.yml` - Français (créé lors du premier `/mva lang fr`)
+- `lang_es.yml` - Español (créé lors du premier `/mva lang es`)
+
+**Génération automatique** : Les fichiers de langue sont créés automatiquement lors de leur première utilisation. Cela évite d'encombrer le dossier du plugin avec des fichiers inutilisés.
+
+**Personnalisation** : Vous pouvez modifier ces fichiers pour personnaliser les messages dans chaque langue.
+
+**Ajout d'une langue** : 
+1. Créez un fichier `lang_XX.yml` (où XX est le code de langue)
+2. Copiez le contenu d'un fichier existant
+3. Traduisez tous les messages
+4. Ajoutez le code de langue dans `LangManager.AVAILABLE_LANGUAGES`
+
+### Messages traduits
+
+100% des messages du plugin sont traduits :
+- ✅ Commandes et leurs retours
+- ✅ Menus GUI (titres et lores)
+- ✅ Messages d'achievements (completion, broadcast)
+- ✅ Validation de configuration (erreurs et warnings)
+- ✅ Logs console
+- ✅ Boutons et navigation
 
 ## 💾 Données
 - **Configuration**: `plugins/MoreVanillaAdvancements/config.yml`

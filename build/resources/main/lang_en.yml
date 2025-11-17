@@ -1,0 +1,220 @@
+# English Language File for MoreVanillaAdvancements
+# All messages are configurable
+# Color codes supported: &0-9, &a-f, &k-o, &r
+
+# ====================================
+# GENERAL MESSAGES
+# ====================================
+general:
+  prefix: "&8[&bMVA&8]&r "
+  no-permission: "&cYou don't have permission."
+  player-not-found: "&cPlayer offline/not found."
+  player-only: "&cThis command is for players only."
+  plugin-not-found: "&cPlugin not found."
+  specify-player: "&cSpecify a player."
+
+# ====================================
+# COMMANDS
+# ====================================
+commands:
+  usage: "&eUsage: /mva reload | open [player] | view <player> | list | reset <player> [achievementId|all] | settings | lang <language>"
+
+  # Reload
+  reload:
+    reloading: "&7Reloading configuration by {player}..."
+    success: "&aConfig reloaded successfully."
+    cancelled: "&cReload cancelled. Please fix the configuration."
+    loaded: "&aConfiguration reloaded: &e{achievements} achievements&a, &e{categories} categories"
+
+  # Open
+  open:
+    success: "&aGUI opened for {player}"
+
+  # View
+  view:
+    usage: "&eUsage: /mva view <player>"
+
+  # List
+  list:
+    header: "&6===== &eAvailable Achievements ({count}) &6====="
+    page-info: "&7Page {page}/{total}"
+    category-format: "&b\n▸ {category} &7({count})"
+    achievement-format: "&e  • &f{name} &7({id})"
+    reward-separator: "&a → "
+    reward-xp: "{xp} XP"
+    reward-command: "Command"
+    footer: "&6\nUse &e/mva open &6to see your progress"
+    pagination:
+      previous: "&e« Previous"
+      previous-disabled: "&8« Previous"
+      next: "&eNext »"
+      next-disabled: "&8Next »"
+      separator: "&7 | "
+      hover-previous: "&7Page {page}"
+      hover-next: "&7Page {page}"
+      console-help: "&7Use /mva list <page> to navigate"
+
+  # Reset
+  reset:
+    usage: "&eUsage: /mva reset <player> [achievementId|all]"
+    single-success: "&aAchievement &e{id} &areset for &e{player}"
+    all-success: "&aAll achievements reset for &e{player}"
+    log: "&7Achievements reset by {admin} for {player} (target: {target})"
+
+  # Lang
+  lang:
+    usage: "&eUsage: /mva lang <language>"
+    available: "&eAvailable languages: &a{languages}"
+    changed: "&aLanguage changed to: &e{lang}"
+    invalid: "&cInvalid language. Available: {languages}"
+    reloaded: "&aLanguage reloaded."
+
+# ====================================
+# ACHIEVEMENTS
+# ====================================
+achievements:
+  # Completion
+  completion:
+    title-main: "&6Success!"
+    title-sub: "&e{name}"
+    broadcast-format: "&b{player} &7completed the achievement &a{name}"
+    log: "&7[MVA] {player} completed achievement: {name} ({id})"
+
+  # GUI - Categories Menu
+  gui:
+    categories:
+      title: "&2Categories - {player}"
+      item-name: "&6{category}"
+      item-lore:
+        - "&eAchievements: {completed}/{total}"
+        - ""
+        - "&7Click to open"
+
+    # GUI - Achievements List
+    achievements:
+      title-with-category: "&2{category} - {player}"
+      title-without-category: "&2Achievements - {player}"
+      item-name: "&6{name}"
+      item-lore:
+        description: "&7{description}"
+        blank-line: ""
+        progress: "&eProgress: {current}/{required}"
+        completed: "&a✓ COMPLETED"
+        rewards-header: "&bRewards:"
+        reward-xp: "&a  ✦ {xp} XP"
+        reward-item: "&a  ✦ {amount}x {item}"
+        reward-command: "&a  ✦ Special command"
+
+      back-button:
+        name: "&e← Back to categories"
+
+# ====================================
+# CONFIGURATION VALIDATION
+# ====================================
+validation:
+  header-errors: "&c========== CONFIGURATION ERRORS =========="
+  header-warnings: "&e========== CONFIGURATION WARNINGS =========="
+  plugin-disabled: "&cPlugin disabled due to configuration errors."
+
+  # Errors
+  errors:
+    section-missing: "&c❌ Section '{section}' missing or empty"
+    achievement-invalid: "&c❌ Achievement '{id}' is not a valid section"
+    name-missing: "&c❌ Achievement '{id}': 'name' missing or empty"
+    type-missing: "&c❌ Achievement '{id}': 'type' missing or empty"
+    type-invalid: "&c❌ Achievement '{id}': type '{type}' invalid. Valid types: {valid_types}"
+    amount-not-int: "&c❌ Achievement '{id}': 'amount' must be an integer"
+    amount-invalid: "&c❌ Achievement '{id}': 'amount' must be > 0"
+
+  # Warnings
+  warnings:
+    settings-missing: "&e⚠ Section 'settings' missing, using default values"
+    broadcast-not-boolean: "&e⚠ settings.broadcastChat must be a boolean (true/false)"
+    title-not-boolean: "&e⚠ settings.showTitle must be a boolean (true/false)"
+    chat-format-empty: "&e⚠ settings.chatFormat is empty, using default format"
+    chat-format-no-name: "&e⚠ settings.chatFormat doesn't contain {name}"
+    chat-format-no-player: "&e⚠ settings.chatFormat doesn't contain {player}"
+
+    category-missing: "&e⚠ Section 'categories' missing"
+    category-invalid: "&e⚠ Category '{category}' is not a valid section"
+    category-icon-missing: "&e⚠ Category '{category}': 'icon' missing, using PAPER"
+    category-icon-invalid: "&e⚠ Category '{category}': icon '{icon}' invalid, using PAPER"
+    category-show-not-boolean: "&e⚠ Category '{category}': 'show' must be a boolean"
+    category-unused: "&e⚠ Category '{category}' defined but not used"
+    category-undefined: "&e⚠ Category '{category}' used but not defined"
+
+    achievement-no-description: "&e⚠ Achievement '{id}': 'description' missing or empty"
+    achievement-icon-invalid: "&e⚠ Achievement '{id}': icon '{icon}' invalid, using PAPER"
+
+    reward-xp-negative: "&e⚠ Achievement '{id}': negative xp"
+    reward-item-invalid: "&e⚠ Achievement '{id}': item '{item}' invalid"
+    reward-amount-invalid: "&e⚠ Achievement '{id}': reward.amount must be > 0"
+
+    no-achievements: "&e⚠ No achievements defined"
+
+# ====================================
+# CONSOLE LOGS
+# ====================================
+logs:
+  startup:
+    separator: "&7========================================"
+    loading-achievements: "&aLoading {count} achievements"
+    loading-categories: "&aLoading {count} categories"
+    enabled: "&a✓ MoreVanillaAdvancements enabled successfully!"
+    types-supported: "&aSupported achievement types: {count}"
+
+  reload:
+    by-player: "&7Reloading configuration by {player}..."
+    loaded: "&aConfiguration reloaded: {achievements} achievements, {categories} categories"
+    cancelled: "&cReload cancelled due to configuration errors"
+
+  achievement:
+    completed: "&a[MVA] {player} completed achievement: {name} ({id})"
+
+  reset:
+    action: "&7Achievements reset by {admin} for {player} (target: {target})"
+
+# ====================================
+# ADMIN GUI (Settings)
+# ====================================
+admin:
+  settings:
+    title: "&2⚙ Admin Settings"
+
+    broadcast:
+      name: "&6Public Broadcast"
+      lore-enabled:
+        - "&aCurrent: &2ENABLED"
+        - ""
+        - "&7Completions are announced"
+        - "&7publicly in chat"
+        - ""
+        - "&eClick to &cdisable"
+      lore-disabled:
+        - "&aCurrent: &cDISABLED"
+        - ""
+        - "&7Completions are not"
+        - "&7publicly announced"
+        - ""
+        - "&eClick to &aenable"
+
+    private-title:
+      name: "&6Private Title"
+      lore-enabled:
+        - "&aCurrent: &2ENABLED"
+        - ""
+        - "&7Players receive a private"
+        - "&7title on completion"
+        - ""
+        - "&eClick to &cdisable"
+      lore-disabled:
+        - "&aCurrent: &cDISABLED"
+        - ""
+        - "&7Players don't receive"
+        - "&7a private title"
+        - ""
+        - "&eClick to &aenable"
+
+    close:
+      name: "&cClose"
+

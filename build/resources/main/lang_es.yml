@@ -1,0 +1,193 @@
+# Archivo de idioma español para MoreVanillaAdvancements
+# Todos los mensajes son configurables
+# Códigos de color soportados: &0-9, &a-f, &k-o, &r
+
+# ====================================
+# MENSAJES GENERALES
+# ====================================
+general:
+  prefix: "&8[&bMVA&8]&r "
+  no-permission: "&cNo tienes permiso."
+  player-not-found: "&cJugador desconectado/no encontrado."
+  player-only: "&cEste comando es solo para jugadores."
+  plugin-not-found: "&cPlugin no encontrado."
+  specify-player: "&cEspecifica un jugador."
+
+# ====================================
+# COMANDOS
+# ====================================
+commands:
+  usage: "&eUso: /mva reload | open [jugador] | view <jugador> | list | reset <jugador> [achievementId|all] | settings | lang <idioma>"
+
+  reload:
+    reloading: "&7Recargando configuración por {player}..."
+    success: "&aConfiguración recargada con éxito."
+    cancelled: "&cRecarga cancelada. Por favor corrige la configuración."
+    loaded: "&aConfiguración recargada: &e{achievements} logros&a, &e{categories} categorías"
+
+  open:
+    success: "&aGUI abierta para {player}"
+
+  view:
+    usage: "&eUso: /mva view <jugador>"
+
+  list:
+    header: "&6===== &eLogros Disponibles ({count}) &6====="
+    page-info: "&7Página {page}/{total}"
+    category-format: "&b\n▸ {category} &7({count})"
+    achievement-format: "&e  • &f{name} &7({id})"
+    reward-separator: "&a → "
+    reward-xp: "{xp} XP"
+    reward-command: "Comando"
+    footer: "&6\nUsa &e/mva open &6para ver tu progreso"
+    pagination:
+      previous: "&e« Anterior"
+      previous-disabled: "&8« Anterior"
+      next: "&eSiguiente »"
+      next-disabled: "&8Siguiente »"
+      separator: "&7 | "
+      hover-previous: "&7Página {page}"
+      hover-next: "&7Página {page}"
+      console-help: "&7Usa /mva list <página> para navegar"
+
+  reset:
+    usage: "&eUso: /mva reset <jugador> [achievementId|all]"
+    single-success: "&aLogro &e{id} &areiniciado para &e{player}"
+    all-success: "&aTodos los logros reiniciados para &e{player}"
+    log: "&7Logros reiniciados por {admin} para {player} (objetivo: {target})"
+
+  lang:
+    usage: "&eUso: /mva lang <idioma>"
+    available: "&eIdiomas disponibles: &a{languages}"
+    changed: "&aIdioma cambiado a: &e{lang}"
+    invalid: "&cIdioma inválido. Disponibles: {languages}"
+    reloaded: "&aIdioma recargado."
+
+achievements:
+  completion:
+    title-main: "&6¡Éxito!"
+    title-sub: "&e{name}"
+    broadcast-format: "&b{player} &7completó el logro &a{name}"
+    log: "&7[MVA] {player} completó el logro: {name} ({id})"
+
+  gui:
+    categories:
+      title: "&2Categorías - {player}"
+      item-name: "&6{category}"
+      item-lore:
+        - "&eLogros: {completed}/{total}"
+        - ""
+        - "&7Clic para abrir"
+
+    achievements:
+      title-with-category: "&2{category} - {player}"
+      title-without-category: "&2Logros - {player}"
+      item-name: "&6{name}"
+      item-lore:
+        description: "&7{description}"
+        blank-line: ""
+        progress: "&eProgreso: {current}/{required}"
+        completed: "&a✓ COMPLETADO"
+        rewards-header: "&bRecompensas:"
+        reward-xp: "&a  ✦ {xp} XP"
+        reward-item: "&a  ✦ {amount}x {item}"
+        reward-command: "&a  ✦ Comando especial"
+
+      back-button:
+        name: "&e← Volver a categorías"
+
+validation:
+  header-errors: "&c========== ERRORES DE CONFIGURACIÓN =========="
+  header-warnings: "&e========== ADVERTENCIAS DE CONFIGURACIÓN =========="
+  plugin-disabled: "&cPlugin desactivado debido a errores de configuración."
+
+  errors:
+    section-missing: "&c❌ Sección '{section}' faltante o vacía"
+    achievement-invalid: "&c❌ Logro '{id}' no es una sección válida"
+    name-missing: "&c❌ Logro '{id}': 'name' faltante o vacío"
+    type-missing: "&c❌ Logro '{id}': 'type' faltante o vacío"
+    type-invalid: "&c❌ Logro '{id}': tipo '{type}' inválido. Tipos válidos: {valid_types}"
+    amount-not-int: "&c❌ Logro '{id}': 'amount' debe ser un entero"
+    amount-invalid: "&c❌ Logro '{id}': 'amount' debe ser > 0"
+
+  warnings:
+    settings-missing: "&e⚠ Sección 'settings' faltante, usando valores predeterminados"
+    broadcast-not-boolean: "&e⚠ settings.broadcastChat debe ser booleano (true/false)"
+    title-not-boolean: "&e⚠ settings.showTitle debe ser booleano (true/false)"
+    chat-format-empty: "&e⚠ settings.chatFormat está vacío"
+    chat-format-no-name: "&e⚠ settings.chatFormat no contiene {name}"
+    chat-format-no-player: "&e⚠ settings.chatFormat no contiene {player}"
+    category-missing: "&e⚠ Sección 'categories' faltante"
+    category-invalid: "&e⚠ Categoría '{category}' no es válida"
+    category-icon-missing: "&e⚠ Categoría '{category}': 'icon' faltante"
+    category-icon-invalid: "&e⚠ Categoría '{category}': icono '{icon}' inválido"
+    category-show-not-boolean: "&e⚠ Categoría '{category}': 'show' debe ser booleano"
+    category-unused: "&e⚠ Categoría '{category}' definida pero no usada"
+    category-undefined: "&e⚠ Categoría '{category}' usada pero no definida"
+    achievement-no-description: "&e⚠ Logro '{id}': 'description' faltante"
+    achievement-icon-invalid: "&e⚠ Logro '{id}': icono '{icon}' inválido"
+    reward-xp-negative: "&e⚠ Logro '{id}': xp negativo"
+    reward-item-invalid: "&e⚠ Logro '{id}': item '{item}' inválido"
+    reward-amount-invalid: "&e⚠ Logro '{id}': reward.amount debe ser > 0"
+    no-achievements: "&e⚠ No hay logros definidos"
+
+logs:
+  startup:
+    separator: "&7========================================"
+    loading-achievements: "&aCargando {count} logros"
+    loading-categories: "&aCargando {count} categorías"
+    enabled: "&a✓ ¡MoreVanillaAdvancements activado con éxito!"
+    types-supported: "&aTipos de logros soportados: {count}"
+
+  reload:
+    by-player: "&7Recargando configuración por {player}..."
+    loaded: "&aConfiguración recargada: {achievements} logros, {categories} categorías"
+    cancelled: "&cRecarga cancelada debido a errores"
+
+  achievement:
+    completed: "&a[MVA] {player} completó el logro: {name} ({id})"
+
+  reset:
+    action: "&7Logros reiniciados por {admin} para {player} (objetivo: {target})"
+
+admin:
+  settings:
+    title: "&2⚙ Configuración Admin"
+
+    broadcast:
+      name: "&6Anuncio Público"
+      lore-enabled:
+        - "&aActual: &2ACTIVADO"
+        - ""
+        - "&7Los logros se anuncian"
+        - "&7públicamente en el chat"
+        - ""
+        - "&eClic para &cdesactivar"
+      lore-disabled:
+        - "&aActual: &cDESACTIVADO"
+        - ""
+        - "&7Los logros no se anuncian"
+        - "&7públicamente"
+        - ""
+        - "&eClic para &aactivar"
+
+    private-title:
+      name: "&6Título Privado"
+      lore-enabled:
+        - "&aActual: &2ACTIVADO"
+        - ""
+        - "&7Los jugadores reciben un"
+        - "&7título privado"
+        - ""
+        - "&eClic para &cdesactivar"
+      lore-disabled:
+        - "&aActual: &cDESACTIVADO"
+        - ""
+        - "&7Los jugadores no reciben"
+        - "&7un título privado"
+        - ""
+        - "&eClic para &aactivar"
+
+    close:
+      name: "&cCerrar"
+

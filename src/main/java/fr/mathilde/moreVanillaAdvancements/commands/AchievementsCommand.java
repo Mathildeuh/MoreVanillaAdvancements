@@ -4,6 +4,7 @@ import fr.mathilde.moreVanillaAdvancements.config.AchievementConfig;
 import fr.mathilde.moreVanillaAdvancements.config.ConfigValidator;
 import fr.mathilde.moreVanillaAdvancements.gui.AchievementGUI;
 import fr.mathilde.moreVanillaAdvancements.gui.AdminSettingsGUI;
+import fr.mathilde.moreVanillaAdvancements.lang.LangManager;
 import fr.mathilde.moreVanillaAdvancements.service.AchievementService;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -24,12 +25,14 @@ public class AchievementsCommand implements CommandExecutor, TabCompleter {
     private final AchievementService service;
     private final AchievementGUI gui;
     private final AdminSettingsGUI adminGui;
+    private final LangManager langManager;
 
-    public AchievementsCommand(AchievementConfig config, AchievementService service, AchievementGUI gui, AdminSettingsGUI adminGui) {
+    public AchievementsCommand(AchievementConfig config, AchievementService service, AchievementGUI gui, AdminSettingsGUI adminGui, LangManager langManager) {
         this.config = config;
         this.service = service;
         this.gui = gui;
         this.adminGui = adminGui;
+        this.langManager = langManager;
     }
 
     @Override
@@ -37,34 +40,39 @@ public class AchievementsCommand implements CommandExecutor, TabCompleter {
         if (args.length == 0) {
             if (sender instanceof Player) {
                 gui.open((Player) sender);
-            } else sender.sendMessage(ChatColor.YELLOW + "Utilisation: /" + label + " reload | open [joueur] | view <joueur> | list | reset <joueur> [achievementId|all] | settings");
+            } else sender.sendMessage(langManager.getMessage("commands.usage"));
             return true;
         }
         switch (args[0].toLowerCase()) {
             case "reload":
-                if (!sender.hasPermission("mva.reload")) { sender.sendMessage(ChatColor.RED + "No permission."); return true; }
+                if (!sender.hasPermission("mva.reload")) {
+                    sender.sendMessage(langManager.getMessage("general.no-permission"));
+                    return true;
+                }
                 var plugin = sender.getServer().getPluginManager().getPlugin("MoreVanillaAdvancements");
                 if (plugin != null) {
-                    plugin.getLogger().info("Rechargement de la configuration par " + sender.getName() + "...");
+                    Map<String, String> placeholders = new HashMap<>();
+                    placeholders.put("player", sender.getName());
+                    plugin.getLogger().info(langManager.getMessage("commands.reload.reloading", placeholders));
                     plugin.reloadConfig();
 
                     // Valider la configuration
                     ConfigValidator validator = new ConfigValidator();
                     if (!validator.validate(plugin.getConfig())) {
-                        sender.sendMessage(ChatColor.RED + "========== ERREURS DE CONFIGURATION ==========");
+                        sender.sendMessage(langManager.getMessage("validation.header-errors"));
                         for (String error : validator.getErrors()) {
-                            sender.sendMessage(ChatColor.RED + error);
+                            sender.sendMessage(error);
                         }
-                        sender.sendMessage(ChatColor.RED + "Reload annulé. Veuillez corriger la configuration.");
-                        plugin.getLogger().warning("Reload annulé à cause d'erreurs de configuration");
+                        sender.sendMessage(langManager.getMessage("commands.reload.cancelled"));
+                        plugin.getLogger().warning(langManager.getMessage("logs.reload.cancelled"));
                         return true;
                     }
 
                     // Afficher les avertissements
                     if (!validator.getWarnings().isEmpty()) {
-                        sender.sendMessage(ChatColor.YELLOW + "========== AVERTISSEMENTS DE CONFIGURATION ==========");
+                        sender.sendMessage(langManager.getMessage("validation.header-warnings"));
                         for (String warning : validator.getWarnings()) {
-                            sender.sendMessage(ChatColor.YELLOW + warning);
+                            sender.sendMessage(warning);
                         }
                     }
 
@@ -72,24 +80,37 @@ public class AchievementsCommand implements CommandExecutor, TabCompleter {
                     config.load(plugin.getConfig());
                     service.reloadSettings(plugin.getConfig());
 
-                    plugin.getLogger().info("Configuration rechargée: " + config.getAchievements().size() + " achievements, " + config.getCategories().size() + " catégories");
-                    sender.sendMessage(ChatColor.GREEN + "Config rechargée avec succès.");
-                } else sender.sendMessage(ChatColor.RED + "Plugin introuvable.");
+                    placeholders.put("achievements", String.valueOf(config.getAchievements().size()));
+                    placeholders.put("categories", String.valueOf(config.getCategories().size()));
+                    plugin.getLogger().info(langManager.getMessage("logs.reload.loaded", placeholders));
+                    sender.sendMessage(langManager.getMessage("commands.reload.success"));
+                } else sender.sendMessage(langManager.getMessage("general.plugin-not-found"));
                 return true;
             case "open":
                 if (args.length >= 2) {
                     Player target = Bukkit.getPlayerExact(args[1]);
-                    if (target == null) { sender.sendMessage(ChatColor.RED + "Joueur hors-ligne/non trouvé."); return true; }
+                    if (target == null) {
+                        sender.sendMessage(langManager.getMessage("general.player-not-found"));
+                        return true;
+                    }
                     gui.open(target);
-                    sender.sendMessage(ChatColor.GREEN + "GUI ouvert pour " + target.getName());
+                    Map<String, String> placeholders = new HashMap<>();
+                    placeholders.put("player", target.getName());
+                    sender.sendMessage(langManager.getMessage("commands.open.success", placeholders));
                 } else {
                     if (sender instanceof Player) gui.open((Player) sender);
-                    else sender.sendMessage(ChatColor.RED + "Spécifiez un joueur.");
+                    else sender.sendMessage(langManager.getMessage("general.specify-player"));
                 }
                 return true;
             case "view":
-                if (!(sender instanceof Player)) { sender.sendMessage(ChatColor.RED + "Command in-game"); return true; }
-                if (args.length < 2) { sender.sendMessage(ChatColor.YELLOW + "Usage: /" + label + " view <joueur>"); return true; }
+                if (!(sender instanceof Player)) {
+                    sender.sendMessage(langManager.getMessage("general.player-only"));
+                    return true;
+                }
+                if (args.length < 2) {
+                    sender.sendMessage(langManager.getMessage("commands.view.usage"));
+                    return true;
+                }
                 Player targetOnline = Bukkit.getPlayerExact(args[1]);
                 if (targetOnline != null) {
                     gui.openFor((Player) sender, targetOnline.getUniqueId(), targetOnline.getName());
@@ -99,97 +120,106 @@ public class AchievementsCommand implements CommandExecutor, TabCompleter {
                 gui.openFor((Player) sender, off.getUniqueId(), off.getName() != null ? off.getName() : args[1]);
                 return true;
             case "list":
-                sender.sendMessage(ChatColor.GOLD + "===== " + ChatColor.YELLOW + "Achievements disponibles (" + config.getAchievements().size() + ")" + ChatColor.GOLD + " =====");
-
-                // Grouper par catégorie
-                Map<String, List<String>> byCategory = new LinkedHashMap<>();
-                for (var entry : config.getAchievements().entrySet()) {
-                    String achId = entry.getKey();
-                    var ach = entry.getValue();
-                    String cat = ach.getCategory() != null ? ach.getCategory() : "Général";
-                    byCategory.computeIfAbsent(cat, k -> new ArrayList<>()).add(achId);
-                }
-
-                // Afficher par catégorie
-                for (Map.Entry<String, List<String>> catEntry : byCategory.entrySet()) {
-                    sender.sendMessage(ChatColor.AQUA + "\n▸ " + catEntry.getKey() + ChatColor.GRAY + " (" + catEntry.getValue().size() + ")");
-
-                    for (String achId : catEntry.getValue()) {
-                        var ach = config.getAchievements().get(achId);
-                        StringBuilder line = new StringBuilder();
-                        line.append(ChatColor.YELLOW).append("  • ").append(ChatColor.WHITE).append(ach.getDisplayName());
-                        line.append(ChatColor.GRAY).append(" (").append(achId).append(")");
-
-                        // Afficher la récompense si elle existe
-                        if (ach.getReward() != null && ach.getReward().hasReward()) {
-                            line.append(ChatColor.GREEN).append(" → ");
-                            var reward = ach.getReward();
-                            List<String> rewards = new ArrayList<>();
-
-                            // XP
-                            if (reward.getXp() > 0) {
-                                rewards.add(reward.getXp() + " XP");
-                            }
-
-                            // Give items
-                            if (reward.getGiveItems() != null && !reward.getGiveItems().isEmpty()) {
-                                rewards.add(reward.getGiveItems());
-                            }
-
-                            // Command
-                            if (reward.getCommand() != null && !reward.getCommand().isEmpty()) {
-                                rewards.add("Commande");
-                            }
-
-                            if (!rewards.isEmpty()) {
-                                line.append(String.join(ChatColor.GRAY + ", " + ChatColor.GREEN, rewards));
-                            }
-                        }
-
-                        sender.sendMessage(line.toString());
+                int page = 1;
+                if (args.length >= 2) {
+                    try {
+                        page = Integer.parseInt(args[1]);
+                    } catch (NumberFormatException e) {
+                        page = 1;
                     }
                 }
-
-                sender.sendMessage(ChatColor.GOLD + "\nUtilisez " + ChatColor.YELLOW + "/mva open" + ChatColor.GOLD + " pour voir votre progression");
+                showAchievementList(sender, page);
                 return true;
             case "reset":
-                if (!sender.hasPermission("mva.reset")) { sender.sendMessage(ChatColor.RED + "No permission."); return true; }
-                if (args.length < 2) { sender.sendMessage(ChatColor.YELLOW + "Usage: /" + label + " reset <joueur> [achievementId|all]"); return true; }
+                if (!sender.hasPermission("mva.reset")) {
+                    sender.sendMessage(langManager.getMessage("general.no-permission"));
+                    return true;
+                }
+                if (args.length < 2) {
+                    sender.sendMessage(langManager.getMessage("commands.reset.usage"));
+                    return true;
+                }
                 @SuppressWarnings("deprecation") OfflinePlayer off2 = Bukkit.getOfflinePlayer(args[1]);
 
                 // Log du reset
                 var pluginForLog = sender.getServer().getPluginManager().getPlugin("MoreVanillaAdvancements");
                 if (pluginForLog != null) {
                     String resetTarget = args.length >= 3 ? args[2] : "all";
-                    pluginForLog.getLogger().info("Reset des achievements par " + sender.getName() + " pour " + args[1] + " (target: " + resetTarget + ")");
+                    Map<String, String> logPlaceholders = new HashMap<>();
+                    logPlaceholders.put("admin", sender.getName());
+                    logPlaceholders.put("player", args[1]);
+                    logPlaceholders.put("target", resetTarget);
+                    pluginForLog.getLogger().info(langManager.getMessage("logs.reset.action", logPlaceholders));
                 }
                 UUID uuid = off2.getUniqueId();
                 if (args.length >= 3 && !args[2].equalsIgnoreCase("all")) {
                     String id = args[2];
-                    if (!config.getAchievements().containsKey(id)) { sender.sendMessage(ChatColor.RED + "Achievement inconnu."); return true; }
+                    if (!config.getAchievements().containsKey(id)) {
+                        sender.sendMessage(langManager.getMessage("general.no-permission"));
+                        return true;
+                    }
                     service.reset(uuid, id);
-                    sender.sendMessage(ChatColor.GREEN + "Progression réinitialisée pour " + id + " de " + (off2.getName() != null ? off2.getName() : args[1]));
+                    Map<String, String> placeholders = new HashMap<>();
+                    placeholders.put("id", id);
+                    placeholders.put("player", off2.getName() != null ? off2.getName() : args[1]);
+                    sender.sendMessage(langManager.getMessage("commands.reset.single-success", placeholders));
                 } else {
                     service.resetAll(uuid);
-                    sender.sendMessage(ChatColor.GREEN + "Toutes les progressions réinitialisées pour " + (off2.getName() != null ? off2.getName() : args[1]));
+                    Map<String, String> placeholders = new HashMap<>();
+                    placeholders.put("player", off2.getName() != null ? off2.getName() : args[1]);
+                    sender.sendMessage(langManager.getMessage("commands.reset.all-success", placeholders));
                 }
                 return true;
             case "settings":
-                if (!(sender instanceof Player)) { sender.sendMessage(ChatColor.RED + "Command in-game"); return true; }
-                if (!sender.hasPermission("mva.reload")) { sender.sendMessage(ChatColor.RED + "No permission."); return true; }
+                if (!(sender instanceof Player)) {
+                    sender.sendMessage(langManager.getMessage("general.player-only"));
+                    return true;
+                }
+                if (!sender.hasPermission("mva.reload")) {
+                    sender.sendMessage(langManager.getMessage("general.no-permission"));
+                    return true;
+                }
                 adminGui.open((Player) sender);
                 return true;
+            case "lang":
+                if (args.length < 2) {
+                    Map<String, String> placeholders = new HashMap<>();
+                    placeholders.put("languages", String.join(", ", langManager.getAvailableLanguages()));
+                    sender.sendMessage(langManager.getMessage("commands.lang.usage"));
+                    sender.sendMessage(langManager.getMessage("commands.lang.available", placeholders));
+                    return true;
+                }
+                String newLang = args[1].toLowerCase();
+                if (langManager.changeLang(newLang)) {
+                    Map<String, String> placeholders = new HashMap<>();
+                    placeholders.put("lang", newLang);
+                    sender.sendMessage(langManager.getMessage("commands.lang.changed", placeholders));
+
+                    // Log
+                    var pluginForLang = sender.getServer().getPluginManager().getPlugin("MoreVanillaAdvancements");
+                    if (pluginForLang != null) {
+                        pluginForLang.getLogger().info("Langue changée en '" + newLang + "' par " + sender.getName());
+                    }
+                } else {
+                    Map<String, String> placeholders = new HashMap<>();
+                    placeholders.put("languages", String.join(", ", langManager.getAvailableLanguages()));
+                    sender.sendMessage(langManager.getMessage("commands.lang.invalid", placeholders));
+                }
+                return true;
             default:
-                sender.sendMessage(ChatColor.YELLOW + "Utilisation: /" + label + " reload | open [joueur] | view <joueur> | list | reset <joueur> [achievementId|all] | settings");
+                sender.sendMessage(langManager.getMessage("commands.usage"));
                 return true;
         }
     }
 
     @Override
     public List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String alias, @NotNull String[] args) {
-        if (args.length == 1) return Arrays.asList("reload", "open", "view", "list", "reset", "settings");
+        if (args.length == 1) return Arrays.asList("reload", "open", "view", "list", "reset", "settings", "lang");
         if (args.length == 2 && (args[0].equalsIgnoreCase("open") || args[0].equalsIgnoreCase("reset") || args[0].equalsIgnoreCase("view"))) {
             return Bukkit.getOnlinePlayers().stream().map(Player::getName).collect(Collectors.toList());
+        }
+        if (args.length == 2 && args[0].equalsIgnoreCase("lang")) {
+            return langManager.getAvailableLanguages();
         }
         if (args.length == 3 && args[0].equalsIgnoreCase("reset")) {
             List<String> ids = new ArrayList<>(config.getAchievements().keySet());
@@ -197,5 +227,157 @@ public class AchievementsCommand implements CommandExecutor, TabCompleter {
             return ids;
         }
         return Collections.emptyList();
+    }
+
+    private void showAchievementList(CommandSender sender, int page) {
+        final int ACHIEVEMENTS_PER_PAGE = 10;
+
+        // Grouper par catégorie
+        Map<String, List<String>> byCategory = new LinkedHashMap<>();
+        for (var entry : config.getAchievements().entrySet()) {
+            String achId = entry.getKey();
+            var ach = entry.getValue();
+            String cat = ach.getCategory() != null ? ach.getCategory() : "Général";
+            byCategory.computeIfAbsent(cat, k -> new ArrayList<>()).add(achId);
+        }
+
+        // Aplatir la liste des achievements
+        List<String> allAchievements = new ArrayList<>();
+        List<String> categoryHeaders = new ArrayList<>();
+
+        for (Map.Entry<String, List<String>> catEntry : byCategory.entrySet()) {
+            categoryHeaders.add(catEntry.getKey());
+            allAchievements.addAll(catEntry.getValue());
+        }
+
+        // Calculer pagination
+        int totalPages = (int) Math.ceil((double) allAchievements.size() / ACHIEVEMENTS_PER_PAGE);
+        if (page < 1) page = 1;
+        if (page > totalPages) page = totalPages;
+
+        int startIndex = (page - 1) * ACHIEVEMENTS_PER_PAGE;
+        int endIndex = Math.min(startIndex + ACHIEVEMENTS_PER_PAGE, allAchievements.size());
+
+        // Header
+        Map<String, String> headerPlaceholders = new HashMap<>();
+        headerPlaceholders.put("count", String.valueOf(config.getAchievements().size()));
+        sender.sendMessage(langManager.getMessage("commands.list.header", headerPlaceholders));
+
+        Map<String, String> pageInfoPlaceholders = new HashMap<>();
+        pageInfoPlaceholders.put("page", String.valueOf(page));
+        pageInfoPlaceholders.put("total", String.valueOf(totalPages));
+        sender.sendMessage(langManager.getMessage("commands.list.page-info", pageInfoPlaceholders));
+
+        // Afficher les achievements de la page actuelle
+        String currentCategory = null;
+        for (int i = startIndex; i < endIndex; i++) {
+            String achId = allAchievements.get(i);
+            var ach = config.getAchievements().get(achId);
+            String cat = ach.getCategory() != null ? ach.getCategory() : "Général";
+
+            // Afficher header de catégorie si changement
+            if (!cat.equals(currentCategory)) {
+                Map<String, String> catPlaceholders = new HashMap<>();
+                catPlaceholders.put("category", cat);
+                long catCount = byCategory.get(cat).size();
+                catPlaceholders.put("count", String.valueOf(catCount));
+                sender.sendMessage(langManager.getMessage("commands.list.category-format", catPlaceholders));
+                currentCategory = cat;
+            }
+
+            // Afficher achievement
+            StringBuilder line = new StringBuilder();
+            line.append(ChatColor.YELLOW).append("  • ").append(ChatColor.WHITE).append(ach.getDisplayName());
+            line.append(ChatColor.GRAY).append(" (").append(achId).append(")");
+
+            // Afficher la récompense si elle existe
+            if (ach.getReward() != null && ach.getReward().hasReward()) {
+                line.append(ChatColor.GREEN).append(" → ");
+                var reward = ach.getReward();
+                List<String> rewards = new ArrayList<>();
+
+                // XP
+                if (reward.getXp() > 0) {
+                    rewards.add(reward.getXp() + " XP");
+                }
+
+                // Give items
+                if (reward.getGiveItems() != null && !reward.getGiveItems().isEmpty()) {
+                    rewards.add(reward.getGiveItems());
+                }
+
+                // Command
+                if (reward.getCommand() != null && !reward.getCommand().isEmpty()) {
+                    rewards.add("Commande");
+                }
+
+                if (!rewards.isEmpty()) {
+                    line.append(String.join(ChatColor.GRAY + ", " + ChatColor.GREEN, rewards));
+                }
+            }
+
+            sender.sendMessage(line.toString());
+        }
+
+        // Footer avec navigation
+        sender.sendMessage("");
+
+        if (sender instanceof Player) {
+            Player player = (Player) sender;
+            net.md_5.bungee.api.chat.TextComponent footer = new net.md_5.bungee.api.chat.TextComponent("");
+
+            // Bouton précédent
+            if (page > 1) {
+                net.md_5.bungee.api.chat.TextComponent prev = new net.md_5.bungee.api.chat.TextComponent(
+                    langManager.getMessage("commands.list.pagination.previous")
+                );
+                prev.setClickEvent(new net.md_5.bungee.api.chat.ClickEvent(
+                    net.md_5.bungee.api.chat.ClickEvent.Action.RUN_COMMAND,
+                    "/mva list " + (page - 1)
+                ));
+                Map<String, String> hoverPlaceholders = new HashMap<>();
+                hoverPlaceholders.put("page", String.valueOf(page - 1));
+                prev.setHoverEvent(new net.md_5.bungee.api.chat.HoverEvent(
+                    net.md_5.bungee.api.chat.HoverEvent.Action.SHOW_TEXT,
+                    new net.md_5.bungee.api.chat.ComponentBuilder(
+                        langManager.getMessage("commands.list.pagination.hover-previous", hoverPlaceholders)
+                    ).create()
+                ));
+                footer.addExtra(prev);
+            } else {
+                footer.addExtra(langManager.getMessage("commands.list.pagination.previous-disabled"));
+            }
+
+            footer.addExtra(langManager.getMessage("commands.list.pagination.separator"));
+
+            // Bouton suivant
+            if (page < totalPages) {
+                net.md_5.bungee.api.chat.TextComponent next = new net.md_5.bungee.api.chat.TextComponent(
+                    langManager.getMessage("commands.list.pagination.next")
+                );
+                next.setClickEvent(new net.md_5.bungee.api.chat.ClickEvent(
+                    net.md_5.bungee.api.chat.ClickEvent.Action.RUN_COMMAND,
+                    "/mva list " + (page + 1)
+                ));
+                Map<String, String> hoverPlaceholders = new HashMap<>();
+                hoverPlaceholders.put("page", String.valueOf(page + 1));
+                next.setHoverEvent(new net.md_5.bungee.api.chat.HoverEvent(
+                    net.md_5.bungee.api.chat.HoverEvent.Action.SHOW_TEXT,
+                    new net.md_5.bungee.api.chat.ComponentBuilder(
+                        langManager.getMessage("commands.list.pagination.hover-next", hoverPlaceholders)
+                    ).create()
+                ));
+                footer.addExtra(next);
+            } else {
+                footer.addExtra(langManager.getMessage("commands.list.pagination.next-disabled"));
+            }
+
+            player.spigot().sendMessage(footer);
+        } else {
+            // Pour la console, afficher simple
+            sender.sendMessage(langManager.getMessage("commands.list.pagination.console-help"));
+        }
+
+        sender.sendMessage(langManager.getMessage("commands.list.footer"));
     }
 }

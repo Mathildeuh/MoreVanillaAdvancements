@@ -2,7 +2,8 @@
 settings:
   broadcastChat: true
   showTitle: true
-  chatFormat: "&b{player} &7a complété l'achievement &a{name}"
+  chatFormat: "&b{player} &7has completed the advancement &a{name}"
+  language: "en"  # Available languages: fr, en, es (generated on first use)
 
 categories:
   "Extraction":

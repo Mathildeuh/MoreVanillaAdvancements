@@ -1,5 +1,6 @@
 package fr.mathilde.moreVanillaAdvancements.service;
 
+import fr.mathilde.moreVanillaAdvancements.lang.LangManager;
 import fr.mathilde.moreVanillaAdvancements.model.Achievement;
 import fr.mathilde.moreVanillaAdvancements.model.ConditionType;
 import fr.mathilde.moreVanillaAdvancements.storage.PlayerProgressStore;
@@ -12,20 +13,23 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
 public class AchievementService {
     private final Map<String, Achievement> all;
     private final PlayerProgressStore store;
+    private final LangManager langManager;
 
     private boolean broadcastChat;
     private boolean showTitle;
     private String chatFormat;
 
-    public AchievementService(Map<String, Achievement> all, PlayerProgressStore store, FileConfiguration cfg) {
+    public AchievementService(Map<String, Achievement> all, PlayerProgressStore store, FileConfiguration cfg, LangManager langManager) {
         this.all = all;
         this.store = store;
+        this.langManager = langManager;
         reloadSettings(cfg);
     }
 
@@ -52,10 +56,20 @@ public class AchievementService {
                 Player p = Bukkit.getPlayer(player);
                 if (p != null) {
                     // Log console
-                    Bukkit.getLogger().info("[MVA] " + p.getName() + " a complété l'achievement: " + a.getDisplayName() + " (" + a.getId() + ")");
+                    Map<String, String> logPlaceholders = new HashMap<>();
+                    logPlaceholders.put("player", p.getName());
+                    logPlaceholders.put("name", a.getDisplayName());
+                    logPlaceholders.put("id", a.getId());
+                    Bukkit.getLogger().info(langManager.getMessage("logs.achievement.completed", logPlaceholders));
 
                     if (showTitle) {
-                        p.sendTitle(ChatColor.GOLD + "Succès!", ChatColor.YELLOW + a.getDisplayName(), 10, 60, 10);
+                        Map<String, String> titlePlaceholders = new HashMap<>();
+                        titlePlaceholders.put("name", a.getDisplayName());
+                        p.sendTitle(
+                            langManager.getMessage("achievements.completion.title-main"),
+                            langManager.getMessage("achievements.completion.title-sub", titlePlaceholders),
+                            10, 60, 10
+                        );
                         p.playSound(p, Sound.UI_TOAST_CHALLENGE_COMPLETE, 1f, 1f);
                     }
                     if (a.getReward() != null) a.getReward().give(p);

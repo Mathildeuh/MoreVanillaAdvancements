@@ -1,0 +1,246 @@
+# Fichier de langue pour MoreVanillaAdvancements
+# Tous les messages sont configurables
+# Codes couleur supportés: &0-9, &a-f, &k-o, &r
+
+# ====================================
+# MESSAGES GÉNÉRAUX
+# ====================================
+general:
+  prefix: "&8[&bMVA&8]&r "
+  no-permission: "&cVous n'avez pas la permission."
+  player-not-found: "&cJoueur hors-ligne/non trouvé."
+  player-only: "&cCette commande est réservée aux joueurs."
+  plugin-not-found: "&cPlugin introuvable."
+  specify-player: "&cSpécifiez un joueur."
+
+# ====================================
+# COMMANDES
+# ====================================
+commands:
+  usage: "&eUtilisation: /mva reload | open [joueur] | view <joueur> | list | reset <joueur> [achievementId|all] | settings | lang <langue>"
+
+  # Reload
+  reload:
+    reloading: "&7Rechargement de la configuration par {player}..."
+    success: "&aConfig rechargée avec succès."
+    cancelled: "&cReload annulé. Veuillez corriger la configuration."
+    loaded: "&aConfiguration rechargée: &e{achievements} achievements&a, &e{categories} catégories"
+
+  # Open
+  open:
+    success: "&aGUI ouvert pour {player}"
+
+  # View
+  view:
+    usage: "&eUsage: /mva view <joueur>"
+
+  # List
+  list:
+    header: "&6===== &eAchievements disponibles ({count}) &6====="
+    page-info: "&7Page {page}/{total}"
+    category-format: "&b\n▸ {category} &7({count})"
+    achievement-format: "&e  • &f{name} &7({id})"
+    reward-separator: "&a → "
+    reward-xp: "{xp} XP"
+    reward-command: "Commande"
+    footer: "&6\nUtilisez &e/mva open &6pour voir votre progression"
+    pagination:
+      previous: "&e« Précédent"
+      previous-disabled: "&8« Précédent"
+      next: "&eSuivant »"
+      next-disabled: "&8Suivant »"
+      separator: "&7 | "
+      hover-previous: "&7Page {page}"
+      hover-next: "&7Page {page}"
+      console-help: "&7Utilisez /mva list <page> pour naviguer"
+
+  # Reset
+  reset:
+    usage: "&eUsage: /mva reset <joueur> [achievementId|all]"
+    single-success: "&aAchievement &e{id} &aréinitialisé pour &e{player}"
+    all-success: "&aTous les achievements réinitialisés pour &e{player}"
+    log: "&7Reset des achievements par {admin} pour {player} (target: {target})"
+
+  # Lang
+  lang:
+    usage: "&eUsage: /mva lang <langue>"
+    available: "&eLangues disponibles: &a{languages}"
+    changed: "&aLangue changée en: &e{lang}"
+    invalid: "&cLangue invalide. Disponibles: {languages}"
+    reloaded: "&aLangue rechargée."
+
+# ====================================
+# ACHIEVEMENTS
+# ====================================
+achievements:
+  # Completion
+  completion:
+    title-main: "&6Succès!"
+    title-sub: "&e{name}"
+    broadcast-format: "&b{player} &7a complété l'achievement &a{name}"
+    log: "&7[MVA] {player} a complété l'achievement: {name} ({id})"
+
+  # GUI - Menu des catégories
+  gui:
+    categories:
+      title: "&2Categories - {player}"
+      item-name: "&6{category}"
+      item-lore:
+        - "&eAchievements: {completed}/{total}"
+        - ""
+        - "&7Clique pour ouvrir"
+
+    # GUI - Liste des achievements
+    achievements:
+      title-with-category: "&2{category} - {player}"
+      title-without-category: "&2Achievements - {player}"
+      item-name: "&6{name}"
+      item-lore:
+        description: "&7{description}"
+        blank-line: ""
+        progress: "&eProgression: {current}/{required}"
+        completed: "&a✓ COMPLÉTÉ"
+        rewards-header: "&bRécompenses:"
+        reward-xp: "&a  ✦ {xp} XP"
+        reward-item: "&a  ✦ {amount}x {item}"
+        reward-command: "&a  ✦ Commande spéciale"
+
+      back-button:
+        name: "&e← Retour aux catégories"
+
+# ====================================
+# VALIDATION DE CONFIGURATION
+# ====================================
+validation:
+  header-errors: "&c========== ERREURS DE CONFIGURATION =========="
+  header-warnings: "&e========== AVERTISSEMENTS DE CONFIGURATION =========="
+  plugin-disabled: "&cLe plugin est désactivé à cause des erreurs de configuration."
+
+  # Erreurs
+  errors:
+    section-missing: "&c❌ Section '{section}' manquante ou vide"
+    achievement-invalid: "&c❌ Achievement '{id}' n'est pas une section valide"
+    name-missing: "&c❌ Achievement '{id}': 'name' manquant ou vide"
+    type-missing: "&c❌ Achievement '{id}': 'type' manquant ou vide"
+    type-invalid: "&c❌ Achievement '{id}': type '{type}' invalide. Types valides: {valid_types}"
+    amount-not-int: "&c❌ Achievement '{id}': 'amount' doit être un entier"
+    amount-invalid: "&c❌ Achievement '{id}': 'amount' doit être > 0"
+
+  # Avertissements
+  warnings:
+    settings-missing: "&e⚠ Section 'settings' manquante, utilisation des valeurs par défaut"
+    broadcast-not-boolean: "&e⚠ settings.broadcastChat doit être un booléen (true/false)"
+    title-not-boolean: "&e⚠ settings.showTitle doit être un booléen (true/false)"
+    chat-format-empty: "&e⚠ settings.chatFormat est vide, utilisation du format par défaut"
+    chat-format-no-name: "&e⚠ settings.chatFormat ne contient pas {name}, le nom de l'achievement n'apparaîtra pas"
+    chat-format-no-player: "&e⚠ settings.chatFormat ne contient pas {player}, le nom du joueur n'apparaîtra pas"
+
+    category-missing: "&e⚠ Section 'categories' manquante, les catégories ne s'afficheront pas"
+    category-invalid: "&e⚠ Catégorie '{category}' n'est pas une section valide"
+    category-icon-missing: "&e⚠ Catégorie '{category}': 'icon' manquante, utilisation de PAPER"
+    category-icon-invalid: "&e⚠ Catégorie '{category}': icon '{icon}' invalide, utilisation de PAPER"
+    category-show-not-boolean: "&e⚠ Catégorie '{category}': 'show' doit être un booléen"
+    category-unused: "&e⚠ Catégorie '{category}' définie mais non utilisée par aucun achievement"
+    category-undefined: "&e⚠ Catégorie '{category}' utilisée mais non définie dans la section 'categories'"
+
+    achievement-no-description: "&e⚠ Achievement '{id}': 'description' manquante ou vide"
+    achievement-icon-invalid: "&e⚠ Achievement '{id}': icon '{icon}' invalide, utilisation de PAPER"
+
+    reward-xp-negative: "&e⚠ Achievement '{id}': xp négatif"
+    reward-item-invalid: "&e⚠ Achievement '{id}': item '{item}' invalide"
+    reward-amount-invalid: "&e⚠ Achievement '{id}': reward.amount doit être > 0"
+
+    no-achievements: "&e⚠ Aucun achievement défini"
+
+# ====================================
+# LOGS CONSOLE
+# ====================================
+logs:
+  startup:
+    separator: "&7========================================"
+    loading-achievements: "&aChargement de {count} achievements"
+    loading-categories: "&aChargement de {count} catégories"
+    enabled: "&a✓ MoreVanillaAdvancements activé avec succès!"
+    types-supported: "&aTypes d'achievements supportés: {count}"
+
+  reload:
+    by-player: "&7Rechargement de la configuration par {player}..."
+    loaded: "&aConfiguration rechargée: {achievements} achievements, {categories} catégories"
+    cancelled: "&cReload annulé à cause d'erreurs de configuration"
+
+  achievement:
+    completed: "&a[MVA] {player} a complété l'achievement: {name} ({id})"
+
+  reset:
+    action: "&7Reset des achievements par {admin} pour {player} (target: {target})"
+
+# ====================================
+# GUI ADMIN (Settings)
+# ====================================
+admin:
+  settings:
+    title: "&2⚙ Paramètres Admin"
+
+    broadcast:
+      name: "&6Annonce publique"
+      lore-enabled:
+        - "&aActuellement: &2ACTIVÉ"
+        - ""
+        - "&7Les completions sont annoncées"
+        - "&7publiquement dans le chat"
+        - ""
+        - "&eClique pour &cdésactiver"
+      lore-disabled:
+        - "&aActuellement: &cDÉSACTIVÉ"
+        - ""
+        - "&7Les completions ne sont pas"
+        - "&7annoncées publiquement"
+        - ""
+        - "&eClique pour &aactiver"
+
+    private-title:
+      name: "&6Title privé"
+      lore-enabled:
+        - "&aActuellement: &2ACTIVÉ"
+        - ""
+        - "&7Les joueurs reçoivent un title"
+        - "&7privé à la completion"
+        - ""
+        - "&eClique pour &cdésactiver"
+      lore-disabled:
+        - "&aActuellement: &cDÉSACTIVÉ"
+        - ""
+        - "&7Les joueurs ne reçoivent pas"
+        - "&7de title privé"
+        - ""
+        - "&eClique pour &aactiver"
+
+    close:
+      name: "&cFermer"
+
+# ====================================
+# PLACEHOLDERS
+# ====================================
+# Liste des placeholders disponibles:
+# {player} - Nom du joueur
+# {name} - Nom de l'achievement
+# {id} - ID de l'achievement
+# {description} - Description de l'achievement
+# {category} - Catégorie de l'achievement
+# {current} - Progression actuelle
+# {required} - Progression requise
+# {amount} - Quantité
+# {xp} - Points d'expérience
+# {item} - Nom de l'item
+# {count} - Compteur générique
+# {completed} - Nombre d'achievements complétés
+# {total} - Nombre total d'achievements
+# {admin} - Administrateur effectuant l'action
+# {target} - Cible de l'action
+# {icon} - Icône
+# {type} - Type
+# {valid_types} - Types valides
+# {section} - Section de config
+# {achievements} - Nombre d'achievements
+# {categories} - Nombre de catégories
+

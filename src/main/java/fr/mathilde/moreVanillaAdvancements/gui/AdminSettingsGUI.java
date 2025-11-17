@@ -1,8 +1,8 @@
 package fr.mathilde.moreVanillaAdvancements.gui;
 
+import fr.mathilde.moreVanillaAdvancements.lang.LangManager;
 import fr.mathilde.moreVanillaAdvancements.service.AchievementService;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.HumanEntity;
@@ -16,50 +16,83 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.Arrays;
+import java.util.List;
 
 public class AdminSettingsGUI implements Listener {
     private final JavaPlugin plugin;
     private final AchievementService service;
+    private final LangManager langManager;
 
-    private static final String TITLE = ChatColor.DARK_AQUA + "MVA Settings";
-
-    public AdminSettingsGUI(JavaPlugin plugin, AchievementService service) {
+    public AdminSettingsGUI(JavaPlugin plugin, AchievementService service, LangManager langManager) {
         this.plugin = plugin;
         this.service = service;
+        this.langManager = langManager;
     }
 
     public void open(Player p) {
-        Inventory inv = Bukkit.createInventory(p, 9, TITLE);
+        String title = langManager.getMessage("admin.settings.title");
+        Inventory inv = Bukkit.createInventory(p, 9, title);
         FileConfiguration cfg = plugin.getConfig();
         boolean bcast = cfg.getBoolean("settings.broadcastChat", true);
-        boolean title = cfg.getBoolean("settings.showTitle", true);
-        inv.setItem(3, toggleItem(Material.PAPER, ChatColor.GOLD + "Broadcast Chat: " + colorBool(bcast), bcast));
-        inv.setItem(5, toggleItem(Material.NAME_TAG, ChatColor.GOLD + "Title: " + colorBool(title), title));
+        boolean titleEnabled = cfg.getBoolean("settings.showTitle", true);
+
+        // Broadcast item
+        ItemStack broadcastItem = new ItemStack(Material.PAPER);
+        ItemMeta broadcastMeta = broadcastItem.getItemMeta();
+        if (broadcastMeta != null) {
+            broadcastMeta.setDisplayName(langManager.getMessage("admin.settings.broadcast.name"));
+            List<String> lore = bcast ?
+                langManager.getMessageList("admin.settings.broadcast.lore-enabled") :
+                langManager.getMessageList("admin.settings.broadcast.lore-disabled");
+            broadcastMeta.setLore(lore);
+            broadcastMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+            broadcastItem.setItemMeta(broadcastMeta);
+        }
+
+        // Title item
+        ItemStack titleItem = new ItemStack(Material.NAME_TAG);
+        ItemMeta titleMeta = titleItem.getItemMeta();
+        if (titleMeta != null) {
+            titleMeta.setDisplayName(langManager.getMessage("admin.settings.private-title.name"));
+            List<String> lore = titleEnabled ?
+                langManager.getMessageList("admin.settings.private-title.lore-enabled") :
+                langManager.getMessageList("admin.settings.private-title.lore-disabled");
+            titleMeta.setLore(lore);
+            titleMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+            titleItem.setItemMeta(titleMeta);
+        }
+
+        // Close item
+        ItemStack closeItem = new ItemStack(Material.BARRIER);
+        ItemMeta closeMeta = closeItem.getItemMeta();
+        if (closeMeta != null) {
+            closeMeta.setDisplayName(langManager.getMessage("admin.settings.close.name"));
+            closeItem.setItemMeta(closeMeta);
+        }
+
+        inv.setItem(3, broadcastItem);
+        inv.setItem(5, titleItem);
+        inv.setItem(8, closeItem);
         p.openInventory(inv);
     }
 
-    private ItemStack toggleItem(Material mat, String name, boolean on) {
-        ItemStack it = new ItemStack(mat);
-        ItemMeta meta = it.getItemMeta();
-        if (meta != null) {
-            meta.setDisplayName(name);
-            meta.setLore(Arrays.asList(ChatColor.GRAY + "Clique pour basculer", on ? ChatColor.GREEN + "Activé" : ChatColor.RED + "Désactivé"));
-            meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-            it.setItemMeta(meta);
-        }
-        return it;
-    }
-
-    private String colorBool(boolean b) { return (b ? ChatColor.GREEN + "ON" : ChatColor.RED + "OFF"); }
-
     @EventHandler
     public void onClick(InventoryClickEvent e) {
-        if (!e.getView().getTitle().equals(TITLE)) return;
+        String title = langManager.getMessage("admin.settings.title");
+        if (!e.getView().getTitle().equals(title)) return;
+
+        // Annuler TOUS les clics (y compris dans l'inventaire du joueur)
         e.setCancelled(true);
+
         HumanEntity clicker = e.getWhoClicked();
         if (!(clicker instanceof Player)) return;
         Player p = (Player) clicker;
+
+        // Si le joueur clique dans son propre inventaire, ne rien faire (juste bloquer le clic)
+        if (e.getClickedInventory() == p.getInventory()) {
+            return;
+        }
+
         int slot = e.getRawSlot();
         FileConfiguration cfg = plugin.getConfig();
         if (slot == 3) {
@@ -74,6 +107,9 @@ public class AdminSettingsGUI implements Listener {
             plugin.saveConfig();
             service.reloadSettings(cfg);
             open(p);
+        } else if (slot == 8) {
+            // Bouton fermer
+            p.closeInventory();
         }
     }
 }
