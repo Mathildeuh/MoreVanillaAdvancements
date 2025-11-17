@@ -47,10 +47,9 @@ public class AchievementConfig {
                 ConfigurationSection r = a.getConfigurationSection("reward");
                 if (r != null) {
                     int xp = r.getInt("xp", 0);
-                    Material item = Material.matchMaterial(r.getString("item", ""));
-                    int q = r.getInt("amount", 1);
                     String cmd = r.getString("command", "");
-                    reward = new Reward(xp, item, q, cmd);
+                    String give = r.getString("give", "");
+                    reward = new Reward(xp, cmd, give);
                 }
             }
             if (icon == null) icon = Material.PAPER;

@@ -47,6 +47,12 @@ categories:
   "Défis":
     icon: WITHER_SKELETON_SKULL
     show: true
+  "Serveur":
+    icon: PLAYER_HEAD
+    show: true
+  "Aventure":
+    icon: MAP
+    show: true
 
 achievements:
   # === EXTRACTION ===
@@ -60,8 +66,63 @@ achievements:
     category: "Extraction"
     reward:
       xp: 25
-      item: BREAD
-      amount: 2
+      give: "BREAD:2"
+
+  stone_breaker:
+    name: Broyeur de pierre
+    description: Casser 100 blocs de pierre
+    icon: STONE
+    type: BLOCK_BREAK
+    target: STONE
+    amount: 100
+    category: "Extraction"
+    reward:
+      xp: 50
+
+  ore_master:
+    name: Maître mineur
+    description: Miner 500 minerais
+    icon: IRON_ORE
+    type: ORE_MINE
+    target: "*"
+    amount: 500
+    category: "Extraction"
+    reward:
+      xp: 200
+
+  diamond_found:
+    name: Diamant trouvé
+    description: Miner votre premier diamant
+    icon: DIAMOND_ORE
+    type: ORE_MINE
+    target: DIAMOND_ORE
+    amount: 1
+    category: "Extraction"
+    reward:
+      xp: 100
+      give: "DIAMOND:8"
+
+  diamond_hoarder:
+    name: Accumulateur de diamants
+    description: Miner 64 diamants
+    icon: DIAMOND
+    type: ORE_MINE
+    target: DIAMOND_ORE
+    amount: 64
+    category: "Extraction"
+    reward:
+      xp: 500
+
+  emerald_collector:
+    name: Collectionneur d'émeraudes
+    description: Miner 10 émeraudes
+    icon: EMERALD_ORE
+    type: ORE_MINE
+    target: EMERALD_ORE
+    amount: 10
+    category: "Extraction"
+    reward:
+      xp: 150
 
   # === CONSTRUCTION ===
   place_100:
@@ -73,6 +134,72 @@ achievements:
     amount: 100
     category: "Construction"
 
+  builder_master:
+    name: Architecte
+    description: Placer 10000 blocs
+    icon: DARK_OAK_WOOD
+    type: BLOCK_PLACE
+    target: "*"
+    amount: 10000
+    category: "Construction"
+    reward:
+      xp: 500
+
+  wood_cutter:
+    name: Bûcheron
+    description: Placer 500 blocs de bois
+    icon: OAK_LOG
+    type: BLOCK_PLACE
+    target: OAK_LOG
+    amount: 500
+    category: "Construction"
+    reward:
+      xp: 100
+
+  house_builder:
+    name: Constructeur de maison
+    description: Placer 1000 blocs
+    icon: BRICKS
+    type: BLOCK_PLACE
+    target: "*"
+    amount: 1000
+    category: "Construction"
+    reward:
+      xp: 200
+
+  redstone_builder:
+    name: Constructeur redstone
+    description: Placer 1000 blocs de redstone
+    icon: REDSTONE_BLOCK
+    type: BLOCK_PLACE
+    target: REDSTONE_BLOCK
+    amount: 1000
+    category: "Construction"
+    reward:
+      xp: 300
+
+  glass_artist:
+    name: Artiste en verre
+    description: Placer 500 blocs de verre
+    icon: GLASS
+    type: BLOCK_PLACE
+    target: GLASS
+    amount: 500
+    category: "Construction"
+    reward:
+      xp: 100
+
+  neon_builder:
+    name: Maître du néon
+    description: Placer 300 blocs de lampes
+    icon: GLOWSTONE
+    type: BLOCK_PLACE
+    target: GLOWSTONE
+    amount: 300
+    category: "Construction"
+    reward:
+      xp: 120
+
   # === COMBAT ===
   kill_zombie_10:
     name: Tueur de zombies
@@ -83,14 +210,69 @@ achievements:
     amount: 10
     category: "Combat"
 
+  zombie_slayer:
+    name: Chasseur de zombies
+    description: Tuer 100 zombies
+    icon: ROTTEN_FLESH
+    type: ENTITY_KILL
+    target: ZOMBIE
+    amount: 100
+    category: "Combat"
+    reward:
+      xp: 150
+
+  spider_killer:
+    name: Tueur d'araignées
+    description: Tuer 50 araignées
+    icon: SPIDER_EYE
+    type: ENTITY_KILL
+    target: SPIDER
+    amount: 50
+    category: "Combat"
+    reward:
+      xp: 100
+
+  creeper_dodger:
+    name: Éviteur de creeper
+    description: Tuer 30 creepers
+    icon: GUNPOWDER
+    type: ENTITY_KILL
+    target: CREEPER
+    amount: 30
+    category: "Combat"
+    reward:
+      xp: 80
+
+  skeleton_archer:
+    name: Archer squelette
+    description: Tuer 40 squelettes
+    icon: BONE
+    type: ENTITY_KILL
+    target: SKELETON
+    amount: 40
+    category: "Combat"
+    reward:
+      xp: 100
+
   first_blood:
     name: Premier sang
     description: Infliger 100 points de dégâts
     icon: IRON_SWORD
     type: DAMAGE_DEALT
     target: "*"
-    amount: 1000  # En demi-cœurs (1000 = 50 cœurs)
+    amount: 1000
     category: "Combat"
+
+  warrior:
+    name: Guerrier
+    description: Infliger 10000 points de dégâts
+    icon: DIAMOND_SWORD
+    type: DAMAGE_DEALT
+    target: "*"
+    amount: 100000
+    category: "Combat"
+    reward:
+      xp: 500
 
   tank:
     name: Tank
@@ -98,8 +280,50 @@ achievements:
     icon: IRON_CHESTPLATE
     type: DAMAGE_TAKEN
     target: "*"
-    amount: 5000  # En demi-cœurs
+    amount: 5000
     category: "Combat"
+
+  ender_dragon_slayer:
+    name: Tueur du dragon
+    description: Tuer 1 dragon de l'End
+    icon: DRAGON_HEAD
+    type: ENTITY_KILL
+    target: ENDER_DRAGON
+    amount: 1
+    category: "Combat"
+    reward:
+      xp: 1000
+
+  wither_slayer:
+    name: Tueur du Wither
+    description: Tuer 1 Wither
+    icon: WITHER_SKELETON_SKULL
+    type: ENTITY_KILL
+    target: WITHER
+    amount: 1
+    category: "Combat"
+    reward:
+      xp: 1000
+
+  executioner:
+    name: Bourreau
+    description: 5 kills consécutifs
+    icon: WITHER_SKELETON_SKULL
+    type: KILL_STREAK
+    target: "*"
+    amount: 5
+    category: "Combat"
+
+  beast:
+    name: Bête
+    description: 20 kills consécutifs
+    icon: DRAGON_HEAD
+    type: KILL_STREAK
+    target: "*"
+    amount: 20
+    category: "Combat"
+    reward:
+      xp: 500
 
   # === MOUVEMENT ===
   marathon:
@@ -108,7 +332,7 @@ achievements:
     icon: LEATHER_BOOTS
     type: WALK
     target: "*"
-    amount: 1000000  # En centimètres (10 km)
+    amount: 1000000
     category: "Mouvement"
 
   sprinter:
@@ -117,7 +341,7 @@ achievements:
     icon: GOLDEN_BOOTS
     type: SPRINT
     target: "*"
-    amount: 500000  # En centimètres (5 km)
+    amount: 500000
     category: "Mouvement"
 
   ninja:
@@ -126,7 +350,7 @@ achievements:
     icon: BLACK_DYE
     type: CROUCH
     target: "*"
-    amount: 100000  # En centimètres (1 km)
+    amount: 100000
     category: "Mouvement"
 
   nageur:
@@ -135,7 +359,7 @@ achievements:
     icon: TURTLE_HELMET
     type: SWIM
     target: "*"
-    amount: 200000  # En centimètres (2 km)
+    amount: 200000
     category: "Mouvement"
 
   aviateur:
@@ -144,7 +368,7 @@ achievements:
     icon: ELYTRA
     type: FLY
     target: "*"
-    amount: 500000  # En centimètres (5 km)
+    amount: 500000
     category: "Mouvement"
 
   sauteur:
@@ -155,6 +379,17 @@ achievements:
     target: "*"
     amount: 1000
     category: "Mouvement"
+
+  parkour_master:
+    name: Maître du parkour
+    description: Sauter 10000 fois
+    icon: SCAFFOLDING
+    type: JUMP
+    target: "*"
+    amount: 10000
+    category: "Mouvement"
+    reward:
+      xp: 500
 
   # === CRAFT & COLLECTE ===
   craftsman:
@@ -175,6 +410,33 @@ achievements:
     amount: 1
     category: "Craft"
 
+  pickaxe_master:
+    name: Maître mineur
+    description: Crafter une pioche en diamant
+    icon: DIAMOND_PICKAXE
+    type: ITEM_CRAFT
+    target: DIAMOND_PICKAXE
+    amount: 1
+    category: "Craft"
+
+  armor_crafter:
+    name: Forgeron d'armures
+    description: Crafter une armure complète
+    icon: DIAMOND_CHESTPLATE
+    type: ITEM_CRAFT
+    target: DIAMOND_CHESTPLATE
+    amount: 1
+    category: "Craft"
+
+  enchantment_master:
+    name: Maître enchanteur
+    description: Crafter une table d'enchantement
+    icon: ENCHANTING_TABLE
+    type: ITEM_CRAFT
+    target: ENCHANTING_TABLE
+    amount: 1
+    category: "Craft"
+
   collector:
     name: Collectionneur
     description: Ramasser 1000 items
@@ -182,7 +444,7 @@ achievements:
     type: ITEM_PICKUP
     target: "*"
     amount: 1000
-    category: "Collecte"
+    category: "Craft"
 
   # === PÊCHE ===
   fisherman:
@@ -193,6 +455,17 @@ achievements:
     target: "*"
     amount: 50
     category: "Pêche"
+
+  master_fisherman:
+    name: Maître pêcheur
+    description: Pêcher 500 poissons
+    icon: TROPICAL_FISH
+    type: FISH_CAUGHT
+    target: "*"
+    amount: 500
+    category: "Pêche"
+    reward:
+      xp: 200
 
   # === SURVIE ===
   survivor:
@@ -241,6 +514,51 @@ achievements:
     amount: 50
     category: "Interactions"
 
+  furnace_user:
+    name: Cuisinier
+    description: Utiliser un four 100 fois
+    icon: FURNACE
+    type: BLOCK_INTERACT
+    target: FURNACE
+    amount: 100
+    category: "Interactions"
+
+  bed_sleeper:
+    name: Dormeur
+    description: Dormir dans un lit 50 fois
+    icon: RED_BED
+    type: BLOCK_INTERACT
+    target: RED_BED
+    amount: 50
+    category: "Interactions"
+
+  water_bucket:
+    name: Contrôleur d'eau
+    description: Utiliser un seau 100 fois
+    icon: WATER_BUCKET
+    type: ITEM_USE
+    target: WATER_BUCKET
+    amount: 100
+    category: "Interactions"
+
+  lava_walker:
+    name: Marcheur de lave
+    description: Marcher sur une dalle de lave
+    icon: LAVA_BUCKET
+    type: BLOCK_INTERACT
+    target: LAVA
+    amount: 1
+    category: "Aventure"
+
+  lightning_strike:
+    name: Attrapeur d'éclair
+    description: Être frappé par la foudre
+    icon: LIGHTNING_ROD
+    type: DAMAGE_TAKEN
+    target: "*"
+    amount: 1
+    category: "Défis"
+
   # === EXPLORATION ===
   explorer:
     name: Explorateur
@@ -251,6 +569,17 @@ achievements:
     amount: 5
     category: "Exploration"
 
+  world_explorer:
+    name: Explorateur du monde
+    description: Visiter 20 biomes différents
+    icon: MAP
+    type: BIOME_VISIT
+    target: "*"
+    amount: 20
+    category: "Exploration"
+    reward:
+      xp: 300
+
   dimension_walker:
     name: Voyageur interdimensionnel
     description: Voyager dans 2 dimensions différentes
@@ -260,12 +589,57 @@ achievements:
     amount: 2
     category: "Exploration"
 
+  nether_explorer:
+    name: Explorateur du Nether
+    description: Visiter le Nether
+    icon: NETHERRACK
+    type: DIMENSION_TRAVEL
+    target: "world_nether"
+    amount: 1
+    category: "Exploration"
+
+  end_explorer:
+    name: Explorateur de l'End
+    description: Visiter l'End
+    icon: END_STONE
+    type: DIMENSION_TRAVEL
+    target: "world_the_end"
+    amount: 1
+    category: "Exploration"
+
   jungle_explorer:
     name: Explorateur de jungle
     description: Visiter une jungle
     icon: JUNGLE_SAPLING
     type: BIOME_VISIT
     target: JUNGLE
+    amount: 1
+    category: "Exploration"
+
+  mountain_explorer:
+    name: Grimpeur de montagne
+    description: Visiter une montagne
+    icon: STONE
+    type: BIOME_VISIT
+    target: MOUNTAINS
+    amount: 1
+    category: "Exploration"
+
+  desert_explorer:
+    name: Explorateur du désert
+    description: Visiter un désert
+    icon: SAND
+    type: BIOME_VISIT
+    target: DESERT
+    amount: 1
+    category: "Exploration"
+
+  ocean_explorer:
+    name: Explorateur de l'océan
+    description: Visiter un océan
+    icon: WATER_BUCKET
+    type: BIOME_VISIT
+    target: OCEAN
     amount: 1
     category: "Exploration"
 
@@ -288,7 +662,62 @@ achievements:
     amount: 100
     category: "Ressources"
 
-  # === ÉLEVAGE & AGRICULTURE ===
+  gold_digger:
+    name: Chercheur d'or
+    description: Miner 50 blocs d'or
+    icon: GOLD_ORE
+    type: ORE_MINE
+    target: GOLD_ORE
+    amount: 50
+    category: "Ressources"
+    reward:
+      xp: 100
+
+  iron_miner:
+    name: Mineur de fer
+    description: Miner 100 blocs de fer
+    icon: IRON_ORE
+    type: ORE_MINE
+    target: IRON_ORE
+    amount: 100
+    category: "Ressources"
+    reward:
+      xp: 100
+
+  coal_gatherer:
+    name: Collecteur de charbon
+    description: Miner 200 blocs de charbon
+    icon: COAL_ORE
+    type: ORE_MINE
+    target: COAL_ORE
+    amount: 200
+    category: "Ressources"
+    reward:
+      xp: 100
+
+  lapis_collector:
+    name: Collecteur de lapis
+    description: Miner 50 blocs de lapis
+    icon: LAPIS_ORE
+    type: ORE_MINE
+    target: LAPIS_ORE
+    amount: 50
+    category: "Ressources"
+    reward:
+      xp: 80
+
+  redstone_engineer:
+    name: Ingénieur redstone
+    description: Miner 100 blocs de redstone
+    icon: REDSTONE_ORE
+    type: ORE_MINE
+    target: REDSTONE_ORE
+    amount: 100
+    category: "Ressources"
+    reward:
+      xp: 150
+
+  # === AGRICULTURE ===
   farmer:
     name: Fermier
     description: Récolter 200 cultures
@@ -298,6 +727,51 @@ achievements:
     amount: 200
     category: "Agriculture"
 
+  master_farmer:
+    name: Maître fermier
+    description: Récolter 10000 cultures
+    icon: GOLDEN_CARROT
+    type: CROP_HARVEST
+    target: "*"
+    amount: 10000
+    category: "Agriculture"
+    reward:
+      xp: 500
+
+  wheat_harvester:
+    name: Moissonneur de blé
+    description: Récolter 500 blés
+    icon: WHEAT
+    type: CROP_HARVEST
+    target: WHEAT
+    amount: 500
+    category: "Agriculture"
+    reward:
+      xp: 100
+
+  carrot_farmer:
+    name: Cultivateur de carottes
+    description: Récolter 300 carottes
+    icon: CARROT
+    type: CROP_HARVEST
+    target: CARROTS
+    amount: 300
+    category: "Agriculture"
+    reward:
+      xp: 80
+
+  potato_planter:
+    name: Planteur de pommes de terre
+    description: Récolter 300 pommes de terre
+    icon: POTATO
+    type: CROP_HARVEST
+    target: POTATOES
+    amount: 300
+    category: "Agriculture"
+    reward:
+      xp: 80
+
+  # === ÉLEVAGE ===
   breeder:
     name: Éleveur
     description: Reproduire 10 animaux
@@ -306,6 +780,17 @@ achievements:
     target: "*"
     amount: 10
     category: "Élevage"
+
+  master_breeder:
+    name: Maître éleveur
+    description: Reproduire 500 animaux
+    icon: PUFFERFISH_BUCKET
+    type: ANIMAL_BREED
+    target: "*"
+    amount: 500
+    category: "Élevage"
+    reward:
+      xp: 300
 
   dog_master:
     name: Maître de chiens
@@ -316,6 +801,15 @@ achievements:
     amount: 5
     category: "Élevage"
 
+  cat_lover:
+    name: Amoureux des chats
+    description: Apprivoiser 3 chats
+    icon: CAT_SPAWN_EGG
+    type: ANIMAL_TAME
+    target: CAT
+    amount: 3
+    category: "Élevage"
+
   horse_tamer:
     name: Dresseur de chevaux
     description: Apprivoiser un cheval
@@ -323,6 +817,15 @@ achievements:
     type: ANIMAL_TAME
     target: HORSE
     amount: 1
+    category: "Élevage"
+
+  parrot_whisperer:
+    name: Charmeur de perroquets
+    description: Apprivoiser 2 perroquets
+    icon: PARROT_SPAWN_EGG
+    type: ANIMAL_TAME
+    target: PARROT
+    amount: 2
     category: "Élevage"
 
   # === ÉCONOMIE ===
@@ -337,7 +840,16 @@ achievements:
     reward:
       xp: 100
 
-  # === DÉFIS SPÉCIAUX ===
+  anvil_user:
+    name: Utilisateur d'enclume
+    description: Utiliser une enclume 50 fois
+    icon: ANVIL
+    type: BLOCK_INTERACT
+    target: ANVIL
+    amount: 50
+    category: "Économie"
+
+  # === DÉFIS ===
   executioner:
     name: Bourreau
     description: 5 kills consécutifs
@@ -357,3 +869,245 @@ achievements:
     category: "Défis"
     reward:
       xp: 500
+
+  # === SOCIAL & SERVEUR ===
+  first_join:
+    name: Bienvenue
+    description: Rejoindre le serveur pour la première fois
+    icon: PAINTING
+    type: PLAYER_JOIN
+    target: "*"
+    amount: 1
+    category: "Serveur"
+    reward:
+      xp: 50
+
+  chat_novice:
+    name: Bavard débutant
+    description: Envoyer 1 messages dans le chat
+    icon: WRITABLE_BOOK
+    type: PLAYER_CHAT
+    target: "*"
+    amount: 1
+    category: "Serveur"
+    reward:
+      xp: 10
+
+  chat_master:
+    name: Bavard
+    description: Envoyer 100 messages dans le chat
+    icon: WRITABLE_BOOK
+    type: PLAYER_CHAT
+    target: "*"
+    amount: 100
+    category: "Serveur"
+    reward:
+      xp: 100
+
+  night_owl:
+    name: Hibou de nuit
+    description: Jouer 50 fois la nuit
+    icon: MILK_BUCKET
+    type: NIGHT_PLAY
+    target: "*"
+    amount: 50
+    category: "Serveur"
+    reward:
+      xp: 75
+
+  # === AVENTURE & DÉCOUVERTE ===
+
+  treasure_finder:
+    name: Chercheur de trésor
+    description: Trouver un coffre au trésor
+    icon: CHEST
+    type: BLOCK_INTERACT
+    target: CHEST
+    amount: 1
+    category: "Aventure"
+
+  dungeon_explorer:
+    name: Explorateur de donjon
+    description: Explorer un donjon
+    icon: SPAWNER
+    type: BLOCK_INTERACT
+    target: SPAWNER
+    amount: 1
+    category: "Aventure"
+
+  stronghold_finder:
+    name: Chercheur de forteresse
+    description: Trouver une forteresse
+    icon: END_ROD
+    type: DIMENSION_TRAVEL
+    target: "world_the_end"
+    amount: 1
+    category: "Aventure"
+
+  village_trader:
+    name: Négociant de village
+    description: Faire 50 échanges avec des villageois
+    icon: EMERALD_BLOCK
+    type: ENTITY_INTERACT
+    target: VILLAGER
+    amount: 50
+    category: "Aventure"
+    reward:
+      xp: 150
+
+  # === RICHESSE & ÉCONOMIE AVANCÉE ===
+  treasure_hoarder:
+    name: Accumulateur de richesses
+    description: Collecter 64 lingots d'or
+    icon: GOLD_BLOCK
+    type: ITEM_PICKUP
+    target: GOLD_INGOT
+    amount: 64
+    category: "Économie"
+    reward:
+      xp: 250
+
+  iron_hoarder:
+    name: Baron du fer
+    description: Collecter 256 lingots de fer
+    icon: IRON_BLOCK
+    type: ITEM_PICKUP
+    target: IRON_INGOT
+    amount: 256
+    category: "Économie"
+    reward:
+      xp: 300
+
+  diamond_blocksmith:
+    name: Maître des diamants
+    description: Collecter 32 diamants
+    icon: DIAMOND_BLOCK
+    type: ITEM_PICKUP
+    target: DIAMOND
+    amount: 32
+    category: "Économie"
+    reward:
+      xp: 500
+
+  # === ACHIEVEMENTS SECRETS ===
+  cake_eater:
+    name: Mangeur de gâteau
+    description: Consommer 10 gâteaux
+    icon: CAKE
+    type: ITEM_CONSUME
+    target: CAKE
+    amount: 10
+    category: "Aventure"
+
+  potion_brewer:
+    name: Alchimiste
+    description: Brewer 50 potions
+    icon: BREWING_STAND
+    type: BLOCK_INTERACT
+    target: BREWING_STAND
+    amount: 50
+    category: "Aventure"
+    reward:
+      xp: 150
+
+  beacon_builder:
+    name: Constructeur de balises
+    description: Placer 5 balises
+    icon: BEACON
+    type: BLOCK_PLACE
+    target: BEACON
+    amount: 5
+    category: "Construction"
+    reward:
+      xp: 300
+
+  nether_traveler:
+    name: Voyageur du Nether
+    description: Marcher 1 km dans le Nether
+    icon: NETHER_BRICKS
+    type: WALK
+    target: "*"
+    amount: 100000
+    category: "Exploration"
+
+  end_traveler:
+    name: Voyageur de l'End
+    description: Voler 1 km dans l'End
+    icon: END_ROD
+    type: FLY
+    target: "*"
+    amount: 100000
+    category: "Exploration"
+
+  food_connoisseur:
+    name: Connaisseur culinaire
+    description: Manger 30 types d'aliments différents
+    icon: COOKED_BEEF
+    type: ITEM_CONSUME
+    target: "*"
+    amount: 30
+    category: "Interactions"
+    reward:
+      xp: 150
+
+
+  # === DÉTAILS MINEURS ===
+  crop_full_harvest:
+    name: Récolte parfaite
+    description: Récolter 50 cultures mûres
+    icon: GOLDEN_CARROT
+    type: CROP_HARVEST
+    target: "*"
+    amount: 50
+    category: "Agriculture"
+    reward:
+      xp: 75
+
+  animal_lover:
+    name: Amoureux des animaux
+    description: Apprivoiser 20 animaux
+    icon: LEAD
+    type: ANIMAL_TAME
+    target: "*"
+    amount: 20
+    category: "Élevage"
+    reward:
+      xp: 200
+
+  # === FINITIONS ===
+  ultimate_builder:
+    name: Constructeur ultime
+    description: Placer 50000 blocs
+    icon: OBSIDIAN
+    type: BLOCK_PLACE
+    target: "*"
+    amount: 50000
+    category: "Construction"
+    reward:
+      xp: 1000
+      give: "DIAMOND:16,EMERALD:8,GOLD_INGOT:32"
+      command: "say {player} est un vrai constructeur!"
+
+  ultimate_miner:
+    name: Mineur ultime
+    description: Miner 1000 minerais
+    icon: NETHERITE_BLOCK
+    type: ORE_MINE
+    target: "*"
+    amount: 1000
+    category: "Extraction"
+    reward:
+      xp: 1000
+      command: "say {player} est devenu un mineur légendaire!"
+
+  ultimate_fighter:
+    name: Guerrier ultime
+    description: Tuer 1000 entités
+    icon: NETHERITE_SWORD
+    type: ENTITY_KILL
+    target: "*"
+    amount: 1000
+    category: "Combat"
+    reward:
+      xp: 1000
+      command: "say {player} est un guerrier légendaire!"

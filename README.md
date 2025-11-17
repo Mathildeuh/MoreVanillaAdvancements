@@ -3,15 +3,17 @@
 Plugin Spigot/Paper 1.21.x pour des achievements (succès) 100% configurables et modulaires.
 
 ## 🎯 Fonctionnalités principales
-- **Achievements configurables** via `config.yml` avec 35+ types d'événements
-- **Système de catégories** optionnel avec navigation intuitive dans le GUI
-- **GUI joueur** listant la progression (complété/pas encore), consultable pour soi ou pour un autre joueur
+- **110+ achievements vanilla** pré-configurés couvrant tous les modes de jeu
+- **40+ types d'événements** trackables : blocs, combat, mouvement, craft, exploration, social, etc.
+- **Système de catégories** optionnel avec 16 catégories (Extraction, Combat, Construction, etc.)
+- **GUI joueur** listant la progression (complété/pas encore), consultable pour soi ou un autre joueur
 - **GUI admin** pour basculer rapidement les réglages (broadcast chat, title privé)
 - **Système de récompenses** optionnelles: XP, items, et/ou commande console
 - **Annonces publiques** dans le chat avec nom de l'achievement **hoverable** et description
 - **Title privé** au joueur (paramétrables)
 - **Compatible serveurs crack** (offline-mode) via UUID hors-ligne
 - **Validation automatique de configuration** avec erreurs bloquantes et avertissements
+- **Logs console détaillés** : démarrage, completions, reloads
 - **Commandes claires** avec tab-completion
 - **Auto-export** dans server/plugins après build
 
@@ -29,7 +31,7 @@ Plugin Spigot/Paper 1.21.x pour des achievements (succès) 100% configurables et
 - `mva.reload` (par défaut: op)
 - `mva.reset` (par défaut: op)
 
-## 🎮 Types d'achievements supportés (35+)
+## 🎮 Types d'achievements supportés (40+)
 
 ### Blocs & Construction
 - `BLOCK_BREAK` - Casser des blocs (target: `*` ou `Material`)
@@ -61,7 +63,7 @@ Plugin Spigot/Paper 1.21.x pour des achievements (succès) 100% configurables et
 - `ITEM_CONSUME` - Consommer un item/nourriture (target: `*` ou `Material`)
 - `ENTITY_INTERACT` - Interagir avec une entité (target: `*` ou `EntityType`)
 
-### Autres
+### Autres basiques
 - `FISH_CAUGHT` - Poissons pêchés
 
 ### Exploration
@@ -79,6 +81,15 @@ Plugin Spigot/Paper 1.21.x pour des achievements (succès) 100% configurables et
 
 ### Économie
 - `ENCHANT_ITEM` - Enchanter des items (target: `*` ou `Material`)
+- `FURNACE_SMELT` - Fondre des items dans un four
+
+### Social & Serveur
+- `PLAYER_JOIN` - Rejoindre le serveur pour la première fois (donné une seule fois)
+- `PLAYER_CHAT` - Envoyer un message dans le chat
+- `NIGHT_PLAY` - Jouer la nuit (entre 12000 et 24000 ticks)
+
+### Futur
+- `PLAY_TIME` - Temps de jeu (en ticks) [Déclaré, à implémenter]
 
 ## 📝 Configuration
 
@@ -88,6 +99,12 @@ settings:
   broadcastChat: true      # Annonce publique dans le chat
   showTitle: true          # Title privé au joueur
   chatFormat: "&b{player} &7a complété l'achievement &a{name}"
+
+categories:
+  "Extraction":
+    icon: STONE_PICKAXE
+    show: true
+  # ... autres catégories
 
 achievements:
   id_achievement:
@@ -100,10 +117,39 @@ achievements:
     category: "Nom de la catégorie"  # optionnel
     reward:      # optionnel
       xp: 25
-      item: BREAD
-      amount: 2
+      give: "BREAD:2"  # Format: "MATERIAL:QUANTITY" ou "MAT1:QTY1,MAT2:QTY2,..."
       command: "say {player} a réussi!"
 ```
+
+### Système de récompenses
+
+Le plugin supporte trois types de récompenses configurables :
+
+**1. XP**
+```yaml
+reward:
+  xp: 100
+```
+
+**2. Items (format "give")**
+- **Un seul item** : `give: "DIAMOND:8"` → donne 8 diamants
+- **Plusieurs items** : `give: "DIAMOND:16,EMERALD:8,GOLD_INGOT:32"` → donne plusieurs items différents
+- Format : `MATERIAL:QUANTITY` séparés par des virgules
+
+```yaml
+reward:
+  xp: 100
+  give: "DIAMOND:8,EMERALD:4"
+```
+
+**3. Commandes console**
+```yaml
+reward:
+  xp: 100
+  give: "DIAMOND:16"
+  command: "say {player} a réussi !"
+```
+Le placeholder `{player}` est remplacé par le nom du joueur.
 
 ### Validation de configuration
 Le plugin valide automatiquement la configuration :
@@ -114,12 +160,12 @@ Le plugin valide automatiquement la configuration :
 - Types invalides
 - Champs critiques manquants (name, type, amount)
 - Amount non entier ou <= 0
-- Icons/items invalides
 
 **Avertissements affichés** ⚠️ :
 - Description manquante
 - Format chatFormat incomplet ({name} ou {player})
-- Reward.amount <= 0
+- Catégories non définies ou non utilisées
+- Icons/items invalides
 
 ### Exemples d'achievements
 
@@ -147,28 +193,81 @@ first_blood:
   category: "Combat"
 ```
 
-#### Craft
+#### Social
 ```yaml
-sword_master:
-  name: Forgeron
-  description: Crafter une épée en diamant
-  icon: DIAMOND_SWORD
-  type: ITEM_CRAFT
-  target: DIAMOND_SWORD
+first_join:
+  name: Bienvenue
+  description: Rejoindre le serveur pour la première fois
+  icon: PAINTING
+  type: PLAYER_JOIN
+  target: "*"
   amount: 1
-  category: "Craft"
+  category: "Serveur"
+  reward:
+    xp: 50
 ```
 
-#### Exploration
-```yaml
-explorer:
-  name: Explorateur
-  description: Visiter 5 biomes différents
-  icon: COMPASS
-  type: BIOME_VISIT
-  target: "*"
-  amount: 5
-  category: "Exploration"
+## 📊 Achievements pré-configurés (110+)
+
+Le plugin inclut 110+ achievements vanilla pré-configurés couvrant :
+- **Extraction** (6) : Minage, ressources minérales
+- **Construction** (7) : Placement de blocs, bâtiments
+- **Combat** (14) : Tuer mobs, dégâts, kills consécutifs, boss
+- **Mouvement** (7) : Marche, sprint, nage, vol, sauts, parkour
+- **Craft** (6) : Crafting d'items, outils, armures
+- **Pêche** (2) : Pêche basique et avancée
+- **Survie** (1) : Mort du joueur
+- **Interactions** (8) : Clic droit, consommation, eau
+- **Exploration** (8) : Biomes, dimensions (Nether, End)
+- **Ressources** (7) : Types de minerais (fer, or, diamant, lapis, etc.)
+- **Agriculture** (5) : Récolte de cultures
+- **Élevage** (6) : Reproduction et apprivoisement d'animaux
+- **Économie** (2) : Enchantement, enclume
+- **Défis** (3) : Défis spéciaux (kills consécutifs, warrior ultime)
+- **Aventure** (8) : Exploration avancée, trésors, donjons
+- **Serveur** (4) : Rejoindre, chat (débutant et maître), jouer la nuit
+- **Richesse** (3) : Accumulation de ressources
+- **Finitions** (3) : Achievements ultimes (constructeur, mineur, guerrier)
+
+## 🎨 Interface utilisateur
+
+### GUI des achievements
+Le GUI affiche pour chaque achievement :
+- **Nom** (en or)
+- **Description** (gris)
+- **Progression** actuelle (ex: 42/100)
+- **Statut** : ✓ COMPLÉTÉ en vert si terminé
+- **Récompenses** (si présentes) :
+  - ✦ XP
+  - ✦ Items (classiques ou format "give")
+  - ✦ Commande spéciale
+
+**Exemple d'affichage dans le GUI :**
+```
+Diamant trouvé
+Miner votre premier diamant
+
+Progression: 1/1
+✓ COMPLÉTÉ
+
+Récompenses:
+  ✦ 100 XP
+  ✦ 8x diamond
+```
+
+### Commande /mva list
+Affiche tous les achievements organisés par catégorie avec leurs récompenses :
+```
+===== Achievements disponibles (110) =====
+
+▸ Extraction (6)
+  • Premier coup de pioche (first_break) → 25 XP, 2x BREAD
+  • Diamant trouvé (diamond_found) → 100 XP, DIAMOND:8
+  • Maître mineur (ore_master) → 200 XP
+
+▸ Construction (7)
+  • Constructeur ultime (ultimate_builder) → 1000 XP, DIAMOND:16,EMERALD:8,GOLD_INGOT:32, Commande
+  ...
 ```
 
 ## 🔧 Build & Installation
@@ -189,53 +288,46 @@ Le jar sera automatiquement copié dans `server/plugins/`
 - **Configuration**: `plugins/MoreVanillaAdvancements/config.yml`
 - **Progression**: `plugins/MoreVanillaAdvancements/progress.yml` (persistant, compatible offline)
 
-## 📊 Exemple de GUI
-
-**Menu des catégories** (si multiple) :
-- Affiche les catégories en tant que livres cliquables
-- Montre le nombre d'achievements complétés/total par catégorie
-
-**Liste des achievements** :
-- Affiche chaque achievement avec icône, nom, progression
-- Statut "COMPLÉTÉ" en vert si fini
-- Possibilité de cliquer sur le nom pour voir la description (hover)
-
-**Affichage du chat** :
-```
-Mathilde a complété l'achievement Premier sang
-                                       ↑
-                    Au survol : "Infliger 100 points de dégâts"
-```
-
-## 🚀 Roadmap / Idées futures
-- ✅ Système de catégories avec navigation GUI
-- ✅ Types d'achievements variés (35+ types)
-- ✅ Validation automatique de configuration
-- ✅ Nom de l'achievement hoverable avec description
-- ⏳ Éditeur complet des achievements en GUI (création/édition/suppression)
-- ⏳ Support PlaceholderAPI (%mva_progress_{id}%)
-- ⏳ Multi-langue via messages.yml
-- ⏳ Achievements avec paliers/étapes
-- ⏳ Sons et messages personnalisables par achievement
-
 ## 📖 Notes techniques
 
 ### Unités de mesure
 - **Distances**: centimètres (100 cm = 1 bloc)
 - **Dégâts**: demi-cœurs × 10 (100 = 5 cœurs)
 - **Temps**: ticks (20 ticks = 1 seconde)
+- **Nuit**: entre 12000 et 24000 ticks
 
 ### Performance
 - Les achievements complétés ne sont plus trackés (optimisation)
 - Sauvegarde automatique à la complétion et au shutdown
-- Caches pour biomes et dimensions visités
-- Kill streaks avec réinitialisation à la mort
+- Caches pour biomes, dimensions et kill streaks
+- PLAYER_JOIN donné une seule fois via HashSet
+
+### Logging
+- Logs au démarrage (nombre d'achievements, catégories, types)
+- Logs à chaque completion (joueur, achievement ID et nom)
+- Logs au reload (avec détails de ce qui a été chargé)
+- Logs des erreurs de configuration
 
 ### Compatibilité
 - Spigot & Paper 1.21.x
 - Java 21
 - Compatible serveurs offline (crack) via UUID
 - Support des deux formats Deepslate (DEEPSLATE_*_ORE et *_DEEPSLATE_ORE)
+
+## 🚀 Roadmap / Idées futures
+- ✅ 40+ types d'achievements
+- ✅ 110+ achievements vanilla
+- ✅ Système de catégories avec icônes
+- ✅ Validation automatique de configuration
+- ✅ Nom de l'achievement hoverable avec description
+- ✅ Achievements sociaux (join, chat, nuit)
+- ✅ Logs console détaillés
+- ⏳ Éditeur complet des achievements en GUI (création/édition/suppression)
+- ⏳ Support PlaceholderAPI (%mva_progress_{id}%)
+- ⏳ Multi-langue via messages.yml
+- ⏳ Achievements avec paliers/étapes
+- ⏳ Sons et messages personnalisables par achievement
+- ⏳ PLAY_TIME tracker (temps de jeu)
 
 ## 👨‍💻 Développement
 - **Auteurs**: Mathilde, GitHub Copilot

@@ -47,6 +47,11 @@ public enum ConditionType {
     // Défis spéciaux
     KILL_STREAK,        // Tuer X entités sans mourir
 
-    // Autres
-    PLAY_TIME           // Temps de jeu (en ticks)
+    // Social & Serveur
+    PLAYER_JOIN,        // Rejoindre le serveur
+    PLAYER_CHAT,        // Envoyer un message dans le chat
+    PLAY_TIME,          // Temps de jeu (en ticks)
+    NIGHT_PLAY          // Jouer la nuit
 }
+
+

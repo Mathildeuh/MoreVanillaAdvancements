@@ -1,30 +1,52 @@
-sprinter:
-  3379746a-32fe-4a40-b331-d02c4c9ac770: 34108
-marathon:
-  3379746a-32fe-4a40-b331-d02c4c9ac770: 15028
-executioner:
-  3379746a-32fe-4a40-b331-d02c4c9ac770: 5
+warrior:
+  3379746a-32fe-4a40-b331-d02c4c9ac770: 461
 beast:
-  3379746a-32fe-4a40-b331-d02c4c9ac770: 15
-sauteur:
-  3379746a-32fe-4a40-b331-d02c4c9ac770: 85
+  3379746a-32fe-4a40-b331-d02c4c9ac770: 17
 first_blood:
   3379746a-32fe-4a40-b331-d02c4c9ac770: 1035
 collector:
-  3379746a-32fe-4a40-b331-d02c4c9ac770: 70
+  3379746a-32fe-4a40-b331-d02c4c9ac770: 72
+ultimate_fighter:
+  3379746a-32fe-4a40-b331-d02c4c9ac770: 2
+world_explorer:
+  3379746a-32fe-4a40-b331-d02c4c9ac770: 16
+chat_master:
+  3379746a-32fe-4a40-b331-d02c4c9ac770: 2
+end_traveler:
+  3379746a-32fe-4a40-b331-d02c4c9ac770: 1105
+first_break:
+  3379746a-32fe-4a40-b331-d02c4c9ac770: 1
+creeper_dodger:
+  3379746a-32fe-4a40-b331-d02c4c9ac770: 1
+tank:
+  3379746a-32fe-4a40-b331-d02c4c9ac770: 20
+parkour_master:
+  3379746a-32fe-4a40-b331-d02c4c9ac770: 43
+jungle_explorer:
+  3379746a-32fe-4a40-b331-d02c4c9ac770: 1
+sprinter:
+  3379746a-32fe-4a40-b331-d02c4c9ac770: 70553
+marathon:
+  3379746a-32fe-4a40-b331-d02c4c9ac770: 21306
+nether_traveler:
+  3379746a-32fe-4a40-b331-d02c4c9ac770: 3345
+executioner:
+  3379746a-32fe-4a40-b331-d02c4c9ac770: 5
+chat_novice:
+  3379746a-32fe-4a40-b331-d02c4c9ac770: 1
+sauteur:
+  3379746a-32fe-4a40-b331-d02c4c9ac770: 138
 place_100:
   3379746a-32fe-4a40-b331-d02c4c9ac770: 100
 aviateur:
-  3379746a-32fe-4a40-b331-d02c4c9ac770: 2216
+  3379746a-32fe-4a40-b331-d02c4c9ac770: 3829
+night_owl:
+  3379746a-32fe-4a40-b331-d02c4c9ac770: 50
 ninja:
   3379746a-32fe-4a40-b331-d02c4c9ac770: 220
 explorer:
   3379746a-32fe-4a40-b331-d02c4c9ac770: 5
-first_break:
-  3379746a-32fe-4a40-b331-d02c4c9ac770: 1
-tank:
-  3379746a-32fe-4a40-b331-d02c4c9ac770: 20
-jungle_explorer:
+first_join:
   3379746a-32fe-4a40-b331-d02c4c9ac770: 1
 clicker:
   3379746a-32fe-4a40-b331-d02c4c9ac770: 100

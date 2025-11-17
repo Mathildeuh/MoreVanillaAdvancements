@@ -114,9 +114,47 @@ public class AchievementGUI implements Listener {
                 meta.setDisplayName(ChatColor.GOLD + a.getDisplayName());
                 List<String> lore = new ArrayList<>();
                 lore.add(ChatColor.GRAY + a.getDescription());
+                lore.add("");
                 int prog = service.getProgress(a.getId(), target);
                 lore.add(ChatColor.YELLOW + "Progression: " + prog + "/" + a.getAmount());
-                if (prog >= a.getAmount()) lore.add(ChatColor.GREEN + "COMPLÉTÉ");
+
+                // Afficher si complété
+                if (prog >= a.getAmount()) {
+                    lore.add(ChatColor.GREEN + "✓ COMPLÉTÉ");
+                }
+
+                // Afficher les récompenses si elles existent
+                if (a.getReward() != null && a.getReward().hasReward()) {
+                    lore.add("");
+                    lore.add(ChatColor.AQUA + "Récompenses:");
+
+                    var reward = a.getReward();
+
+                    // XP
+                    if (reward.getXp() > 0) {
+                        lore.add(ChatColor.GREEN + "  ✦ " + reward.getXp() + " XP");
+                    }
+
+                    // Give items
+                    if (reward.getGiveItems() != null && !reward.getGiveItems().isEmpty()) {
+                        String[] items = reward.getGiveItems().split(",");
+                        for (String itemStr : items) {
+                            itemStr = itemStr.trim();
+                            if (itemStr.contains(":")) {
+                                String[] parts = itemStr.split(":");
+                                String materialName = parts[0].trim().replace("_", " ").toLowerCase();
+                                String qty = parts[1].trim();
+                                lore.add(ChatColor.GREEN + "  ✦ " + qty + "x " + materialName);
+                            }
+                        }
+                    }
+
+                    // Command
+                    if (reward.getCommand() != null && !reward.getCommand().isEmpty()) {
+                        lore.add(ChatColor.GREEN + "  ✦ Commande spéciale");
+                    }
+                }
+
                 meta.setLore(lore);
                 it.setItemMeta(meta);
             }

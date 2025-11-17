@@ -17,7 +17,9 @@ import org.bukkit.event.inventory.CraftItemEvent;
 import org.bukkit.event.player.*;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
 
 public class ProgressListeners implements Listener {
@@ -25,6 +27,10 @@ public class ProgressListeners implements Listener {
     private final AchievementService service;
     // Cache pour détecter les sauts (track la position Y précédente)
     private final Map<UUID, Double> lastY = new HashMap<>();
+
+    // === LISTENERS SOCIAUX ===
+    // Track des joueurs qui ont déjà reçu l'achievement PLAYER_JOIN
+    private final Set<UUID> joinAchievementGiven = new HashSet<>();
 
     public ProgressListeners(AchievementService service) {
         this.service = service;
@@ -312,5 +318,35 @@ public class ProgressListeners implements Listener {
     public void onKillStreakBreak(PlayerDeathEvent e) {
         UUID uuid = e.getEntity().getUniqueId();
         killStreaks.remove(uuid);
+    }
+
+    @EventHandler
+    public void onPlayerJoin(PlayerJoinEvent e) {
+        Player p = e.getPlayer();
+        UUID uuid = p.getUniqueId();
+
+        // Donner l'achievement de première connexion seulement une fois
+        if (!joinAchievementGiven.contains(uuid)) {
+            joinAchievementGiven.add(uuid);
+            service.onEvent(ConditionType.PLAYER_JOIN, "*", uuid);
+        }
+    }
+
+    @EventHandler
+    public void onPlayerChat(AsyncPlayerChatEvent e) {
+        Player p = e.getPlayer();
+        service.onEvent(ConditionType.PLAYER_CHAT, "*", p.getUniqueId());
+    }
+
+    @EventHandler
+    public void onPlayerNightPlay(PlayerMoveEvent e) {
+        if (e.getTo() == null) return;
+        Player p = e.getPlayer();
+
+        // Vérifier si c'est la nuit (entre 12000 et 24000 ticks)
+        long time = p.getWorld().getTime();
+        if (time >= 12000 && time <= 24000) {
+            service.onEvent(ConditionType.NIGHT_PLAY, "*", p.getUniqueId());
+        }
     }
 }

@@ -99,7 +99,58 @@ public class AchievementsCommand implements CommandExecutor, TabCompleter {
                 gui.openFor((Player) sender, off.getUniqueId(), off.getName() != null ? off.getName() : args[1]);
                 return true;
             case "list":
-                sender.sendMessage(ChatColor.GOLD + "Achievements disponibles: " + ChatColor.YELLOW + String.join(", ", config.getAchievements().keySet()));
+                sender.sendMessage(ChatColor.GOLD + "===== " + ChatColor.YELLOW + "Achievements disponibles (" + config.getAchievements().size() + ")" + ChatColor.GOLD + " =====");
+
+                // Grouper par catégorie
+                Map<String, List<String>> byCategory = new LinkedHashMap<>();
+                for (var entry : config.getAchievements().entrySet()) {
+                    String achId = entry.getKey();
+                    var ach = entry.getValue();
+                    String cat = ach.getCategory() != null ? ach.getCategory() : "Général";
+                    byCategory.computeIfAbsent(cat, k -> new ArrayList<>()).add(achId);
+                }
+
+                // Afficher par catégorie
+                for (Map.Entry<String, List<String>> catEntry : byCategory.entrySet()) {
+                    sender.sendMessage(ChatColor.AQUA + "\n▸ " + catEntry.getKey() + ChatColor.GRAY + " (" + catEntry.getValue().size() + ")");
+
+                    for (String achId : catEntry.getValue()) {
+                        var ach = config.getAchievements().get(achId);
+                        StringBuilder line = new StringBuilder();
+                        line.append(ChatColor.YELLOW).append("  • ").append(ChatColor.WHITE).append(ach.getDisplayName());
+                        line.append(ChatColor.GRAY).append(" (").append(achId).append(")");
+
+                        // Afficher la récompense si elle existe
+                        if (ach.getReward() != null && ach.getReward().hasReward()) {
+                            line.append(ChatColor.GREEN).append(" → ");
+                            var reward = ach.getReward();
+                            List<String> rewards = new ArrayList<>();
+
+                            // XP
+                            if (reward.getXp() > 0) {
+                                rewards.add(reward.getXp() + " XP");
+                            }
+
+                            // Give items
+                            if (reward.getGiveItems() != null && !reward.getGiveItems().isEmpty()) {
+                                rewards.add(reward.getGiveItems());
+                            }
+
+                            // Command
+                            if (reward.getCommand() != null && !reward.getCommand().isEmpty()) {
+                                rewards.add("Commande");
+                            }
+
+                            if (!rewards.isEmpty()) {
+                                line.append(String.join(ChatColor.GRAY + ", " + ChatColor.GREEN, rewards));
+                            }
+                        }
+
+                        sender.sendMessage(line.toString());
+                    }
+                }
+
+                sender.sendMessage(ChatColor.GOLD + "\nUtilisez " + ChatColor.YELLOW + "/mva open" + ChatColor.GOLD + " pour voir votre progression");
                 return true;
             case "reset":
                 if (!sender.hasPermission("mva.reset")) { sender.sendMessage(ChatColor.RED + "No permission."); return true; }
