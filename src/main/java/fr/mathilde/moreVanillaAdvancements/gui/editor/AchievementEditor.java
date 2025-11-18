@@ -119,6 +119,18 @@ public class AchievementEditor implements Listener {
         openEditorMenu(player);
     }
 
+    /**
+     * Ouvre la confirmation de suppression pour un achievement par son ID.
+     */
+    public void openDeleteConfirmation(Player player, String achievementId) {
+        if (!config.getAchievements().containsKey(achievementId)) {
+            // Message simple pour l'instant; peut être déplacé en langue si besoin.
+            player.sendMessage(ChatColor.RED + "Achievement '" + achievementId + "' introuvable.");
+            return;
+        }
+        confirmDelete(player, achievementId);
+    }
+
     // --- Event Handlers ---
 
     @EventHandler

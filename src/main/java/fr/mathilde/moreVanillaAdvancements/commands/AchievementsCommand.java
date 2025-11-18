@@ -206,6 +206,21 @@ public class AchievementsCommand implements CommandExecutor, TabCompleter {
                 }
                 editor.openNewAchievementEditor((Player) sender);
                 return true;
+            case "delete":
+                if (!(sender instanceof Player)) {
+                    sender.sendMessage(langManager.getMessage("general.player-only"));
+                    return true;
+                }
+                if (!sender.hasPermission("mva.editor")) {
+                    sender.sendMessage(langManager.getMessage("general.no-permission"));
+                    return true;
+                }
+                if (args.length < 2) {
+                    sender.sendMessage(ChatColor.YELLOW + "Usage: /" + label + " delete <achievementId>");
+                    return true;
+                }
+                editor.openDeleteConfirmation((Player) sender, args[1]);
+                return true;
             case "lang":
                 if (args.length < 2) {
                     Map<String, String> placeholders = new HashMap<>();
@@ -239,7 +254,7 @@ public class AchievementsCommand implements CommandExecutor, TabCompleter {
 
     @Override
     public List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String alias, @NotNull String[] args) {
-        if (args.length == 1) return Arrays.asList("reload", "open", "view", "list", "reset", "settings", "editor", "create", "lang");
+        if (args.length == 1) return Arrays.asList("reload", "open", "view", "list", "reset", "settings", "editor", "create", "delete", "lang");
         if (args.length == 2 && (args[0].equalsIgnoreCase("open") || args[0].equalsIgnoreCase("reset") || args[0].equalsIgnoreCase("view"))) {
             return Bukkit.getOnlinePlayers().stream().map(Player::getName).collect(Collectors.toList());
         }
@@ -250,6 +265,9 @@ public class AchievementsCommand implements CommandExecutor, TabCompleter {
             List<String> ids = new ArrayList<>(config.getAchievements().keySet());
             ids.add("all");
             return ids;
+        }
+        if (args.length == 2 && args[0].equalsIgnoreCase("delete")) {
+            return new ArrayList<>(config.getAchievements().keySet());
         }
         return Collections.emptyList();
     }
