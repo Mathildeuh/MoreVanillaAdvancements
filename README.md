@@ -1,416 +1,259 @@
 # MoreVanillaAdvancements
 
-Plugin Spigot/Paper 1.21.x pour des achievements (succès) 100% configurables et modulaires.
+**MoreVanillaAdvancements** is a plugin that enhances Minecraft's vanilla advancement system by offering a complete and fully customizable progression experience. Create your own achievements, manage rewards, and provide engaging and motivating gameplay for your players.
 
-## 🎯 Fonctionnalités principales
-- **110+ achievements vanilla** pré-configurés couvrant tous les modes de jeu
-- **40+ types d'événements** trackables : blocs, combat, mouvement, craft, exploration, social, etc.
-- **Système de catégories** optionnel avec 16 catégories (Extraction, Combat, Construction, etc.)
-- **GUI joueur** listant la progression (complété/pas encore), consultable pour soi ou un autre joueur
-- **GUI admin** pour basculer rapidement les réglages (broadcast chat, title privé)
-- **Système de récompenses** optionnelles: XP, items, et/ou commande console
-- **Annonces publiques** dans le chat avec nom de l'achievement **hoverable** et description
-- **Title privé** au joueur (paramétrables)
-- **Compatible serveurs crack** (offline-mode) via UUID hors-ligne
-- **Validation automatique de configuration** avec erreurs bloquantes et avertissements
-- **Logs console détaillés** : démarrage, completions, reloads
-- **Commandes claires** avec tab-completion
-- **Auto-export** dans server/plugins après build
+---
 
-## 📋 Commandes
-- `/mva` (alias: `/achievements`, `/succes`)
-  - `reload` – recharge et valide la configuration
-  - `open [joueur]` – ouvre le GUI (pour soi par défaut, ou pour un joueur en ligne)
-  - `view <joueur>` – ouvre le GUI de la progression d'un autre joueur (en ligne ou hors-ligne)
-  - `list [page]` – liste les achievements avec pagination (10 par page) et navigation cliquable
-  - `reset <joueur> [achievementId|all]` – remet à zéro la progression du joueur
-  - `settings` – ouvre le GUI d'administration des réglages
-  - `lang <langue>` – change la langue du plugin (fr, en, es)
+## ✦ Key Features ✦
 
-## 🔐 Permissions
-- `mva.use` (par défaut: true)
-- `mva.reload` (par défaut: op)
-- `mva.reset` (par défaut: op)
+### ✨ Custom Advancements
+- Create unlimited advancements with customizable icons, descriptions, and objectives  
+- Full progression support (counters, percentages, milestones, etc.)  
 
-## 🎮 Types d'achievements supportés (40+)
+### 🎁 Reward System
+- Grant experience points upon completion  
+- Automatically give items as rewards  
+- Execute custom commands when an advancement is completed  
 
-### Blocs & Construction
-- `BLOCK_BREAK` - Casser des blocs (target: `*` ou `Material`)
-- `BLOCK_PLACE` - Placer des blocs (target: `*` ou `Material`)
+### 📂 Category Organization
+- Organize advancements into logical categories  
+- Clean visual layout with customizable icons  
+- Optional hideable categories  
 
-### Combat
-- `ENTITY_KILL` - Tuer des entités (target: `*` ou `EntityType`)
-- `DAMAGE_DEALT` - Dégâts infligés (en demi-cœurs × 10)
-- `DAMAGE_TAKEN` - Dégâts reçus (en demi-cœurs × 10)
-- `DEATH` - Nombre de morts
-- `KILL_STREAK` - Tuer X entités sans mourir (kills consécutifs)
+### 🖥️ Intuitive User Interface
+- Player\-friendly and easy\-to\-navigate GUI menus  
+- Clear display of progress, completion state, and rewards  
+- Intuitive back button and navigation controls  
 
-### Mouvement
-- `WALK` - Distance marchée (en centimètres)
-- `SPRINT` - Distance sprintée (en centimètres)
-- `CROUCH` - Distance en sneak (en centimètres)
-- `SWIM` - Distance nagée (en centimètres)
-- `FLY` - Distance volée/glide (en centimètres)
-- `JUMP` - Nombre de sauts
+### 🛡️ Anti\-Grief Protection
+- Items cannot be removed from the GUI  
+- Shift\-click, drag and most inventory interactions are blocked  
+- Safe for public use on survival servers  
 
-### Items & Craft
-- `ITEM_CRAFT` - Items craftés (target: `*` ou `Material`)
-- `ITEM_PICKUP` - Items ramassés (target: `*` ou `Material`)
-- `ITEM_DROP` - Items jetés (target: `*` ou `Material`)
+### 📊 Progress Viewing
+- Open your own progress menu with `/mva` or `/mva open`  
+- View another player’s advancements using `/mva open <player>`  
+- Unified, consistent interface for all players  
 
-### Interactions
-- `BLOCK_INTERACT` - Clic droit sur un bloc (target: `*` ou `Material`)
-- `ITEM_USE` - Utiliser un item (clic droit, target: `*` ou `Material`)
-- `ITEM_CONSUME` - Consommer un item/nourriture (target: `*` ou `Material`)
-- `ENTITY_INTERACT` - Interagir avec une entité (target: `*` ou `EntityType`)
+### ⚙️ Flexible Configuration
+- Multi\-language message system  
+- Simple YAML\-based configuration files  
+- Supports color codes and text formatting  
 
-### Autres basiques
-- `FISH_CAUGHT` - Poissons pêchés
+---
 
-### Exploration
-- `BIOME_VISIT` - Visiter un biome (target: `*` ou `BiomeName`)
-- `DIMENSION_TRAVEL` - Voyager entre dimensions (target: `*` ou `DimensionName`)
+## ✦ Commands ✦
 
-### Ressources & Minerais
-- `ORE_MINE` - Miner un minerai (target: `*` ou `DIAMOND_ORE`, `IRON_ORE`, etc.)
-  - Support Deepslate: `DEEPSLATE_IRON_ORE`, `IRON_DEEPSLATE_ORE`, etc.
+- **/mva \[open\]** – Open your own advancement menu  
+- **/mva open \<player\>** – View another player's advancements  
+- **/mva create** – Open the GUI to create a new advancement  
+- **/mva edit** – Open the GUI to edit existing advancements  
+- **/mva delete \<id\>** – Open a confirmation GUI to delete an advancement  
+- **/mva settings** – Open the admin settings GUI  
+- **/mva list \[page\]** – List all advancements with clickable pagination  
+- **/mva view \<player\>** – Open another player's progression GUI (online or offline, if supported)  
+- **/mva reset \<player\> \[achievementId\|all\]** – Reset a player's advancement progression  
+- **/mva lang \[code\]** – Change the plugin language (`en`, `fr`, `es`, etc.)  
+- **/mva reload** – Reload and validate configuration files  
 
-### Élevage & Agriculture
-- `ANIMAL_BREED` - Reproduire des animaux (target: `*` ou `COW`, `SHEEP`, etc.)
-- `CROP_HARVEST` - Récolter des cultures (target: `*` ou `WHEAT`, `CARROTS`, etc.)
-- `ANIMAL_TAME` - Apprivoiser des animaux (target: `*` ou `WOLF`, `HORSE`, etc.)
+---
 
-### Économie
-- `ENCHANT_ITEM` - Enchanter des items (target: `*` ou `Material`)
-- `FURNACE_SMELT` - Fondre des items dans un four
+## ✦ Configuration ✦
 
-### Social & Serveur
-- `PLAYER_JOIN` - Rejoindre le serveur pour la première fois (donné une seule fois)
-- `PLAYER_CHAT` - Envoyer un message dans le chat
-- `NIGHT_PLAY` - Jouer la nuit (entre 12000 et 24000 ticks)
+Everything is configured through YAML files:
 
-### Futur
-- `PLAY_TIME` - Temps de jeu (en ticks) [Déclaré, à implémenter]
+- Advancements and their properties (name, description, type, amount, category, rewards, etc.)  
+- Categories and their icons/visibility  
+- Messages and displayed text  
+- GUI titles and icons  
 
-## 📝 Configuration
+Typical files:
 
-### Structure de base
+- `plugins/MoreVanillaAdvancements/config.yml` – General settings, language, GUI settings  
+- `plugins/MoreVanillaAdvancements/achievements.yml` – All custom advancements  
+- `plugins/MoreVanillaAdvancements/progress.yml` – Saved player progression (auto\-managed by the plugin)  
+
+Example advancement (simplified):
+
 ```yaml
-settings:
-  broadcastChat: true      # Annonce publique dans le chat
-  showTitle: true          # Title privé au joueur
-  chatFormat: "&b{player} &7a complété l'achievement &a{name}"
-
-categories:
-  "Extraction":
-    icon: STONE_PICKAXE
-    show: true
-  # ... autres catégories
-
 achievements:
-  id_achievement:
-    name: Nom de l'achievement
-    description: Description
-    icon: MATERIAL_NAME
-    type: TYPE_ACHIEVEMENT
-    target: "*"  # ou un matériau/entité spécifique
-    amount: 100
-    category: "Nom de la catégorie"  # optionnel
-    reward:      # optionnel
-      xp: 25
-      give: "BREAD:2"  # Format: "MATERIAL:QUANTITY" ou "MAT1:QTY1,MAT2:QTY2,..."
-      command: "say {player} a réussi!"
+  marathon:
+    name: Marathon
+    description: Walk 10 km in total
+    icon: LEATHER_BOOTS
+    type: WALK
+    target: "*"
+    amount: 1000000   # 10 km in centimeters
+    category: "Movement"
+    reward:
+      xp: 100
+      give: "BREAD:4"
+      command: "say {player} just completed Marathon!"
 ```
 
-### Système de récompenses
+Configuration validation:
 
-Le plugin supporte trois types de récompenses configurables :
+- On startup and `/mva reload`, the plugin validates all achievements  
+- Invalid fields (missing type, invalid amount, bad material names, etc.) are reported in console  
+- Critical errors prevent loading; warnings are logged but the plugin continues to run  
 
-**1. XP**
-```yaml
-reward:
-  xp: 100
-```
+---
 
-**2. Items (format "give")**
-- **Un seul item** : `give: "DIAMOND:8"` → donne 8 diamants
-- **Plusieurs items** : `give: "DIAMOND:16,EMERALD:8,GOLD_INGOT:32"` → donne plusieurs items différents
-- Format : `MATERIAL:QUANTITY` séparés par des virgules
+## ✦ Permissions ✦
 
-```yaml
-reward:
-  xp: 100
-  give: "DIAMOND:8,EMERALD:4"
-```
+Player access:
 
-**3. Commandes console**
-```yaml
-reward:
-  xp: 100
-  give: "DIAMOND:16"
-  command: "say {player} a réussi !"
-```
-Le placeholder `{player}` est remplacé par le nom du joueur.
+- **morevanillaadvancements.view** – Access to the advancement menu (default: `true`)  
+- **morevanillaadvancements.view.others** – View other players' advancements  
 
-### Validation de configuration
-Le plugin valide automatiquement la configuration :
-- **Au démarrage** : Les erreurs bloquent le démarrage du plugin
-- **Au reload** : Les erreurs annulent le reload, les avertissements s'affichent mais le reload continue
+Core permissions (suggested):
 
-**Erreurs détectées** ❌ :
-- Types invalides
-- Champs critiques manquants (name, type, amount)
-- Amount non entier ou <= 0
+- **mva.use** – General access to the `/mva` command (default: `true`)  
+- **mva.editor** – Access to editor features (`/mva create`, `/mva edit`, `/mva delete`, `/mva settings`)  
+- **mva.reset** – Use `/mva reset` to reset player progress  
+- **mva.reload** – Use `/mva reload` to reload configuration  
+- **mva.lang** – Change plugin language with `/mva lang`  
 
-**Avertissements affichés** ⚠️ :
-- Description manquante
-- Format chatFormat incomplet ({name} ou {player})
-- Catégories non définies ou non utilisées
-- Icons/items invalides
+> Adjust permission names to match your `plugin.yml` if they differ.
 
-### Exemples d'achievements
+---
 
-#### Mouvement
-```yaml
-marathon:
-  name: Marathon
-  description: Marcher 10 km
-  icon: LEATHER_BOOTS
-  type: WALK
-  target: "*"
-  amount: 1000000  # 10 km en centimètres
-  category: "Mouvement"
-```
+## ✦ Supported Versions ✦
 
-#### Combat
-```yaml
-first_blood:
-  name: Premier sang
-  description: Infliger 100 points de dégâts
-  icon: IRON_SWORD
-  type: DAMAGE_DEALT
-  target: "*"
-  amount: 1000  # 50 cœurs (1000 demi-cœurs)
-  category: "Combat"
-```
+- Minecraft server software: **Paper/Spigot 1.21+**  
+- Recommended Java version: **Java 21** or newer  
 
-#### Social
-```yaml
-first_join:
-  name: Bienvenue
-  description: Rejoindre le serveur pour la première fois
-  icon: PAINTING
-  type: PLAYER_JOIN
-  target: "*"
-  amount: 1
-  category: "Serveur"
+Older versions are not officially supported unless explicitly stated in the releases.
+
+---
+
+## ✦ User Interface ✦
+
+### Player GUI
+The main advancements GUI shows:
+
+- Name and description of each advancement  
+- Current progress (e.g. `42 / 100`, percentage, etc.)  
+- Completion state (e.g. a green \`✔ Completed\` line when done)  
+- Rewards summary (XP, items, and/or commands)  
+
+Navigation:
+
+- Clickable items to open categories or details  
+- Back button to return to the previous menu  
+- Protection against taking/moving items out of the GUI  
+
+### Admin GUI
+The admin/settings GUI allows you to:
+
+- Quickly toggle broadcast messages in chat  
+- Enable/disable private titles for completed advancements  
+- Access editor tools to create, edit or delete advancements  
+
+---
+
+## ✦ Rewards System ✦
+
+Each advancement can grant one or more rewards:
+
+- **XP reward**  
+  ```yaml
   reward:
-    xp: 50
+    xp: 100
+  ```
+
+- **Item reward** (single or multiple items)  
+  ```yaml
+  reward:
+    give: "DIAMOND:8,EMERALD:4"
+  ```
+
+- **Command reward** (executed from console)  
+  ```yaml
+  reward:
+    command: "say {player} completed an epic challenge!"
+  ```
+
+Supported placeholders (in rewards/commands):
+
+- `{player}` – The name of the player who completed the advancement  
+
+---
+
+## ✦ Multi\-Language Support ✦
+
+The plugin ships with a simple localization system:
+
+- Default language: `en`  
+- Additional example languages: `fr`, `es` (if provided in your resources)  
+
+Languages can be configured:
+
+- In `config.yml` (e.g. `language: en`)  
+- At runtime using `/mva lang <code>`  
+
+Language files (examples):
+
+- `lang_en.yml`  
+- `lang_fr.yml`  
+- `lang_es.yml`  
+
+Each file contains all translatable messages (GUI titles, chat messages, errors, etc.).
+
+---
+
+## ✦ Data & Performance ✦
+
+- Player progress is persisted in YAML and cached in memory  
+- Completed advancements are no longer tracked to reduce overhead  
+- Regular auto\-save and safe shutdown saving  
+- Designed to be lightweight and suitable for survival and SMP servers  
+
+Technical notes:
+
+- Distances tracked in centimeters (100 cm = 1 block)  
+- Damage tracked as half\-hearts × 10  
+- Time tracked in ticks (20 ticks = 1 second)  
+
+---
+
+## ✦ Build & Installation ✦
+
+### Build (Gradle)
+From the project root:
+
+```bash
+./gradlew clean build
 ```
 
-## 📊 Achievements pré-configurés (110+)
+The built jar will be available in `build/libs/` and can optionally be auto\-copied to a `server/plugins/` folder if you configured it in your Gradle script.
 
-Le plugin inclut 110+ achievements vanilla pré-configurés couvrant :
-- **Extraction** (6) : Minage, ressources minérales
-- **Construction** (7) : Placement de blocs, bâtiments
-- **Combat** (14) : Tuer mobs, dégâts, kills consécutifs, boss
-- **Mouvement** (7) : Marche, sprint, nage, vol, sauts, parkour
-- **Craft** (6) : Crafting d'items, outils, armures
-- **Pêche** (2) : Pêche basique et avancée
-- **Survie** (1) : Mort du joueur
-- **Interactions** (8) : Clic droit, consommation, eau
-- **Exploration** (8) : Biomes, dimensions (Nether, End)
-- **Ressources** (7) : Types de minerais (fer, or, diamant, lapis, etc.)
-- **Agriculture** (5) : Récolte de cultures
-- **Élevage** (6) : Reproduction et apprivoisement d'animaux
-- **Économie** (2) : Enchantement, enclume
-- **Défis** (3) : Défis spéciaux (kills consécutifs, warrior ultime)
-- **Aventure** (8) : Exploration avancée, trésors, donjons
-- **Serveur** (4) : Rejoindre, chat (débutant et maître), jouer la nuit
-- **Richesse** (3) : Accumulation de ressources
-- **Finitions** (3) : Achievements ultimes (constructeur, mineur, guerrier)
+### Installation
+1. Place the jar in your server's `plugins/` folder  
+2. Start the server once to generate default configuration files  
+3. Edit `config.yml` and `achievements.yml` to match your server's needs  
+4. Use `/mva reload` to apply changes, or restart the server  
 
-## 🎨 Interface utilisateur
+---
 
-### GUI des achievements
-Le GUI affiche pour chaque achievement :
-- **Nom** (en or)
-- **Description** (gris)
-- **Progression** actuelle (ex: 42/100)
-- **Statut** : ✓ COMPLÉTÉ en vert si terminé
-- **Récompenses** (si présentes) :
-  - ✦ XP
-  - ✦ Items (classiques ou format "give")
-  - ✦ Commande spéciale
+## ✦ Roadmap ✦
 
-**Exemple d'affichage dans le GUI :**
-```
-Diamant trouvé
-Miner votre premier diamant
+Planned or potential future improvements:
 
-Progression: 1/1
-✓ COMPLÉTÉ
+- PlaceholderAPI support (e.g. `%mva_progress_{id}%`)  
+- Multi\-stage / tiered advancements  
+- Per\-advancement sounds and custom completion messages  
+- Improved in\-game GUI editor (search, duplication, filters, etc.)  
+- Additional trigger types (play time, custom stats, etc.)  
 
-Récompenses:
-  ✦ 100 XP
-  ✦ 8x diamond
-```
+---
 
-### Commande /mva list
-Affiche tous les achievements organisés par catégorie avec leurs récompenses :
-```
-===== Achievements disponibles (110) =====
-Page 1/11
+## ✦ Support ✦
 
-▸ Extraction (6)
-  • Premier coup de pioche (first_break) → 25 XP, BREAD:2
-  • Diamant trouvé (diamond_found) → 100 XP, DIAMOND:8
-  • Maître mineur (ore_master) → 200 XP
+If you need help:
 
-▸ Construction (4)
-  • Constructeur ultime (ultimate_builder) → 1000 XP, DIAMOND:16,EMERALD:8,GOLD_INGOT:32, Commande
-  ...
+- Check the documentation in this repository  
+- Open an issue on GitHub with logs and your configuration snippets  
+- Provide your server version, Java version, and plugin version when reporting bugs  
 
-« Précédent | Suivant »
-Utilisez /mva open pour voir votre progression
-```
-
-**Navigation :**
-- Boutons cliquables "« Précédent" et "Suivant »" dans le chat
-- Hover pour voir le numéro de page
-- 10 achievements par page pour éviter le spam
-- Pour la console : `/mva list <page>` (ex: `/mva list 2`)
-
-## 🔧 Build & Installation
-
-### Build
-```powershell
-./gradlew.bat clean build
-```
-Le jar sera automatiquement copié dans `server/plugins/`
-
-### Installation manuelle
-1. Télécharger le jar depuis `build/libs/MoreVanillaAdvancements-1.0.0.jar`
-2. Placer dans le dossier `plugins/` de votre serveur
-3. Redémarrer le serveur
-4. Configurer `plugins/MoreVanillaAdvancements/config.yml`
-
-## 🌍 Système multi-langue
-
-Le plugin supporte plusieurs langues pré-configurées :
-- 🇬🇧 **Anglais** (`en`) - **Langue par défaut**
-- 🇫🇷 **Français** (`fr`)
-- 🇪🇸 **Espagnol** (`es`)
-
-### Configuration de la langue
-
-**Dans config.yml** :
-```yaml
-settings:
-  language: "en"  # Available languages: fr, en, es (generated on first use)
-```
-
-La langue configurée sera chargée automatiquement au démarrage du serveur.
-
-**Important** : Les fichiers de langue sont générés **automatiquement lors du premier changement de langue** via la commande `/mva lang <langue>`. Seul le fichier anglais (`lang_en.yml`) est créé par défaut au premier démarrage.
-
-### Changer de langue
-
-**Commande** : `/mva lang <langue>`
-
-**Exemples** :
-```
-/mva lang en  → Switch to English (default)
-/mva lang fr  → Passe en français
-/mva lang es  → Cambiar a español
-```
-
-Lors du premier changement vers une langue (fr ou es), le fichier correspondant sera automatiquement créé dans le dossier du plugin.
-
-**Important** : Le changement de langue via la commande est **sauvegardé automatiquement** dans config.yml et persistera après un redémarrage du serveur.
-
-**Tab-completion** : La commande propose automatiquement les langues disponibles.
-
-### Langues disponibles
-
-**Commande** : `/mva lang` (sans argument)
-Affiche la liste des langues disponibles.
-
-### Fichiers de langue
-
-Les fichiers de langue se trouvent dans `plugins/MoreVanillaAdvancements/` :
-- `lang_en.yml` - English (créé automatiquement au premier démarrage)
-- `lang_fr.yml` - Français (créé lors du premier `/mva lang fr`)
-- `lang_es.yml` - Español (créé lors du premier `/mva lang es`)
-
-**Génération automatique** : Les fichiers de langue sont créés automatiquement lors de leur première utilisation. Cela évite d'encombrer le dossier du plugin avec des fichiers inutilisés.
-
-**Personnalisation** : Vous pouvez modifier ces fichiers pour personnaliser les messages dans chaque langue.
-
-**Ajout d'une langue** : 
-1. Créez un fichier `lang_XX.yml` (où XX est le code de langue)
-2. Copiez le contenu d'un fichier existant
-3. Traduisez tous les messages
-4. Ajoutez le code de langue dans `LangManager.AVAILABLE_LANGUAGES`
-
-### Messages traduits
-
-100% des messages du plugin sont traduits :
-- ✅ Commandes et leurs retours
-- ✅ Menus GUI (titres et lores)
-- ✅ Messages d'achievements (completion, broadcast)
-- ✅ Validation de configuration (erreurs et warnings)
-- ✅ Logs console
-- ✅ Boutons et navigation
-
-## 💾 Données
-- **Configuration**: `plugins/MoreVanillaAdvancements/config.yml`
-- **Progression**: `plugins/MoreVanillaAdvancements/progress.yml` (persistant, compatible offline)
-
-## 📖 Notes techniques
-
-### Unités de mesure
-- **Distances**: centimètres (100 cm = 1 bloc)
-- **Dégâts**: demi-cœurs × 10 (100 = 5 cœurs)
-- **Temps**: ticks (20 ticks = 1 seconde)
-- **Nuit**: entre 12000 et 24000 ticks
-
-### Performance
-- Les achievements complétés ne sont plus trackés (optimisation)
-- Sauvegarde automatique à la complétion et au shutdown
-- Caches pour biomes, dimensions et kill streaks
-- PLAYER_JOIN donné une seule fois via HashSet
-
-### Logging
-- Logs au démarrage (nombre d'achievements, catégories, types)
-- Logs à chaque completion (joueur, achievement ID et nom)
-- Logs au reload (avec détails de ce qui a été chargé)
-- Logs des erreurs de configuration
-
-### Compatibilité
-- Spigot & Paper 1.21.x
-- Java 21
-- Compatible serveurs offline (crack) via UUID
-- Support des deux formats Deepslate (DEEPSLATE_*_ORE et *_DEEPSLATE_ORE)
-
-## 🚀 Roadmap / Idées futures
-- ✅ 40+ types d'achievements
-- ✅ 110+ achievements vanilla
-- ✅ Système de catégories avec icônes
-- ✅ Validation automatique de configuration
-- ✅ Nom de l'achievement hoverable avec description
-- ✅ Achievements sociaux (join, chat, nuit)
-- ✅ Logs console détaillés
-- ⏳ Éditeur complet des achievements en GUI (création/édition/suppression)
-- ⏳ Support PlaceholderAPI (%mva_progress_{id}%)
-- ⏳ Multi-langue via messages.yml
-- ⏳ Achievements avec paliers/étapes
-- ⏳ Sons et messages personnalisables par achievement
-- ⏳ PLAY_TIME tracker (temps de jeu)
-
-## 👨‍💻 Développement
-- **Auteurs**: Mathilde, GitHub Copilot
-- **Licence**: [À définir]
-- **API Version**: 1.21
-- **Dernière mise à jour**: 17/11/2025
-
+Thank you for using **MoreVanillaAdvancements**!
