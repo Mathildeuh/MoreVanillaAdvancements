@@ -99,6 +99,26 @@ public class AchievementEditor implements Listener {
         player.openInventory(inv);
     }
 
+    // --- Public API ---
+
+    /**
+     * Ouvre directement l’éditeur pour créer un nouvel achievement.
+     * Équivalent à cliquer sur le bouton "New" dans la liste.
+     */
+    public void openNewAchievementEditor(Player player) {
+        EditorSession session = sessions.get(player.getUniqueId());
+        if (session == null) {
+            session = new EditorSession();
+            session.achievementIds = new ArrayList<>(config.getAchievements().keySet());
+            session.totalPages = (int) Math.ceil((double) session.achievementIds.size() / ITEMS_PER_PAGE);
+            if (session.totalPages == 0) session.totalPages = 1;
+            sessions.put(player.getUniqueId(), session);
+        }
+        session.editingId = null;
+        session.currentAchievement = new EditorData(null); // nouveaux defaults
+        openEditorMenu(player);
+    }
+
     // --- Event Handlers ---
 
     @EventHandler

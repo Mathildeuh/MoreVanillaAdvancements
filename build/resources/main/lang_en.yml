@@ -17,7 +17,7 @@ general:
 # COMMANDS
 # ====================================
 commands:
-  usage: "&eUsage: /mva reload | open [player] | view <player> | list | reset <player> [achievementId|all] | settings | editor | lang <language>"
+  usage: "&eUsage: /mva reload | open [player] | view <player> | list | reset <player> [achievementId|all] | settings | editor | lang <language> | create"
 
   # Reload
   reload:
