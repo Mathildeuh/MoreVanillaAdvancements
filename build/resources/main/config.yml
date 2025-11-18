@@ -60,7 +60,8 @@ achievements:
   first_break:
     name: Premier coup de pioche
     description: Casser votre premier bloc
-    icon: STONE_PICKAXE
+    icon:
+      type: STONE_PICKAXE
     type: BLOCK_BREAK
     target: "*"
     amount: 1

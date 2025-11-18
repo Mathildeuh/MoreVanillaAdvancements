@@ -17,7 +17,7 @@ general:
 # COMMANDS
 # ====================================
 commands:
-  usage: "&eUsage: /mva reload | open [player] | view <player> | list | reset <player> [achievementId|all] | settings | lang <language>"
+  usage: "&eUsage: /mva reload | open [player] | view <player> | list | reset <player> [achievementId|all] | settings | editor | lang <language>"
 
   # Reload
   reload:
@@ -107,6 +107,82 @@ achievements:
 
       back-button:
         name: "&e← Back to categories"
+
+# ====================================
+# ACHIEVEMENT EDITOR
+# ====================================
+editor:
+  # Error messages
+  achievement-not-found: "&cAchievement not found."
+  name-required: "&cAchievement name is required."
+  invalid-amount: "&cAmount must be a positive integer."
+  invalid-number: "&cEnter a valid number."
+  save-error: "&cError saving achievement. Check logs."
+  delete-error: "&cError deleting achievement. Check logs."
+  saved-success: "&a✓ Achievement saved successfully!"
+  deleted-success: "&a✓ Achievement deleted successfully!"
+
+  # Inventory titles
+  list-title: "&8» &6Achievement Editor"
+  edit-title: "&8» &6Edit Achievement"
+  reward-title: "&8» &6Edit Rewards"
+  delete-title: "&8» &cConfirm Delete"
+
+  # List GUI
+  list:
+    new-button: "&a+ Create New Achievement"
+    previous-page: "&e« Previous Page"
+    next-page: "&eNext Page »"
+    item-lore-id: "&7ID: {id}"
+    item-lore-type: "&7Type: {type}"
+    item-lore-edit: "&eClick to edit"
+    item-lore-delete: "&cShift-Click to delete"
+
+  # Edit GUI buttons
+  edit:
+    name: "&eName"
+    description: "&eDescription"
+    icon: "&eIcon"
+    type: "&eType"
+    target: "&eTarget"
+    amount: "&eAmount"
+    category: "&eCategory"
+    rewards: "&eRewards"
+    save: "&a✓ Save"
+    cancel: "&c✗ Cancel"
+
+  # Reward GUI
+  rewards:
+    xp: "&eXP Reward"
+    give: "&eGive Items"
+    command: "&eCommand"
+    back: "&e← Back"
+
+  # Delete GUI
+  delete:
+    confirm: "&c✓ Delete"
+    cancel: "&a✗ Cancel"
+
+  # Titles (chat prompts shown as titles)
+  titles:
+    name-main: "&eName"
+    name-sub: "&7Type new name or 'cancel'"
+    description-main: "&eDescription"
+    description-sub: "&7Type description or 'cancel'"
+    icon-main: "&eIcon"
+    icon-sub: "&7Type material, 'hand' or 'cancel'"
+    target-main: "&eTarget"
+    target-sub: "&7Type target, '*' or 'cancel'"
+    amount-main: "&eAmount"
+    amount-sub: "&7Type a number or 'cancel'"
+    category-main: "&eCategory"
+    category-sub: "&7Type name, empty or 'cancel'"
+    reward-xp-main: "&eXP Reward"
+    reward-xp-sub: "&7Type a number or 'cancel'"
+    reward-give-main: "&eGive Items"
+    reward-give-sub: "&7Format: MAT:QTY,... or 'cancel'"
+    reward-command-main: "&eCommand"
+    reward-command-sub: "&7Type command or 'cancel'"
 
 # ====================================
 # CONFIGURATION VALIDATION
@@ -217,4 +293,3 @@ admin:
 
     close:
       name: "&cClose"
-

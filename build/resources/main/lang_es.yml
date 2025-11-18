@@ -17,7 +17,7 @@ general:
 # COMANDOS
 # ====================================
 commands:
-  usage: "&eUso: /mva reload | open [jugador] | view <jugador> | list | reset <jugador> [achievementId|all] | settings | lang <idioma>"
+  usage: "&eUso: /mva reload | open [jugador] | view <jugador> | list | reset <jugador> [achievementId|all] | settings | editor | lang <idioma>"
 
   reload:
     reloading: "&7Recargando configuración por {player}..."
@@ -96,6 +96,85 @@ achievements:
       back-button:
         name: "&e← Volver a categorías"
 
+# ====================================
+# EDITOR DE LOGROS
+# ====================================
+editor:
+  # Mensajes de error
+  achievement-not-found: "&cLogro no encontrado."
+  name-required: "&cEl nombre del logro es obligatorio."
+  invalid-amount: "&cLa cantidad debe ser un número entero positivo."
+  invalid-number: "&cIngresa un número válido."
+  save-error: "&cError al guardar. Revisa los logs."
+  delete-error: "&cError al eliminar. Revisa los logs."
+  saved-success: "&a✓ ¡Logro guardado exitosamente!"
+  deleted-success: "&a✓ ¡Logro eliminado exitosamente!"
+
+  # Títulos de inventario
+  list-title: "&8» &6Editor de Logros"
+  edit-title: "&8» &6Editar Logro"
+  reward-title: "&8» &6Editar Recompensas"
+  delete-title: "&8» &cConfirmar Eliminación"
+
+  # GUI de lista
+  list:
+    new-button: "&a+ Crear nuevo logro"
+    previous-page: "&e« Página anterior"
+    next-page: "&ePágina siguiente »"
+    item-lore-id: "&7ID: {id}"
+    item-lore-type: "&7Tipo: {type}"
+    item-lore-edit: "&eClic para editar"
+    item-lore-delete: "&cShift-Clic para eliminar"
+
+  # Botones del editor
+  edit:
+    name: "&eNombre"
+    description: "&eDescripción"
+    icon: "&eIcono"
+    type: "&eTipo"
+    target: "&eObjetivo"
+    amount: "&eCantidad"
+    category: "&eCategoría"
+    rewards: "&eRecompensas"
+    save: "&a✓ Guardar"
+    cancel: "&c✗ Cancelar"
+
+  # GUI de recompensas
+  rewards:
+    xp: "&eRecompensa de XP"
+    give: "&eDar objetos"
+    command: "&eComando"
+    back: "&e← Volver"
+
+  # GUI de eliminación
+  delete:
+    confirm: "&c✓ Eliminar"
+    cancel: "&a✗ Cancelar"
+
+  # Titles (prompts mostrados como títulos)
+  titles:
+    name-main: "&eNombre"
+    name-sub: "&7Escribe el nuevo nombre o 'cancel'"
+    description-main: "&eDescripción"
+    description-sub: "&7Escribe la descripción o 'cancel'"
+    icon-main: "&eIcono"
+    icon-sub: "&7Escribe un material, 'hand' o 'cancel'"
+    target-main: "&eObjetivo"
+    target-sub: "&7Escribe un objetivo, '*' o 'cancel'"
+    amount-main: "&eCantidad"
+    amount-sub: "&7Escribe un número o 'cancel'"
+    category-main: "&eCategoría"
+    category-sub: "&7Escribe un nombre, vacío o 'cancel'"
+    reward-xp-main: "&eRecompensa de XP"
+    reward-xp-sub: "&7Escribe un número o 'cancel'"
+    reward-give-main: "&eDar objetos"
+    reward-give-sub: "&7Formato: MAT:QTY,... o 'cancel'"
+    reward-command-main: "&eComando"
+    reward-command-sub: "&7Escribe un comando o 'cancel'"
+
+# ====================================
+# VALIDACIÓN DE CONFIGURACIÓN
+# ====================================
 validation:
   header-errors: "&c========== ERRORES DE CONFIGURACIÓN =========="
   header-warnings: "&e========== ADVERTENCIAS DE CONFIGURACIÓN =========="
@@ -190,4 +269,3 @@ admin:
 
     close:
       name: "&cCerrar"
-

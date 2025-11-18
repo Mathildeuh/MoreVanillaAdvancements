@@ -7,12 +7,16 @@ import fr.mathilde.moreVanillaAdvancements.model.Reward;
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.plugin.java.JavaPlugin;
 
+import java.io.*;
 import java.util.*;
 
 public class AchievementConfig {
     private final Map<String, Achievement> achievements = new LinkedHashMap<>();
     private final Map<String, Category> categories = new LinkedHashMap<>();
+    private FileConfiguration configFile;
+    private JavaPlugin plugin;
 
     public Map<String, Achievement> getAchievements() {
         return achievements;
@@ -37,11 +41,22 @@ public class AchievementConfig {
             if (a == null) continue;
             String name = a.getString("name", id);
             String description = a.getString("description", "");
-            Material icon = Material.matchMaterial(a.getString("icon", "PAPER"));
+
+        // Charger l'icône (format simple string)
+        Material icon = Material.PAPER;
+
+        if (a.isSet("icon")) {
+            String iconStr = a.getString("icon", "PAPER");
+            Material mat = Material.matchMaterial(iconStr);
+            if (mat != null) {
+                icon = mat;
+            }
+        }
+
             ConditionType type = ConditionType.valueOf(a.getString("type", "BLOCK_BREAK").toUpperCase(Locale.ROOT));
             String target = a.getString("target", "*").toUpperCase(Locale.ROOT);
             int amount = a.getInt("amount", 1);
-            String category = a.getString("category", null); // optional
+            String category = a.getString("category", null);
             Reward reward = null;
             if (a.isConfigurationSection("reward")) {
                 ConfigurationSection r = a.getConfigurationSection("reward");
@@ -74,5 +89,72 @@ public class AchievementConfig {
             categories.put(catName, new Category(catName, icon, show));
         }
     }
+
+    public void setConfigFile(FileConfiguration cfg, JavaPlugin p) {
+        this.configFile = cfg;
+        this.plugin = p;
+    }
+
+    public void saveAchievement(Achievement achievement, String replacingId) throws IOException {
+        if (configFile == null || plugin == null) {
+            throw new IOException("Config not initialized");
+        }
+
+        // Supprimer l'ancien si on remplace
+        if (replacingId != null && !replacingId.equals(achievement.getId())) {
+            configFile.set("achievements." + replacingId, null);
+            achievements.remove(replacingId);
+        }
+
+        // Définir les valeurs
+        String path = "achievements." + achievement.getId();
+        configFile.set(path + ".name", achievement.getDisplayName());
+        configFile.set(path + ".description", achievement.getDescription());
+
+        // Sauvegarder l'icône (format simple)
+        configFile.set(path + ".icon", achievement.getIcon().name());
+
+        configFile.set(path + ".type", achievement.getType().name());
+        configFile.set(path + ".target", achievement.getTarget());
+        configFile.set(path + ".amount", achievement.getAmount());
+        if (achievement.getCategory() != null) {
+            configFile.set(path + ".category", achievement.getCategory());
+        }
+
+        // Ajouter les récompenses si présentes
+        if (achievement.getReward() != null && achievement.getReward().hasReward()) {
+            Reward reward = achievement.getReward();
+            if (reward.getXp() > 0) {
+                configFile.set(path + ".reward.xp", reward.getXp());
+            }
+            if (reward.getGiveItems() != null && !reward.getGiveItems().isEmpty()) {
+                configFile.set(path + ".reward.give", reward.getGiveItems());
+            }
+            if (reward.getCommand() != null && !reward.getCommand().isEmpty()) {
+                configFile.set(path + ".reward.command", reward.getCommand());
+            }
+        }
+
+        // Sauvegarder le fichier
+        File configFileOnDisk = new File(plugin.getDataFolder(), "config.yml");
+        configFile.save(configFileOnDisk);
+
+        // Mettre à jour en mémoire
+        achievements.put(achievement.getId(), achievement);
+    }
+
+    public void deleteAchievement(String id) throws IOException {
+        if (configFile == null || plugin == null) {
+            throw new IOException("Config not initialized");
+        }
+
+        configFile.set("achievements." + id, null);
+        achievements.remove(id);
+
+        // Sauvegarder le fichier
+        File configFileOnDisk = new File(plugin.getDataFolder(), "config.yml");
+        configFile.save(configFileOnDisk);
+    }
 }
+
 

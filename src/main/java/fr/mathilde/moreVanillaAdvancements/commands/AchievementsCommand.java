@@ -4,6 +4,7 @@ import fr.mathilde.moreVanillaAdvancements.config.AchievementConfig;
 import fr.mathilde.moreVanillaAdvancements.config.ConfigValidator;
 import fr.mathilde.moreVanillaAdvancements.gui.AchievementGUI;
 import fr.mathilde.moreVanillaAdvancements.gui.AdminSettingsGUI;
+import fr.mathilde.moreVanillaAdvancements.gui.editor.AchievementEditor;
 import fr.mathilde.moreVanillaAdvancements.lang.LangManager;
 import fr.mathilde.moreVanillaAdvancements.service.AchievementService;
 import org.bukkit.Bukkit;
@@ -25,13 +26,15 @@ public class AchievementsCommand implements CommandExecutor, TabCompleter {
     private final AchievementService service;
     private final AchievementGUI gui;
     private final AdminSettingsGUI adminGui;
+    private final AchievementEditor editor;
     private final LangManager langManager;
 
-    public AchievementsCommand(AchievementConfig config, AchievementService service, AchievementGUI gui, AdminSettingsGUI adminGui, LangManager langManager) {
+    public AchievementsCommand(AchievementConfig config, AchievementService service, AchievementGUI gui, AdminSettingsGUI adminGui, AchievementEditor editor, LangManager langManager) {
         this.config = config;
         this.service = service;
         this.gui = gui;
         this.adminGui = adminGui;
+        this.editor = editor;
         this.langManager = langManager;
     }
 
@@ -181,6 +184,17 @@ public class AchievementsCommand implements CommandExecutor, TabCompleter {
                 }
                 adminGui.open((Player) sender);
                 return true;
+            case "editor":
+                if (!(sender instanceof Player)) {
+                    sender.sendMessage(langManager.getMessage("general.player-only"));
+                    return true;
+                }
+                if (!sender.hasPermission("mva.editor")) {
+                    sender.sendMessage(langManager.getMessage("general.no-permission"));
+                    return true;
+                }
+                editor.openEditorList((Player) sender);
+                return true;
             case "lang":
                 if (args.length < 2) {
                     Map<String, String> placeholders = new HashMap<>();
@@ -214,7 +228,7 @@ public class AchievementsCommand implements CommandExecutor, TabCompleter {
 
     @Override
     public List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String alias, @NotNull String[] args) {
-        if (args.length == 1) return Arrays.asList("reload", "open", "view", "list", "reset", "settings", "lang");
+        if (args.length == 1) return Arrays.asList("reload", "open", "view", "list", "reset", "settings", "editor", "lang");
         if (args.length == 2 && (args[0].equalsIgnoreCase("open") || args[0].equalsIgnoreCase("reset") || args[0].equalsIgnoreCase("view"))) {
             return Bukkit.getOnlinePlayers().stream().map(Player::getName).collect(Collectors.toList());
         }

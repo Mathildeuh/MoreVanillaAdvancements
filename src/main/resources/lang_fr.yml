@@ -17,7 +17,7 @@ general:
 # COMMANDES
 # ====================================
 commands:
-  usage: "&eUtilisation: /mva reload | open [joueur] | view <joueur> | list | reset <joueur> [achievementId|all] | settings | lang <langue>"
+  usage: "&eUtilisation: /mva reload | open [joueur] | view <joueur> | list | reset <joueur> [achievementId|all] | settings | editor | lang <langue>"
 
   # Reload
   reload:
@@ -107,6 +107,82 @@ achievements:
 
       back-button:
         name: "&e← Retour aux catégories"
+
+# ====================================
+# ÉDITEUR D'ACHIEVEMENTS
+# ====================================
+editor:
+  # Messages d'erreur
+  achievement-not-found: "&cAchievement introuvable."
+  name-required: "&cLe nom de l'achievement est requis."
+  invalid-amount: "&cLa quantité doit être un entier positif."
+  invalid-number: "&cEntrez un nombre valide."
+  save-error: "&cErreur lors de la sauvegarde. Vérifiez les logs."
+  delete-error: "&cErreur lors de la suppression. Vérifiez les logs."
+  saved-success: "&a✓ Achievement sauvegardé avec succès !"
+  deleted-success: "&a✓ Achievement supprimé avec succès !"
+
+  # Titres d'inventaire
+  list-title: "&8» &6Éditeur d'Achievements"
+  edit-title: "&8» &6Éditer un Achievement"
+  reward-title: "&8» &6Éditer les Récompenses"
+  delete-title: "&8» &cConfirmer la Suppression"
+
+  # GUI de liste
+  list:
+    new-button: "&a+ Créer un nouvel achievement"
+    previous-page: "&e« Page précédente"
+    next-page: "&ePage suivante »"
+    item-lore-id: "&7ID : {id}"
+    item-lore-type: "&7Type : {type}"
+    item-lore-edit: "&eClique pour éditer"
+    item-lore-delete: "&cShift-Clic pour supprimer"
+
+  # Boutons de l'éditeur
+  edit:
+    name: "&eNom"
+    description: "&eDescription"
+    icon: "&eIcône"
+    type: "&eType"
+    target: "&eCible"
+    amount: "&eQuantité"
+    category: "&eCatégorie"
+    rewards: "&eRécompenses"
+    save: "&a✓ Sauvegarder"
+    cancel: "&c✗ Annuler"
+
+  # GUI des récompenses
+  rewards:
+    xp: "&eXP de récompense"
+    give: "&eDonner des objets"
+    command: "&eCommande"
+    back: "&e← Retour"
+
+  # GUI de suppression
+  delete:
+    confirm: "&c✓ Supprimer"
+    cancel: "&a✗ Annuler"
+
+  # Titres (prompts affichés en title)
+  titles:
+    name-main: "&eNom"
+    name-sub: "&7Tapez le nouveau nom ou 'cancel'"
+    description-main: "&eDescription"
+    description-sub: "&7Tapez la description ou 'cancel'"
+    icon-main: "&eIcône"
+    icon-sub: "&7Tapez un matériau, 'hand' ou 'cancel'"
+    target-main: "&eCible"
+    target-sub: "&7Tapez une cible, '*' ou 'cancel'"
+    amount-main: "&eQuantité"
+    amount-sub: "&7Tapez un nombre ou 'cancel'"
+    category-main: "&eCatégorie"
+    category-sub: "&7Tapez un nom, vide ou 'cancel'"
+    reward-xp-main: "&eXP de récompense"
+    reward-xp-sub: "&7Tapez un nombre ou 'cancel'"
+    reward-give-main: "&eDonner des objets"
+    reward-give-sub: "&7Format : MAT:QTY,... ou 'cancel'"
+    reward-command-main: "&eCommande"
+    reward-command-sub: "&7Tapez une commande ou 'cancel'"
 
 # ====================================
 # VALIDATION DE CONFIGURATION
@@ -243,4 +319,3 @@ admin:
 # {section} - Section de config
 # {achievements} - Nombre d'achievements
 # {categories} - Nombre de catégories
-
