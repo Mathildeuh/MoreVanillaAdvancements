@@ -124,9 +124,16 @@ public class AchievementEditor implements Listener {
      */
     public void openDeleteConfirmation(Player player, String achievementId) {
         if (!config.getAchievements().containsKey(achievementId)) {
-            // Message simple pour l'instant; peut être déplacé en langue si besoin.
             player.sendMessage(ChatColor.RED + "Achievement '" + achievementId + "' introuvable.");
             return;
+        }
+        EditorSession session = sessions.get(player.getUniqueId());
+        if (session == null) {
+            session = new EditorSession();
+            session.achievementIds = new ArrayList<>(config.getAchievements().keySet());
+            session.totalPages = (int) Math.ceil((double) session.achievementIds.size() / ITEMS_PER_PAGE);
+            if (session.totalPages == 0) session.totalPages = 1;
+            sessions.put(player.getUniqueId(), session);
         }
         confirmDelete(player, achievementId);
     }
