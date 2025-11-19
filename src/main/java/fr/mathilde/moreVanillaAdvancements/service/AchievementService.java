@@ -1,5 +1,6 @@
 package fr.mathilde.moreVanillaAdvancements.service;
 
+import fr.mathilde.moreVanillaAdvancements.MoreVanillaAdvancements;
 import fr.mathilde.moreVanillaAdvancements.lang.LangManager;
 import fr.mathilde.moreVanillaAdvancements.model.Achievement;
 import fr.mathilde.moreVanillaAdvancements.model.ConditionType;
@@ -77,7 +78,14 @@ public class AchievementService {
                         broadcastAchievementMessage(p.getName(), a);
                     }
                 }
-                try { store.save(); } catch (IOException ignored) {}
+                try {
+                    store.save();
+                } catch (IOException e) {
+                    // Notify Bugsnag for save failures
+                    if (MoreVanillaAdvancements.getInstance() != null && MoreVanillaAdvancements.getInstance().getBugsnag() != null) {
+                        MoreVanillaAdvancements.getInstance().getBugsnag().notify(e);
+                    }
+                }
             }
         }
     }
@@ -115,13 +123,25 @@ public class AchievementService {
 
     public void reset(UUID uuid, String achievementId) {
         store.setProgress(achievementId, uuid, 0);
-        try { store.save(); } catch (IOException ignored) {}
+        try {
+            store.save();
+        } catch (IOException e) {
+            if (MoreVanillaAdvancements.getInstance() != null && MoreVanillaAdvancements.getInstance().getBugsnag() != null) {
+                MoreVanillaAdvancements.getInstance().getBugsnag().notify(e);
+            }
+        }
     }
 
     public void resetAll(UUID uuid) {
         for (String id : all.keySet()) {
             store.setProgress(id, uuid, 0);
         }
-        try { store.save(); } catch (IOException ignored) {}
+        try {
+            store.save();
+        } catch (IOException e) {
+            if (MoreVanillaAdvancements.getInstance() != null && MoreVanillaAdvancements.getInstance().getBugsnag() != null) {
+                MoreVanillaAdvancements.getInstance().getBugsnag().notify(e);
+            }
+        }
     }
 }

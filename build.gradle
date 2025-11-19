@@ -1,10 +1,11 @@
 plugins {
     id 'java'
     id("xyz.jpenilla.run-paper") version "2.3.1"
+    id("com.gradleup.shadow") version "8.3.0"
 }
 
 group = 'fr.mathilde'
-version = '1.0.2'
+version = '1.1.1'
 
 repositories {
     mavenCentral()
@@ -16,6 +17,9 @@ repositories {
 
 dependencies {
     compileOnly("org.spigotmc:spigot-api:1.21.10-R0.1-SNAPSHOT")
+    implementation 'com.bugsnag:bugsnag:3.+'
+    implementation 'org.bstats:bstats-bukkit:3.0.2'
+
 }
 
 tasks {
@@ -54,14 +58,28 @@ processResources {
     }
 }
 
-// Copy jar to server/plugins after build
+// Configure shadowJar: include implementation deps and relocate to avoid conflicts
+shadowJar {
+    archiveClassifier.set('') // produce an artifact without -all or -shadow classifier
+    mergeServiceFiles()
+    minimize()
+    relocate 'com.bugsnag', 'fr.mathilde.lib.bugsnag'
+    relocate 'org.bstats', 'fr.mathilde.lib.bstats'
+}
+
+// Make the regular build produce the shadow jar as the main artifact
+tasks.build {
+    dependsOn shadowJar
+}
+
+// Copy shadowJar to server/plugins after build
 build {
     doLast {
         def pluginDir = file("C:\\Users\\Mathilde\\IdeaProjects\\MoreVanillaAdvancements\\server\\plugins")
         if (!pluginDir.exists()) {
             pluginDir.mkdirs()
         }
-        def jarFile = jar.archiveFile.get().asFile
+        def jarFile = shadowJar.archiveFile.get().asFile
         copy {
             from jarFile
             into pluginDir

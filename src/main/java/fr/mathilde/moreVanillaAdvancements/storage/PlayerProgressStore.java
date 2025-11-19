@@ -1,5 +1,6 @@
 package fr.mathilde.moreVanillaAdvancements.storage;
 
+import fr.mathilde.moreVanillaAdvancements.MoreVanillaAdvancements;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
@@ -25,7 +26,12 @@ public class PlayerProgressStore {
                 int v = cfg.getInt(achId + "." + uuidStr, 0);
                 try {
                     inner.put(UUID.fromString(uuidStr), v);
-                } catch (IllegalArgumentException ignored) {}
+                } catch (IllegalArgumentException ex) {
+                    // Notify Bugsnag about invalid UUID entries
+                    if (MoreVanillaAdvancements.getInstance() != null && MoreVanillaAdvancements.getInstance().getBugsnag() != null) {
+                        MoreVanillaAdvancements.getInstance().getBugsnag().notify(ex);
+                    }
+                }
             }
             map.put(achId, inner);
         }

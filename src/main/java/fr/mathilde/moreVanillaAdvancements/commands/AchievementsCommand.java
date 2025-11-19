@@ -129,6 +129,9 @@ public class AchievementsCommand implements CommandExecutor, TabCompleter {
                         page = Integer.parseInt(args[1]);
                     } catch (NumberFormatException e) {
                         page = 1;
+                        if (fr.mathilde.moreVanillaAdvancements.MoreVanillaAdvancements.getInstance() != null && fr.mathilde.moreVanillaAdvancements.MoreVanillaAdvancements.getInstance().getBugsnag() != null) {
+                            fr.mathilde.moreVanillaAdvancements.MoreVanillaAdvancements.getInstance().getBugsnag().notify(e);
+                        }
                     }
                 }
                 showAchievementList(sender, page);

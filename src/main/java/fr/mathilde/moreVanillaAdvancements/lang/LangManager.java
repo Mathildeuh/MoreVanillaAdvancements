@@ -1,5 +1,6 @@
 package fr.mathilde.moreVanillaAdvancements.lang;
 
+import fr.mathilde.moreVanillaAdvancements.MoreVanillaAdvancements;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -49,6 +50,10 @@ public class LangManager {
                 plugin.getLogger().info("Fichier de langue créé: lang_" + langCode + ".yml");
             } catch (Exception e) {
                 plugin.getLogger().warning("Impossible de créer le fichier lang_" + langCode + ".yml, utilisation de 'en'.");
+                // Notify Bugsnag
+                if (MoreVanillaAdvancements.getInstance() != null && MoreVanillaAdvancements.getInstance().getBugsnag() != null) {
+                    MoreVanillaAdvancements.getInstance().getBugsnag().notify(e);
+                }
                 langCode = "en";
                 langFile = new File(plugin.getDataFolder(), "lang_en.yml");
             }
@@ -183,4 +188,3 @@ public class LangManager {
         return AVAILABLE_LANGUAGES;
     }
 }
-

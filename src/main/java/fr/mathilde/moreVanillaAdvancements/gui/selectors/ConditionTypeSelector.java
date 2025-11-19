@@ -1,5 +1,6 @@
 package fr.mathilde.moreVanillaAdvancements.gui.selectors;
 
+import fr.mathilde.moreVanillaAdvancements.MoreVanillaAdvancements;
 import fr.mathilde.moreVanillaAdvancements.model.ConditionType;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -135,7 +136,11 @@ public class ConditionTypeSelector implements Listener {
                 p.removeMetadata("typeSelector_sessionId", plugin);
                 sessionData.remove(sessionId);
                 data.callback.onSelect(selected);
-            } catch (IllegalArgumentException ignored) {}
+            } catch (IllegalArgumentException ex) {
+                if (MoreVanillaAdvancements.getInstance() != null && MoreVanillaAdvancements.getInstance().getBugsnag() != null) {
+                    MoreVanillaAdvancements.getInstance().getBugsnag().notify(ex);
+                }
+            }
         }
     }
 
@@ -166,4 +171,3 @@ public class ConditionTypeSelector implements Listener {
         }
     }
 }
-

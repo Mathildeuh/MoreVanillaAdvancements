@@ -1,5 +1,6 @@
 package fr.mathilde.moreVanillaAdvancements.gui.editor;
 
+import fr.mathilde.moreVanillaAdvancements.MoreVanillaAdvancements;
 import fr.mathilde.moreVanillaAdvancements.config.AchievementConfig;
 import fr.mathilde.moreVanillaAdvancements.gui.selectors.ConditionTypeSelector;
 import fr.mathilde.moreVanillaAdvancements.gui.selectors.SelectionCallback;
@@ -586,6 +587,9 @@ public class AchievementEditor implements Listener {
             } catch (Exception ex) {
                 player.sendMessage(langManager.getMessage("editor.delete-error"));
                 plugin.getLogger().warning("Error deleting achievement: " + ex.getMessage());
+                if (MoreVanillaAdvancements.getInstance() != null && MoreVanillaAdvancements.getInstance().getBugsnag() != null) {
+                    MoreVanillaAdvancements.getInstance().getBugsnag().notify(ex);
+                }
             }
         } else if (slot == 15) { // Cancel delete
             openEditorListPage(player, session.currentPage);
@@ -619,6 +623,9 @@ public class AchievementEditor implements Listener {
                         callback.accept(number);
                     } catch (NumberFormatException ex) {
                         player.sendMessage(ChatColor.RED + "Invalid number! Please try again.");
+                        if (MoreVanillaAdvancements.getInstance() != null && MoreVanillaAdvancements.getInstance().getBugsnag() != null) {
+                            MoreVanillaAdvancements.getInstance().getBugsnag().notify(ex);
+                        }
                         // Pas de re-prompt texte, le title reste visible le temps du prompt
                     }
                 }
@@ -645,6 +652,9 @@ public class AchievementEditor implements Listener {
                         callback.accept(material);
                     } catch (IllegalArgumentException ex) {
                         player.sendMessage(ChatColor.RED + "Material not found! Please try again.");
+                        if (MoreVanillaAdvancements.getInstance() != null && MoreVanillaAdvancements.getInstance().getBugsnag() != null) {
+                            MoreVanillaAdvancements.getInstance().getBugsnag().notify(ex);
+                        }
                     }
                 }
             };
@@ -679,6 +689,9 @@ public class AchievementEditor implements Listener {
         } catch (Exception ex) {
             player.sendMessage(langManager.getMessage("editor.save-error"));
             plugin.getLogger().warning("Error saving achievement: " + ex.getMessage());
+            if (MoreVanillaAdvancements.getInstance() != null && MoreVanillaAdvancements.getInstance().getBugsnag() != null) {
+                MoreVanillaAdvancements.getInstance().getBugsnag().notify(ex);
+            }
         } finally {
             sessions.remove(player.getUniqueId());
             openEditorList(player);

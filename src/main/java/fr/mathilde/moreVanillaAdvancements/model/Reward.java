@@ -1,5 +1,6 @@
 package fr.mathilde.moreVanillaAdvancements.model;
 
+import fr.mathilde.moreVanillaAdvancements.MoreVanillaAdvancements;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -33,7 +34,10 @@ public class Reward {
                         if (mat != null && qty > 0) {
                             p.getInventory().addItem(new ItemStack(mat, qty));
                         }
-                    } catch (NumberFormatException ignored) {
+                    } catch (NumberFormatException ex) {
+                        if (MoreVanillaAdvancements.getInstance() != null && MoreVanillaAdvancements.getInstance().getBugsnag() != null) {
+                            MoreVanillaAdvancements.getInstance().getBugsnag().notify(ex);
+                        }
                     }
                 }
             }
@@ -62,6 +66,3 @@ public class Reward {
         return xp > 0 || (giveItems != null && !giveItems.isEmpty()) || (command != null && !command.isEmpty());
     }
 }
-
-
-

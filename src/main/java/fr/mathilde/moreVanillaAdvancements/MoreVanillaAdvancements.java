@@ -1,5 +1,7 @@
 package fr.mathilde.moreVanillaAdvancements;
 
+import com.bugsnag.Bugsnag;
+import fr.mathilde.moreVanillaAdvancements.bstats.StatsManager;
 import fr.mathilde.moreVanillaAdvancements.commands.AchievementsCommand;
 import fr.mathilde.moreVanillaAdvancements.config.AchievementConfig;
 import fr.mathilde.moreVanillaAdvancements.config.ConfigValidator;
@@ -28,9 +30,14 @@ public final class MoreVanillaAdvancements extends JavaPlugin {
     private AdminSettingsGUI adminSettingsGUI;
     private AchievementEditor achievementEditor;
     private PlayerProgressStore store;
+    private Bugsnag bugsnag;
+    private StatsManager statsManager;
 
     @Override
     public void onEnable() {
+        bugsnag = new Bugsnag("5691a9ed260a5f9ed445f4940904b81c");
+        System.out.println("" + ChatColor.RED + "Bugsnag initialized");
+
         // Plugin startup logic
         instance = this;
         saveDefaultConfig();
@@ -61,6 +68,10 @@ public final class MoreVanillaAdvancements extends JavaPlugin {
         achievementConfig = new AchievementConfig();
         achievementConfig.load(getConfig());
         achievementConfig.setConfigFile(getConfig(), this);
+
+        // Initialiser bStats après le chargement de la configuration
+        statsManager = new StatsManager(this);
+        System.out.println("" + ChatColor.RED + "bStats initialized");
 
         // Log du chargement avec messages du lang.yml
         Map<String, String> placeholders = new HashMap<>();
@@ -99,7 +110,13 @@ public final class MoreVanillaAdvancements extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        try { if (store != null) store.save(); } catch (IOException ignored) {}
+        try {
+            if (store != null) store.save();
+        } catch (IOException e) {
+            if (instance != null && instance.getBugsnag() != null) {
+                instance.getBugsnag().notify(e);
+            }
+        }
     }
 
     public static MoreVanillaAdvancements getInstance() {
@@ -110,7 +127,19 @@ public final class MoreVanillaAdvancements extends JavaPlugin {
         return achievementEditor;
     }
 
+    public AchievementConfig getAchievementConfig() {
+        return achievementConfig;
+    }
+
     public LangManager getLangManager() {
         return langManager;
+    }
+
+    public Bugsnag getBugsnag() {
+        return bugsnag;
+    }
+
+    public StatsManager getStatsManager() {
+        return statsManager;
     }
 }

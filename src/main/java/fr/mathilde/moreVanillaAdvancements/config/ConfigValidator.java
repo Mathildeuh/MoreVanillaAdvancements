@@ -1,5 +1,6 @@
 package fr.mathilde.moreVanillaAdvancements.config;
 
+import fr.mathilde.moreVanillaAdvancements.MoreVanillaAdvancements;
 import fr.mathilde.moreVanillaAdvancements.model.ConditionType;
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
@@ -152,6 +153,10 @@ public class ConfigValidator {
                 ConditionType.valueOf(typeStr.toUpperCase());
             } catch (IllegalArgumentException e) {
                 errors.add("❌ Achievement '" + id + "': type '" + typeStr + "' invalide. Types valides: " + getValidTypes());
+                // Notify Bugsnag for invalid config value
+                if (MoreVanillaAdvancements.getInstance() != null && MoreVanillaAdvancements.getInstance().getBugsnag() != null) {
+                    MoreVanillaAdvancements.getInstance().getBugsnag().notify(e);
+                }
             }
         }
 
